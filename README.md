@@ -1,13 +1,13 @@
-# FHIR JPCore ver1.1用　開発用サイト
+# FHIR JPCore ver2.0用　開発用サイト
 FHIRのJp Core実装のための開発用レポジトリです。
 
 # 注意事項
-このドキュメントは日本医療情報学会NeXEHRS課題研究会「HL7®FHIR® 日本実装検討WG」で作成した実装ガイドのドラフトVer.1.1 です。このバージョンは日本HL7協会による承認を受けていません。今後、予告なく内容に変更があります。実装や利用は全て自己責任で行ってください。
+このドキュメントは日本医療情報学会NeXEHRS課題研究会「HL7®FHIR® 日本実装検討WG」で作成した実装ガイドのドラフトVer.2.0 です。このバージョンは日本HL7協会による承認を受けていません。今後、予告なく内容に変更があります。実装や利用は全て自己責任で行ってください。
 このページの実装ガイドは常に修正、追加がある改訂版開発用ページです。
 
 ## GitHubAction 自動ビルド＆デプロイ
 ビルドおよびデプロイに２０分程度時間を要します。
-* [ビルド状況 [step1]](https://github.com/jami-fhir-jp-wg/jp-core-v1x/actions)
+* [ビルド状況 [step1]](./actions)
 * [デプロイ状況 [step2]](https://github.com/jami-fhir-jp-wg/jp-core-v1xpages/actions)
 * [ビルド結果 [step3]](https://jami-fhir-jp-wg.github.io/jp-core-v1xpages/index.html)
 
