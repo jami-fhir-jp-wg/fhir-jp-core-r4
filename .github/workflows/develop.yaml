@@ -12,6 +12,7 @@ on:
   pull_request:
     branches:
       - 'develop'
+      - 'release/**'
 
 jobs:
   turn:
@@ -69,13 +70,13 @@ jobs:
     - name: Download Japanese translated version of hl7.fhir.core package
       uses: wei/wget@v1
       with:
-        args:  https://jpfhir.jp/fhir/hl7.fhir.r4.core-4.0.1.tgz
+        args:  https://jpfhir.jp/fhir/hl7.fhir.r4.core-4.3.0.tgz
 
     - name: Arranging hl7.fhir.core package packages
       env:
-        PACKAGECORE: hl7.fhir.r4.core#4.0.1
+        PACKAGECORE: hl7.fhir.r4.core#4.3.1
       run: | 
-        mv hl7.fhir.r4.core-4.0.1.tgz  $PACKAGECORE.tgz
+        mv hl7.fhir.r4.core-4.3.0.tgz  $PACKAGECORE.tgz
         mkdir -p /home/runner/.fhir
         mkdir -p  /home/runner/.fhir/packages
         mkdir -p  /home/runner/.fhir/packages/$PACKAGECORE
@@ -87,7 +88,7 @@ jobs:
       uses: Legion2/download-release-action@v2.1.0
       with:
         repository: HL7/fhir-ig-publisher
-        tag: '1.2.6'
+        tag: '1.2.12'
         path: .
         file: publisher.jar
    
@@ -125,14 +126,14 @@ jobs:
         external_repository: jami-fhir-jp-wg/jp-core-v1xpages
         publish_branch: pages
         publish_dir: ./output
-        destination_dir: ./jpcore-r4/${{ steps.extract_branch.outputs.branch }}
+        destination_dir: ./jpcore-r4b/${{ steps.extract_branch.outputs.branch }}
         
     - name: STEP3 = upload gtz files and  to remote site by rsync
       run: | 
-        ssh -i key  -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no  -p ${{ secrets.SSH_PORT_JPFHIR }} ${{ secrets.JAMIWG_WEBHOST }}    'rm -rf ${{ secrets.JAMIWG_WEBPATH }}/jpfhir.jp/fhir/core/V1B.dev'
-        ssh -i key  -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no  -p ${{ secrets.SSH_PORT_JPFHIR }} ${{ secrets.JAMIWG_WEBHOST }}    'mkdir -p ${{ secrets.JAMIWG_WEBPATH }}/jpfhir.jp/fhir/core/V1B.dev'
-        rsync -auzrvl -e "ssh -i key -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no  -p ${{ secrets.SSH_PORT_JPFHIR }}"  --delete output.tgz fsh-generated.tgz forPackageRelease/package.tgz ${{ secrets.JAMIWG_WEBHOST }}:${{ secrets.JAMIWG_WEBPATH }}/jpfhir.jp/fhir/core/V1B.dev/
-        ssh -i key  -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no  -p ${{ secrets.SSH_PORT_JPFHIR }} ${{ secrets.JAMIWG_WEBHOST }}   'cd ${{ secrets.JAMIWG_WEBPATH }}/jpfhir.jp/fhir/core/V1B.dev/; tar xzf output.tgz; mv output/* .; rm -rf output'
+        ssh -i key  -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no  -p ${{ secrets.SSH_PORT_JPFHIR }} ${{ secrets.JAMIWG_WEBHOST }}    'rm -rf ${{ secrets.JAMIWG_WEBPATH }}/jpfhir.jp/fhir/core/V2.dev'
+        ssh -i key  -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no  -p ${{ secrets.SSH_PORT_JPFHIR }} ${{ secrets.JAMIWG_WEBHOST }}    'mkdir -p ${{ secrets.JAMIWG_WEBPATH }}/jpfhir.jp/fhir/core/V2.dev'
+        rsync -auzrvl -e "ssh -i key -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no  -p ${{ secrets.SSH_PORT_JPFHIR }}"  --delete output.tgz fsh-generated.tgz forPackageRelease/package.tgz ${{ secrets.JAMIWG_WEBHOST }}:${{ secrets.JAMIWG_WEBPATH }}/jpfhir.jp/fhir/core/V2.dev/
+        ssh -i key  -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no  -p ${{ secrets.SSH_PORT_JPFHIR }} ${{ secrets.JAMIWG_WEBHOST }}   'cd ${{ secrets.JAMIWG_WEBPATH }}/jpfhir.jp/fhir/core/V2.dev/; tar xzf output.tgz; mv output/* .; rm -rf output'
       env:
         SSH_PORT: ${{ secrets.SSH_PORT_JPFHIR }}
         JAMIWG_WEBHOST: ${{ secrets.JAMIWG_WEBHOST }}
