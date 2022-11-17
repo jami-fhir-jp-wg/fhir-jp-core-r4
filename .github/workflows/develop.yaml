@@ -72,25 +72,25 @@ jobs:
       with:
         args:  https://jpfhir.jp/fhir/hl7.fhir.r4.core-4.3.0.tgz
 
-    - name: Arranging hl7.fhir.core package packages
-      env:
-        PACKAGECORE: hl7.fhir.r4.core#4.3.1
-      run: | 
-        mv hl7.fhir.r4.core-4.3.0.tgz  $PACKAGECORE.tgz
-        mkdir -p /home/runner/.fhir
-        mkdir -p  /home/runner/.fhir/packages
-        mkdir -p  /home/runner/.fhir/packages/$PACKAGECORE
-        : # local cache にpackage をcopyして展開する
-        cp $PACKAGECORE.tgz /home/runner/.fhir/packages/$PACKAGECORE/$PACKAGECORE.tgz
-        tar xzf /home/runner/.fhir/packages/$PACKAGECORE/$PACKAGECORE.tgz -C /home/runner/.fhir/packages/$PACKAGECORE/
+    # - name: Arranging hl7.fhir.core package packages
+    #   env:
+    #     PACKAGECORE: hl7.fhir.r4.core#4.3.0
+    #   run: | 
+    #     mv hl7.fhir.r4.core-4.3.0.tgz  $PACKAGECORE.tgz
+    #     mkdir -p /home/runner/.fhir
+    #     mkdir -p  /home/runner/.fhir/packages
+    #     mkdir -p  /home/runner/.fhir/packages/$PACKAGECORE
+    #     : # local cache にpackage をcopyして展開する
+    #     cp $PACKAGECORE.tgz /home/runner/.fhir/packages/$PACKAGECORE/$PACKAGECORE.tgz
+    #     tar xzf /home/runner/.fhir/packages/$PACKAGECORE/$PACKAGECORE.tgz -C /home/runner/.fhir/packages/$PACKAGECORE/
 
-    - name: Download IG Publisher
-      uses: Legion2/download-release-action@v2.1.0
-      with:
-        repository: HL7/fhir-ig-publisher
-        tag: '1.2.12'
-        path: .
-        file: publisher.jar
+    # - name: Download IG Publisher
+    #   uses: Legion2/download-release-action@v2.1.0
+    #   with:
+    #     repository: HL7/fhir-ig-publisher
+    #     tag: '1.2.12'
+    #     path: .
+    #     file: publisher.jar
    
     - name: Run IG Publisher
       run: | 
@@ -128,7 +128,7 @@ jobs:
         publish_dir: ./output
         destination_dir: ./jpcore-r4b/${{ steps.extract_branch.outputs.branch }}
 
-        
+
     # - name: STEP3 = upload gtz files and  to remote site by rsync
     #   run: | 
     #     ssh -i key  -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no  -p ${{ secrets.SSH_PORT_JPFHIR }} ${{ secrets.JAMIWG_WEBHOST }}    'rm -rf ${{ secrets.JAMIWG_WEBPATH }}/jpfhir.jp/fhir/core/V2.dev'
