@@ -119,7 +119,7 @@ jobs:
       uses: peaceiris/actions-gh-pages@v3
       with:
         personal_token: ${{ secrets.PERSONAL_TOKEN }}
-        external_repository: jami-fhir-jp-wg/jp-core-v1xpages
+        external_repository: jami-fhir-jp-wg/fhir-jp-core-r4-pages
         publish_branch: pages
         publish_dir: ./output
         destination_dir: ./jpcore-r4b/${{ steps.extract_branch.outputs.branch }}
