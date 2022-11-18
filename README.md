@@ -7,7 +7,7 @@ FHIRのJp Core実装のための開発用レポジトリです。
 
 ## GitHubAction 自動ビルド＆デプロイ
 ビルドおよびデプロイに２０分程度時間を要します。
-* [ビルド状況 [step1]](./actions)
+* [ビルド状況 [step1]](../../actions)
 * [デプロイ状況 [step2]](https://github.com/jami-fhir-jp-wg/fhir-jp-core-r4-pages/actions)
 * [ビルド結果 [step3]](https://jami-fhir-jp-wg.github.io/fhir-jp-core-r4-pages/index.html)
 
