@@ -67,10 +67,10 @@ jobs:
       run: |
         sudo apt-get install jekyll
     
-    - name: Download Japanese translated version of hl7.fhir.core package
-      uses: wei/wget@v1
-      with:
-        args:  https://jpfhir.jp/fhir/hl7.fhir.r4.core-4.3.0.tgz
+    # - name: Download Japanese translated version of hl7.fhir.core package
+    #   uses: wei/wget@v1
+    #   with:
+    #     args:  https://jpfhir.jp/fhir/hl7.fhir.r4.core-4.3.0.tgz
 
     # - name: Arranging hl7.fhir.core package packages
     #   env:
@@ -84,13 +84,13 @@ jobs:
     #     cp $PACKAGECORE.tgz /home/runner/.fhir/packages/$PACKAGECORE/$PACKAGECORE.tgz
     #     tar xzf /home/runner/.fhir/packages/$PACKAGECORE/$PACKAGECORE.tgz -C /home/runner/.fhir/packages/$PACKAGECORE/
 
-    # - name: Download IG Publisher
-    #   uses: Legion2/download-release-action@v2.1.0
-    #   with:
-    #     repository: HL7/fhir-ig-publisher
-    #     tag: '1.2.12'
-    #     path: .
-    #     file: publisher.jar
+    - name: Download IG Publisher
+      uses: Legion2/download-release-action@v2.1.0
+      with:
+        repository: HL7/fhir-ig-publisher
+        tag: '1.2.12'
+        path: .
+        file: publisher.jar
    
     - name: Run IG Publisher
       run: | 
