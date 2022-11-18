@@ -28,7 +28,7 @@ _genonceの実行にてheep sizeのエラーが発生する場合、メモリ量
 > git clone https://github.com/jami-fhir-jp-wg/fhir-jp-core-r4.git
 
 # git 最新化
-> cd jp-core-v1x
+> cd fhir-jp-core-r4
 > git fetch
 > git pull
 
@@ -48,7 +48,7 @@ $ cd (プロジェクトディレクトリ移動)
 $ git clone https://github.com/jami-fhir-jp-wg/fhir-jp-core-r4.git
 
 # git 最新化
-$ cd jp-core-v1x
+$ cd fhir-jp-core-r4
 $ git fetch
 $ git pull
 

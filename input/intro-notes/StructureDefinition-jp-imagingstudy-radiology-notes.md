@@ -26,7 +26,7 @@ ImagingStudyリソースは該当する情報が存在する場合、次の要�
 
 ### Mappings
 
-ImagingStudyはDICOM tagとの対応が重要である。各エレメントとDICOM tagのマッピングについては[ Resource ImagingStudy - Mappings](https://hl7.org/fhir/R4/imagingstudy-mappings.html#dicom)を参照すること。
+ImagingStudyはDICOM tagとの対応が重要である。各エレメントとDICOM tagのマッピングについては[ Resource ImagingStudy - Mappings](https://hl7.org/fhir/R4B/imagingstudy-mappings.html#dicom)を参照すること。
 
 ### ProcedureCode
 

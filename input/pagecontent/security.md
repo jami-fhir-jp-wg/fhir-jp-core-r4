@@ -3,14 +3,14 @@
 
 ### FHIR BASE Securityへの考慮
 ---
-実装者はFHIR BASEにある[FHIR Security](https://hl7.org/fhir/R4/security.html)に規定にされている下記の項目に対して考慮し、要求項目には対応しなければならない (**SHALL**)。
-- [Communications](https://hl7.org/fhir/R4/security.html#http)
-- [Authentication](https://hl7.org/fhir/R4/security.html#authentication)
-- [Authorization/Access Control](https://hl7.org/fhir/R4/security.html#authorization/access%20control)
-- [Audit Logging](https://hl7.org/fhir/R4/security.html#audit%20logging)
-- [Digital Signatures](https://hl7.org/fhir/R4/security.html#digital%20signatures)
-- [Security Labels](https://hl7.org/fhir/R4/security-labels.html)
-- [Narrative](https://hl7.org/fhir/R4/security.html#narrative)
+実装者はFHIR BASEにある[FHIR Security](https://hl7.org/fhir/R4B/security.html)に規定にされている下記の項目に対して考慮し、要求項目には対応しなければならない (**SHALL**)。
+- [Communications](https://hl7.org/fhir/R4B/security.html#http)
+- [Authentication](https://hl7.org/fhir/R4B/security.html#authentication)
+- [Authorization/Access Control](https://hl7.org/fhir/R4B/security.html#authorization/access%20control)
+- [Audit Logging](https://hl7.org/fhir/R4B/security.html#audit%20logging)
+- [Digital Signatures](https://hl7.org/fhir/R4B/security.html#digital%20signatures)
+- [Security Labels](https://hl7.org/fhir/R4B/security-labels.html)
+- [Narrative](https://hl7.org/fhir/R4B/security.html#narrative)
 
 ### JP CoreにおけるSecurity要件
 ---

@@ -7,7 +7,7 @@
 
 - 施設内で発生するオーダをもとに実施される画像検査に対する診断レポートの保存
 - 他のリソースからの放射線検査レポートの参照<br/>
-（例：[ImagingStudyリソース][JP_ImagingStudy_Radiology]) や[ServiceRequestリソース](https://www.hl7.org/fhir/R4/servicerequest.html) のreasonReference エレメントで参照される放射線検査レポート）
+（例：[ImagingStudyリソース][JP_ImagingStudy_Radiology]) や[ServiceRequestリソース](https://www.hl7.org/fhir/R4B/servicerequest.html) のreasonReference エレメントで参照される放射線検査レポート）
 
 ## スコープ
 
@@ -31,10 +31,10 @@ DiagnosticReportリソースは、過去の結果（リソース内での過去�
 - [身長 (`Observation`)][JP_Observation_BodyMeasurement]
 - [体重 (`Observation`)][JP_Observation_BodyMeasurement]
 - [アレルギー情報 (`AllergyIntorelance`)][JP_AllergyIntolerance]
-- [キー画像 (`media`)](http://www.hl7.org/fhir/R4/media.html)
+- [キー画像 (`media`)](http://www.hl7.org/fhir/R4B/media.html)
 - [尿素窒素（BUN）(`Observation`)][JP_Observation_LabResult]
 - [クレアチニン（Cre）(`Observation`)][JP_Observation_LabResult]
-- 感染症情報 [ (`RiskAssessment`) ](https://hl7.org/fhir/R4/riskassessment.html) あるいは [ (`Observation`) ][JP_Observation_LabResult]
+- 感染症情報 [ (`RiskAssessment`) ](https://hl7.org/fhir/R4B/riskassessment.html) あるいは [ (`Observation`) ][JP_Observation_LabResult]
 
 運用のフローに関連する TASK、Procedure 等のリソース定義についてはここでは触れない。
 ## プロファイル定義

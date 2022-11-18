@@ -2,7 +2,7 @@
 
 ### 表記分類
 
-JP_HumanNameは名前の表記分類として[iso21090-EN-representation extension](http://hl7.org/fhir/R4/extension-iso21090-en-representation.html)を0..1の多重度にて拡張として割り当てている。具体的な表記分類に利用されるコードは[valueset-name-v3-representation](http://hl7.org/fhir/R4/valueset-name-v3-representation.html)のValueSetにて３つのコードが指定されている。
+JP_HumanNameは名前の表記分類として[iso21090-EN-representation extension](http://hl7.org/fhir/R4B/extension-iso21090-en-representation.html)を0..1の多重度にて拡張として割り当てている。具体的な表記分類に利用されるコードは[valueset-name-v3-representation](http://hl7.org/fhir/R4B/valueset-name-v3-representation.html)のValueSetにて３つのコードが指定されている。
 
   - IDE ： 表意文字  
   日本語の氏名では、主に漢字氏名に相当するエリアになる。漢字を利用していない氏名についてはひらがなやカタカナ、アルファベットも可能であるが全角を利用すること。
@@ -13,7 +13,7 @@ JP_HumanNameは名前の表記分類として[iso21090-EN-representation extensi
 
 ### iso21090-EN-representation extensionの多重度
 
-JP Coreでは国外ベンダを考慮し、[iso21090-EN-representation extension](http://hl7.org/fhir/R4/extension-iso21090-en-representation.html)の拡張は多重度0を許容している。実装ガイド作成の際は、アプリケーションの実装等やデータ収集の精度を考慮した上で多重度を決定すること。
+JP Coreでは国外ベンダを考慮し、[iso21090-EN-representation extension](http://hl7.org/fhir/R4B/extension-iso21090-en-representation.html)の拡張は多重度0を許容している。実装ガイド作成の際は、アプリケーションの実装等やデータ収集の精度を考慮した上で多重度を決定すること。
 
 ### textの区切り文字
 

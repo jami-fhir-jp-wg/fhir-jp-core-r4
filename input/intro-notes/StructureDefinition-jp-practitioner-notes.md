@@ -9,7 +9,7 @@
 
 #### 既存のExtensionの利用
 
-- [nameRepresentationUse](https://hl7.org/fhir/R4/extension-iso21090-en-representation.html)
+- [nameRepresentationUse](https://hl7.org/fhir/R4B/extension-iso21090-en-representation.html)
   - 医療従事者氏名(Practitioner.name)の漢字表記・カナ表記識別のために使用する
 
 ### その他
