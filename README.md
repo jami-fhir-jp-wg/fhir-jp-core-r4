@@ -8,8 +8,8 @@ FHIRのJp Core実装のための開発用レポジトリです。
 ## GitHubAction 自動ビルド＆デプロイ
 ビルドおよびデプロイに２０分程度時間を要します。
 * [ビルド状況 [step1]](./actions)
-* [デプロイ状況 [step2]](https://github.com/jami-fhir-jp-wg/jp-core-v1xpages/actions)
-* [ビルド結果 [step3]](https://jami-fhir-jp-wg.github.io/jp-core-v1xpages/index.html)
+* [デプロイ状況 [step2]](https://github.com/jami-fhir-jp-wg/fhir-jp-core-r4-pages/actions)
+* [ビルド結果 [step3]](https://jami-fhir-jp-wg.github.io/fhir-jp-core-r4-pages/index.html)
 
 ## 環境作成
 自端末にてIGのコンパイルまで行なう場合、下記を参考に環境を作成してください。
@@ -25,7 +25,7 @@ _genonceの実行にてheep sizeのエラーが発生する場合、メモリ量
 > cd (プロジェクトディレクトリ移動)
 
 # (初回のみ実行)gitクローン
-> git clone http://github.com/jami-fhir-jp-wg/jp-core-v1x.git
+> git clone https://github.com/jami-fhir-jp-wg/fhir-jp-core-r4.git
 
 # git 最新化
 > cd jp-core-v1x
@@ -45,7 +45,7 @@ _genonceの実行にてheep sizeのエラーが発生する場合、メモリ量
 $ cd (プロジェクトディレクトリ移動)
 
 # (初回のみ実行)gitクローン
-$ git clone http://github.com/jami-fhir-jp-wg/jp-core-v1x.git
+$ git clone https://github.com/jami-fhir-jp-wg/fhir-jp-core-r4.git
 
 # git 最新化
 $ cd jp-core-v1x
