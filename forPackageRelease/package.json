@@ -4,10 +4,10 @@
     "description": "JP-CORE V2.0.0 for release",
     "author": "JAMI NeXEHRS FHIR IGWG",
     "fhirVersions": [
-      "4.0.1"
+      "4.3.0"
     ],
     "dependencies": {
-      "hl7.fhir.r4.core": "4.0.1"
+      "hl7.fhir.r4.core": "4.3.0"
     },
     "url": "http://jpfhir.jp/fhir/core",
     "canonical": "http://jpfhir.jp/fhir/core"

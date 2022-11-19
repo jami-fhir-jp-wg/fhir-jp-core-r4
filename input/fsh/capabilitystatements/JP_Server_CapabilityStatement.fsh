@@ -10,7 +10,7 @@ Usage: #definition
 * description = "JP Core実装ガイドを利用したサイトを作成する際にサーバ側で規定するCapablityStatementのOperationsおよびSearch Parametersのリスト例を提示する。JP Core ServerがサポートするFHIRプロファイルに限定しているため、FHIR Baseのプロファイルを利用する際などは必要な項目を追記すること。"
 * kind = #requirements
 * instantiates = "http://jpfhir.jp/fhir/core/CapabilityStatement/JP_Server_CapabilityStatement"
-* fhirVersion = #4.0.1
+* fhirVersion = #4.3.0
 * format[0] = #xml
 * format[+] = #json
 * rest.mode = #server
