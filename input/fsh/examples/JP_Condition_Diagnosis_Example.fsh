@@ -1,6 +1,6 @@
-Instance:  jp-condition-disease-example-1
-InstanceOf: JP_Condition_Disease
-Title: "JP Core Condition Disease Example 病名（過敏性大腸炎の初期疾患）"
+Instance:  jp-condition-diagnosis-example-1
+InstanceOf: JP_Condition_Diagnosis
+Title: "JP Core Condition Diagnosis Example 病名（過敏性大腸炎の初期疾患）"
 Description: "過敏性大腸炎の初期疾患の例"
 Usage: #example
 * extension[0]

@@ -1,15 +1,15 @@
 // ==============================
 //   Profile 定義
 // ==============================
-Profile: JP_Condition_Disease
+Profile: JP_Condition_Diagnosis
 Parent: JP_Condition
-Id: jp-condition-disease
+Id: jp-condition-diagnosis
 Title: "JP Core Condition Disease Profile"
-Description: "このプロファイルはConditionリソースに対して、患者の病名情報を送受信するための共通の制約と拡張を定めたものである。"
-* ^url = "http://jpfhir.jp/fhir/core/StructureDefinition/JP_Condition_Disease"
+Description: "このプロファイルはConditionリソースに対して、患者の診断に関する情報を送受信するための共通の制約と拡張を定めたものである。"
+* ^url = "http://jpfhir.jp/fhir/core/StructureDefinition/JP_Condition_Diagnosis"
 * ^status = #active
 * ^date = "2023-08-05"
-* . ^short = "Detailed information about disease. 患者の病名に関する詳細な情報"
+* . ^short = "Detailed information about disease. 患者の診断に関する詳細な情報"
 * . ^definition = "A clinical condition, problem, diagnosis, or other event, situation, issue, or clinical concept that has risen to a level of concern.\r\n\r\n健康上の懸念となるレベルに達した、身体的、精神的、社会的な負の状態(condition)や問題（problem／issue）、医療者による診断(diagnosis)、生じたイベント(event)、置かれている状況(situation)、臨床的概念(clinical concept)。"
 * extension ^slicing.discriminator.type = #value
 * extension ^slicing.discriminator.path = "url"
@@ -34,6 +34,9 @@ Description: "このプロファイルはConditionリソースに対して、患
 * code ^definition = "病名を識別するためのコード。"
 * code ^comment = "JP_Condition_DiseaseCode_VSの中から適切な病名識別コードを指定する"
 * code MS
+* code.text ^short = "病名や所見、症状のフルテキスト【詳細参照】"
+* code.text ^definition = "病名や所見、症状のフルテキスト。"
+* code.text ^comment = "修飾語などを含めた病名や所見、症状のフルテキストを記述する。特に所見や症状などでコード化が難しい場合は、ここにテキストとして記述する。"
 * code.coding ^slicing.discriminator.type = #value
 * code.coding ^slicing.discriminator.path = "system"
 * code.coding ^slicing.rules = #open

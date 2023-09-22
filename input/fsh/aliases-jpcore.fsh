@@ -6,6 +6,7 @@ Alias: $FHIRJPCoreImplementationGuide = http://jpfhir.jp/fhir/core/Implementatio
 Alias: $JP_AllergyIntolerance = http://jpfhir.jp/fhir/core/StructureDefinition/JP_AllergyIntolerance
 Alias: $JP_CarePlan = http://jpfhir.jp/fhir/core/StructureDefinition/JP_CarePlan
 Alias: $JP_Condition = http://jpfhir.jp/fhir/core/StructureDefinition/JP_Condition
+Alias: $JP_Condition_Diagnosis = http://jpfhir.jp/fhir/core/StructureDefinition/JP_Condition_Diagnosis
 Alias: $JP_Coverage = http://jpfhir.jp/fhir/core/StructureDefinition/JP_Coverage
 Alias: $JP_DiagnosticReport_Common = http://jpfhir.jp/fhir/core/StructureDefinition/JP_DiagnosticReport_Common
 Alias: $JP_DiagnosticReport_LabResult = http://jpfhir.jp/fhir/core/StructureDefinition/JP_DiagnosticReport_LabResult
