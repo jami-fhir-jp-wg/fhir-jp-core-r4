@@ -4,7 +4,7 @@
 Profile: JP_Condition_Diagnosis
 Parent: JP_Condition
 Id: jp-condition-diagnosis
-Title: "JP Core Condition Disease Profile"
+Title: "JP Core Condition Diagnosis Profile"
 Description: "このプロファイルはConditionリソースに対して、患者の診断に関する情報を送受信するための共通の制約と拡張を定めたものである。"
 * ^url = "http://jpfhir.jp/fhir/core/StructureDefinition/JP_Condition_Diagnosis"
 * ^status = #active
