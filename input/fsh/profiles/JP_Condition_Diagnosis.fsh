@@ -30,6 +30,9 @@ Description: "このプロファイルはConditionリソースに対して、患
 //* category[diseaseType] ^short = "病名の診断区分を表すコード。【詳細参照】"
 //* category[diseaseType] ^definition = "病名の診断区分を表すコード。"
 //* category[diseaseType] ^comment = "JP_ConditionDiseaseType_VSの中から適切なコードを指定する。"
+* verificationStatus ^short = "unconfirmed | provisional | differential | confirmed | refuted | entered-in-error（十分に確認されていない | 暫定的 | 鑑別的 | 十分な根拠で存在 | 十分な根拠で否定 | 誤記載）。【詳細参照】"
+* verificationStatus ^definition = "The verification status to support the clinical status of the condition.\r\n\r\n この患者状態が存在するかどうかの検証状況。"
+* verificationStatus ^comment = "疑い病名を指定するのに使用する。疑い病名の場合は 'unconfirmed'を、確定病名の場合は'confirmed'をそれぞれ指定する。"
 * code ^short = "病名の識別コード。【詳細参照】"
 * code ^definition = "病名を識別するためのコード。"
 * code ^comment = "JP_Condition_DiseaseCode_VSの中から適切な病名識別コードを指定する"
@@ -76,6 +79,12 @@ Description: "このプロファイルはConditionリソースに対して、患
 * code.extension contains
     JP_Condition_DiseasePrefixModifier named diseasePrefixModifier ..* and
     JP_Condition_DiseasePostfixModifier named diseasePostfixModifier ..*
+* onset[x] ^short = "病名開始日。診断された疾患や症状が開始された、推定もしくは実際の日付、日時、年齢。【詳細参照】"
+* onset[x] ^definition = "臨床医の判断における、この疾患や症状が始まったと推定される、または実際に始まった日または日時。"
+* onset[x] ^comment = "年齢は一般的に、患者の症状が発生し始めた年齢を報告する場合に使用される。"
+* abatement[x] ^short = "病名終了日。診断された疾患や症状がいつ治癒／寛解／軽快したか。【詳細参照】"
+* abatement[x] ^definition = "診断された疾患や症状が解決または寛解した日付または推定日付。 「寛解(remission)」や「解決(resolution)」には過剰な意味合いがあるため「軽減(abatement)」と呼ばれる。つまり、疾患や症状は本当に解決されることはないが、軽減することはある。"
+* abatement[x] ^comment = "多くのケースでは解決と寛解の区別は明確でないため、これらに明確な区別はない。 年齢は通常、患者の症状が軽減した年齢を報告する場合に使用される。abatement要素がない場合、症状が解決したか寛解に入ったかは不明である。 アプリケーションとユーザーは通常、状態がまだ有効であると想定する必要がある。 abatementString が存在する場合、状態が軽減されることを意味する。"
 
 // ==============================
 //   Extension 定義

@@ -247,8 +247,30 @@ HL7 V2系では用語集を識別するコーディングシステム名（以�
 },
 ```
 
+### 開始日（発症日）、終了日（転帰日）の記述方法
+病名や症状などの開始日（発症日）および終了日（転帰日）は、それぞれCondition.onset[x]要素およびCondition.abatement[x]要素を使用して記述する。
+dateTime, Age, Period, Range, string の５種類のデータ型を選択でき、情報の精度に応じて様々な記述方法が可能である。
+abatement[x]要素はCondition.clinicalStatus要素の値が"resolved","remission","inactive"の場合のみ記述できることに注意すること。
+
+「2023-09-01」に開始し、「2023-09-23」に転帰した場合のインスタンス例を示す。
+```json
+"onsetDateTime": "2023-09-01",
+"abatementDateTime": "2023-09-23",
+```
+
+「15歳」の時に発症した場合のインスタンス例を示す。
+```json
+"onsetAge": {
+  "value": 15,
+  "unit": "years",
+  "system": "http://unitsofmeasure.org",
+  "code": "a"
+},
+```
+
 ### 転帰区分の記述方法
 転帰区分は、Conditionリソースに対して定義した拡張「JP_Condition_DiseaseOutcome」を使用し、CodeableConcept型で記載する。使用するコードは、HL7V2.ｘで定義されているHL7表0241 ("http://jpfhir.jp/fhir/core/CodeSystem/HL70241") およびJAHIS病名情報データ交換規約Ver.3.1Cで定義されているJHSD表0006 ("http://jpfhir.jp/fhir/core/CodeSystem/JHSD0006")の併用ないしレセプト電算用転帰区分コード（"http://jpfhir.jp/fhir/core/CodeSystem/JP_ConditionDiseaseOutcomeReceipt_CS"）のいずれかを推奨する。
+なお、記述する転帰区分は、abatement[x]に記述した時点、ないしabatement[x]がない場合は出力時点での情報とする。
 
 「寛解」の場合のインスタンス例を示す。
 ```json
@@ -269,6 +291,33 @@ HL7 V2系では用語集を識別するコーディングシステム名（以�
 } ],
 ```
 
+### 疑い病名の記述方法
+疑い病名かどうかは、Condition.verificationStatus要素に、CodeableConcept型を使用して記録する。コードは、Requiredレベルでバインディングされている値セット（"http://hl7.org/fhir/ValueSet/condition-ver-status"）を使用し、確定病名の場合は"confirmed"、疑い病名の場合は"unconfirmed"をセットする。
+また、疑い病名の場合はCondition.code.textの末尾を「～の疑い」とする。
+
+「急性化膿性虫垂炎の疑い」の場合のインスタンス例を示す。
+```json
+"verificationStatus": {
+  "coding": [ { 
+    "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status", 
+    "code": "unconfirmed", 
+    "display": "Unconfirmed" 
+  } ]
+},
+...
+"code": {
+  "coding": [ { 
+    "system": "http://terminology.sample.com/CodeSystem/disease/1311234567", 
+    "code": "MD03981", 
+    "display": "急性化膿性虫垂炎" 
+  }, { 
+    "system": "urn:oid:1.2.392.200119.4.101.6", 
+    "code": "HR19", 
+    "display": "急性化膿性虫垂炎" 
+  } ], 
+  "text": "急性化膿性虫垂炎の疑い" 
+},
+```
 
 ## その他、参考文献・リンク等
 
