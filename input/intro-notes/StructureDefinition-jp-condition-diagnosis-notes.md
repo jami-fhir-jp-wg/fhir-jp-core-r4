@@ -10,7 +10,6 @@
 
 |拡張|説明|定義|値型|
 |:----|:----|:----|:----|
-|転帰区分|病名の転帰状態を格納する拡張|[JP_Condition_DiseaseOutcome]|CodeableConcept|
 |病名修飾語|病名の前置修飾語を格納する拡張<br/>《code配下》|[JP_Condition_DiseasePrefixModifier]|CodeableConcept|
 |病名修飾語|病名の後置修飾語を格納する拡張<br/>《code配下》|[JP_Condition_DiseasePostfixModifier]|CodeableConcept|
 
@@ -24,7 +23,7 @@ HL7 V2系では用語集を識別するコーディングシステム名（以�
 |病名|MEDIS ICD10対応標準病名マスター(管理番号)|MDCDX2|urn:oid:1.2.392.200119.4.101.2|
 |病名|MEDIS ICD10対応標準病名マスター(交換用コード)|MDCDX2|urn:oid:1.2.392.200119.4.101.6|
 |病名|ICD-10|ICD10|http://jpfhir.jp/fhir/core/CodeSystem/JP_ConditionDisaseCodeICD10_CS|
-|病名|ICD-11|ICD11?|http://jpfhir.jp/fhir/core/CodeSystem/JP_ConditionDisaseCodeICD11_CS|
+|病名|ICD-11|ICD11|http://jpfhir.jp/fhir/core/CodeSystem/JP_ConditionDisaseCodeICD11_CS|
 |病名|レセプト電算用傷病名マスター|(なし)|http://jpfhir.jp/fhir/core/CodeSystem/JP_ConditionDisaseCodeReceipt_CS|
 |病名修飾語|MEDIS ICD10対応標準病名マスター(修飾語管理番号)|MDCDX2|urn:oid:1.2.392.200119.4.201.2|
 |病名修飾語|MEDIS ICD10対応標準病名マスター(修飾語交換用コード)|MDCDX2|urn:oid:1.2.392.200119.4.201.5|
@@ -40,8 +39,10 @@ HL7 V2系では用語集を識別するコーディングシステム名（以�
 ### 項目の追加
 本プロファイルで追加された項目は以下の通りである。
 
-* 転帰区分の追加（拡張「DiseaseOutcome」を使用）
-* 病名修飾語の追加（拡張「DiseasePrefixModifier」「DiseasePostfixModifier」を使用）
+* 転帰区分（clinicalStatusを使用）
+* 発症日（病名開始日）(onset[x]を使用)
+* 転帰日（病名終了日）(abatement[x]を使用)
+* 病名修飾語（拡張「DiseasePrefixModifier」「DiseasePostfixModifier」を使用）
 
 ## 利用方法
 
@@ -55,8 +56,8 @@ HL7 V2系では用語集を識別するコーディングシステム名（以�
 | SHOULD           | patient                    | reference  | GET [base]/Condition?patient=Patient/123                                        |
 | MAY              | patient,onset-date         | reference,date | GET [base]/Condition?patient=Patient/123&onset-date=ge2021-08-24             |
 | MAY              | patient,clinical-status     | reference,code | GET [base]/Condition?patient=Patient/123&clinical-status=active              |
-| MAY              | patient,verificationstatus | reference,code | GET [base]/Condition?patient=Patient/123&verificationstatus=confirmed       |
-| MAY              | patient,category           | reference,code | GET [base]/Condition??patient=Patient/123&category=food                  |
+| MAY              | patient,verification-status | reference,code | GET [base]/Condition?patient=Patient/123&verification-status=confirmed       |
+| MAY              | patient,category           | reference,code | GET [base]/Condition??patient=Patient/123&category=problem-list-item    |
 
 ##### 必須検索パラメータ
 
@@ -94,71 +95,67 @@ HL7 V2系では用語集を識別するコーディングシステム名（以�
 
 オプションとして次の検索パラメータをサポートすることができる（MAY）
 
-1. 検索パラメータpatientとdateを指定し、該当するすべてのConditionを検索
+1. 検索パラメータpatientとonset-dateを指定し、該当するすべてのConditionを検索
 
       * dateに対する次の比較演算子のサポートを含む: gt,lt,ge,le
-      * AND検索のオプションのサポートを含む (例えば.date=[date]&date=[date]]&...)
+      * AND検索のオプションのサポートを含む (例えば.onset-date=[date]&onset-date=[date]]&...)
       
       ```
-      GET [base]/Condition?patient={reference}&date={gt|lt|ge|le}[date]{&date={gt|lt|ge|le}[date]&...}
+      GET [base]/Condition?patient={reference}&onset-date={gt|lt|ge|le}[date]{&onset-&date={gt|lt|ge|le}[date]&...}
       ```
       例：
       ```
-      GET [base]/Condition?patient=Patient/123&date=ge2021-08-24
+      GET [base]/Condition?patient=Patient/123&onset-date=ge2021-08-24
       ```
    
-      指定された患者および日付のすべてのConditionを含むBundleを検索する。
+      指定された患者および発症日のすべてのConditionを含むBundleを検索する。
 
-2. 検索パラメータpatientとclinicalstatusを指定し、該当するすべてのConditionを検索
+2. 検索パラメータpatientとclinical-statusを指定し、該当するすべてのConditionを検索
 
-      * OR検索のサポートを含む(例えば clinicalstatus={system\|}[code],{system\|}[code],...)
+      * OR検索のサポートを含む(例えば clinical-status={system\|}[code],{system\|}[code],...)
       
       ```
-      GET [base]/Condition?patient={reference}&clinicalstatus={system|}[code]{,{system|}[code],...}
+      GET [base]/Condition?patient={reference}&clinical-status={system|}[code]{,{system|}[code],...}
       ```
       例：
       ```
-      GET [base]/Condition?patient=Patient/123&clinicalstatus=active
+      GET [base]/Condition?patient=Patient/123&clinical-status=active
       ```
       ```
-      GET [base]/Condition?patient=Patient/123&clinicalstatus=http://hl7.org/fhir/ValueSet/condition-clinical|active
-      ```
-   
-      指定された患者およびステータスのすべてのConditionを含むBundleを検索する。
-
-3. 検索パラメータpatientとverificationstatusを指定し、該当するすべてのConditionを検索
-
-      * OR検索のサポートを含む(例えば verificationstatus={system\|}[code],{system\|}[code],...)
-      
-      ```
-      GET [base]/Condition?patient={reference}&verificationstatus={system|}[code]{,{system|}[code],...}
-      ```
-      例：
-      ```
-      GET [base]/Condition?patient=Patient/123&verificationstatus=confirmed
-      ```
-      ```
-      GET [base]/Condition?patient=Patient/123&verificationstatus=http://hl7.org/fhir/ValueSet/condition-ver-status|confirmed
+      GET [base]/Condition?patient=Patient/123&clinical-status=http://hl7.org/fhir/ValueSet/condition-clinical|active
       ```
    
       指定された患者およびステータスのすべてのConditionを含むBundleを検索する。
+
+3. 検索パラメータpatientとverification-statusを指定し、該当するすべてのConditionを検索
+
+      ```
+      GET [base]/Condition?patient={reference}&verification-status={system|}[code]
+      ```
+      例：
+      ```
+      GET [base]/Condition?patient=Patient/123&verification-status=confirmed
+      ```
+      ```
+      GET [base]/Condition?patient=Patient/123&verification-status=http://hl7.org/fhir/ValueSet/condition-ver-status|confirmed
+      ```
+   
+      指定された患者および確認状態のすべてのConditionを含むBundleを検索する。
 
 4. 検索パラメータpatientとcategoryを指定し、該当するすべてのConditionを検索
 
-      * OR検索のサポートを含む(例えば category={system\|}[code],{system\|}[code],...)
-
       ```
-      GET [base]/Condition?patient={reference}&category={system|}[code]{,{system|}[code],...}
+      GET [base]/Condition?patient={reference}&category={system|}[code]
       ```  
       例：
       ```
       GET [base]/Condition?patient=Patient/123&category=claim-diagnosis
       ``` 
       ```
-      GET [base]/Condition?patient=Patient/123&category=http://hl7.org/fhir/ValueSet/condition-category|claim-diagnosis
+      GET [base]/Condition?patient=Patient/123&category=http://hl7.org/fhir/ValueSet/condition-category|problem-list-item
       ``` 
 
-      指定された患者およびステータスのすべてのConditionを含むBundleを検索する。
+      指定された患者およびカテゴリーのすべてのConditionを含むBundleを検索する。
 
 ##### オプション検索パラメータ 
 
@@ -247,15 +244,23 @@ HL7 V2系では用語集を識別するコーディングシステム名（以�
 },
 ```
 
-### 開始日（発症日）、終了日（転帰日）の記述方法
-病名や症状などの開始日（発症日）および終了日（転帰日）は、それぞれCondition.onset[x]要素およびCondition.abatement[x]要素を使用して記述する。
+### 発症日（病名開始日）、転帰日（病名終了日）の記述方法
+病名や症状などの発症日（病名や症状が始まった日）および転帰日（病名や症状が治まった日）は、それぞれCondition.onset[x]要素およびCondition.abatement[x]要素を使用して記述する。発症日や転帰日が不明の場合、代わりに病名開始日（当該病名の診療を開始した日）や病名終了日（当該病名の診療を終了した日）を記載してもよい。
 dateTime, Age, Period, Range, string の５種類のデータ型を選択でき、情報の精度に応じて様々な記述方法が可能である。
 abatement[x]要素はCondition.clinicalStatus要素の値が"resolved","remission","inactive"の場合のみ記述できることに注意すること。
 
-「2023-09-01」に開始し、「2023-09-23」に転帰した場合のインスタンス例を示す。
+「2023-09-01」に発症し、「2023-09-23」に転帰した場合のインスタンス例を示す。
 ```json
 "onsetDateTime": "2023-09-01",
 "abatementDateTime": "2023-09-23",
+```
+
+「2023年6月から7月」に発症した場合のインスタンス例を示す。
+```json
+"onsetPeriod": {
+  "start": "2023-06",
+  "end": "2023-07"
+},
 ```
 
 「15歳」の時に発症した場合のインスタンス例を示す。
@@ -269,26 +274,27 @@ abatement[x]要素はCondition.clinicalStatus要素の値が"resolved","remissio
 ```
 
 ### 転帰区分の記述方法
-転帰区分は、Conditionリソースに対して定義した拡張「JP_Condition_DiseaseOutcome」を使用し、CodeableConcept型で記載する。使用するコードは、HL7V2.ｘで定義されているHL7表0241 ("http://jpfhir.jp/fhir/core/CodeSystem/HL70241") およびJAHIS病名情報データ交換規約Ver.3.1Cで定義されているJHSD表0006 ("http://jpfhir.jp/fhir/core/CodeSystem/JHSD0006")の併用ないしレセプト電算用転帰区分コード（"http://jpfhir.jp/fhir/core/CodeSystem/JP_ConditionDiseaseOutcomeReceipt_CS"）のいずれかを推奨する。
+転帰区分は、Condition.clinicalStatus要素を使用し、CodeableConcept型で記載する。使用するコードは、Requiredレベルでバインディングされている値セット ("http://terminology.hl7.org/ValueSet/condition-clinical") の他、HL7V2.ｘで定義されているHL7表0241 ("http://jpfhir.jp/fhir/core/CodeSystem/HL70241") およびJAHIS病名情報データ交換規約Ver.3.1Cで定義されているJHSD表0006 ("http://jpfhir.jp/fhir/core/CodeSystem/JHSD0006")の併用ないしレセプト電算用転帰区分コード（"http://jpfhir.jp/fhir/core/CodeSystem/JP_ConditionDiseaseOutcomeReceipt_CS"）が標準コードとして使用できる。
 なお、記述する転帰区分は、abatement[x]に記述した時点、ないしabatement[x]がない場合は出力時点での情報とする。
 
 「寛解」の場合のインスタンス例を示す。
 ```json
-"extension": [ {
-  "url": "http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_Condition_DiseaseOutcome",
-  "valueCodeableConcept": {
-    "coding": [ { 
-      "system": "http://terminology.sample.com/CodeSystem/disease-outcome", 
-      "code": "2", 
-      "display": "寛解" 
-    }, { 
-      "system": "http://jpfhir.jp/fhir/core/CodeSystem/JHSD0006", 
-      "code": "M", 
-      "display": "寛解" 
-    } ], 
-    "text": "寛解" 
-  }
-} ],
+"clinicalStatus": {
+  "coding": [ { 
+    "system": "http://terminology.hl7.org/ValueSet/condition-clinical", 
+    "code": "remission", 
+    "display": "Remission" 
+  }, { 
+    "system": "http://jpfhir.jp/fhir/core/CodeSystem/JHSD0006", 
+    "code": "M", 
+    "display": "寛解" 
+  }, { 
+    "system": "http://terminology.sample.com/CodeSystem/disease-outcome", 
+    "code": "2", 
+    "display": "寛解" 
+  } ], 
+  "text": "寛解" 
+},
 ```
 
 ### 疑い病名の記述方法
