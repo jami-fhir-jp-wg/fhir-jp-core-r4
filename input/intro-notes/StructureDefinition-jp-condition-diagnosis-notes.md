@@ -281,7 +281,7 @@ abatement[x]要素はCondition.clinicalStatus要素の値が"resolved","remissio
 ```json
 "clinicalStatus": {
   "coding": [ { 
-    "system": "http://terminology.hl7.org/ValueSet/condition-clinical", 
+    "system": "http://terminology.hl7.org/CodeSystem/condition-clinical", 
     "code": "remission", 
     "display": "Remission" 
   }, { 
