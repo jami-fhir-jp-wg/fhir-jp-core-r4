@@ -23,50 +23,37 @@ Description: "Detailed Descriptions for the elements in the Consent resource."
 * patient only Reference(JP_Patient)
 * patient ^short = "Who the consent applies to"
 * patient ^definition = "The patient/healthcare consumer to whom this consent applies."
-
-* dateTime 0..1
-* dateTime ^short = "When this Consent was created or indexed"
-* dateTime ^definition = "When this Consent was issued / created / indexed."
-
 * performer 0..*
 * performer only Reference(JP_Organization or JP_Patient or JP_Practitioner or RelatedPerson or JP_PractitionerRole)
 * performer ^short = "Who is agreeing to the policy and rules"
 * performer ^definition = "Either the Grantor, which is the entity responsible for granting the rights listed in a Consent Directive or the Grantee, which is the entity responsible for complying with the Consent Directive, including any obligations or limitations on authorizations and enforcement of prohibitions."
-
 * organization 0..*
-* organization only Reference(JP_Organization) 
+* organization only Reference(JP_Organization)
 * organization ^short = "Custodian of the consent"
 * organization ^definition = "The organization that manages the consent, and the framework within which it is executed."
-
+* source[x] 0..1
 * source[x] only Reference(JP_Consent or DocumentReference or Contract or QuestionnaireResponse)
 * source[x] ^short = "Source from which this consent is taken"
 * source[x] ^definition = "The source on which this consent statement is based. The source might be a scanned original paper form, or a reference to a consent that links back to such a source, a reference to a document repository (e.g. XDS) that stores the original consent document."
-
-* policy 0..*
-* policy ^short = "Policies covered by this consent"
-* policy ^definition = "The references to the policies that are included in this consent scope. Policies may be organizational, but are often defined jurisdictionally, or in law."
-
-// 未チェック
 * verification 0..*
 * verification ^short = "Has the instruction been verified"
 * verification ^definition = "Whether the instruction is verified."
-
-* verification.verified 1..1
-* verification.verified ^short = "Has been verified"
-* verification.verified ^definition = "Whether the instruction has been verified."
-
-* verification.verifiedWith 0..1
 * verification.verifiedWith only Reference(JP_Patient or RelatedPerson)
-* verification.verifiedWith ^short = "Who verified the instruction"
-* verification.verifiedWith ^definition = "Who verified the instruction."
+* verification.verifiedWith ^short = "Person who verified"
+* verification.verifiedWith ^definition = "Who verified the instruction (Patient, Relative or other Authorized Person)."
 
+// 以下未検討
 * provision 0..1
-* provision ^short = "Consent Provisions"
-* provision ^definition = "A set of rules under which this content was created or which the content follows."
+* provision ^short = "Constraints to the base Consent.policyRule"
+* provision ^definition = "An exception to the base policy of this consent. An exception can be an addition or removal of access permissions."
 
-* provision.type 1..1
+* provision.type 0..1
 * provision.type ^short = "deny | permit"
 * provision.type ^definition = "Action stipulated by this rule. The type can be 'permit' or 'deny' to determine if the rule allows or prohibits the specified operations."
+
+* provision.period 0..1
+* provision.period ^short = "Timeframe for this rule"
+* provision.period ^definition = "The timeframe in which the data is controlled by this provision."
 
 * provision.actor 0..*
 * provision.actor ^short = "Who the rule applies to"
@@ -83,10 +70,6 @@ Description: "Detailed Descriptions for the elements in the Consent resource."
 * provision.action 0..*
 * provision.action ^short = "Actions controlled by this rule"
 * provision.action ^definition = "A list of actions controlled by this rule, which are controlled by this provision."
-
-* provision.period 0..1
-* provision.period ^short = "Timeframe for this rule"
-* provision.period ^definition = "The timeframe in which the data is controlled by this provision."
 
 * provision.class 0..*
 * provision.class ^short = "e.g. Read, Update, Delete"
