@@ -1,4 +1,4 @@
-このドキュメントは日本医療情報学会NeXEHRS課題研究会「HL7®FHIR® 日本実装検討WG」で作成した実装ガイドのドラフトVer.2.0の開発用レポジトリである。このバージョンは日本HL7協会による承認を受けていない。今後、予告なく内容に変更がある。また実装や利用は全て自己責任で行なうこと。 
+このドキュメントは日本医療情報学会NeXEHRS課題研究会「HL7®FHIR® 日本実装検討WG」で作成した実装ガイドのドラフトVer.2.0の開発用レポジトリである。このバージョンは日本HL7協会による承認を受けていない。今後、予告なく内容に変更がある。また実装や利用は全て自己責任で行なうこと。
 
 <br/>
 
@@ -10,7 +10,7 @@
 * [欠損値の扱い](guide-handlingOfNonExistentData.html)
 * [文字コード](guide-characterEncoding.html)
 * [検索](guide-stringSearch.html)
-* [利用上の注意事項](guide-precautions.html) 
+* [利用上の注意事項](guide-precautions.html)
 * [更新履歴](update_history.html)
 
 ### JP Core FHIRコンテンツ
@@ -54,6 +54,8 @@ JP Core FHIRコンテンツ: JP Coreで利用するFHIRの詳細について記�
   * [JP Core Procedure （処置）プロファイル][JP_Procedure]
   * [JP Core FamilyMemberHistory（家族歴）プロファイル][JP_FamilyMemberHistory]
   * [JP Core CarePlan（ケアプラン）プロファイル][JP_CarePlan]
+* Security and Privacyグループ（セキュリティ）
+  * [JP Core Consent （同意）プロファイル][JP_Consent]
 
 #### JP Coreで定義しないProfile(プロファイル)
 次のProfileはJP Coreでは定義を行なわず、FHIR Baseをそのまま利用する。
@@ -102,15 +104,10 @@ JP Coreは以下の方々、および各サーブワーキンググループの�
   * サブリーダ：東京大学　土井 俊祐、(株)セールスフォース・ジャパン　上中 進太郎
   * メンバ：東京大学　岡本 潤、㈱シーエスアイ　黒澤 亮、中平 顕士、高津 宏徳、日本電気㈱　矢原 潤一、㈱ケーアイエス　小西 由貴範、ＴＩＳ㈱　比留間 健
 
-* SWG4：Clinical Module
-  * リーダ：東京大学　河添 悦昌
-  * サブリーダ：山口大学　石井 博、東大病院　関 倫久
-  * メンバ：㈱富士通　小山内 尚、西山 喜樹、能崎 克行、東大病院　永島 里美
-
-* SWG5：Pharmacy and Medication
-  * リーダ：国立保健医療科学院　小林 慎治
+* SWG45：Clinical Module/Pharmacy and Medication
+  * リーダ：東京大学　河添 悦昌、岐阜大学 小林 慎治
   * サブリーダ：日本アイ・ビー・エム㈱　木村 雅彦、㈱メドレー　児玉 義憲
-  * メンバ：九州大学　高田 敦史、東大病院　永島 里美、日本調剤㈱　栗原 邦彦、シンクタンク勤務　河﨑 泰子
+  * メンバ：九州大学　高田 敦史、見附市立病院 西野 克彦、シンクタンク勤務　河﨑 泰子、東大病院　永島 里美
 
 * SWG6：Terminology
   * リーダ：東京大学　今井 健
