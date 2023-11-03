@@ -1,0 +1,14 @@
+{
+  "name": "jp-core.r4",
+  "version": "2.0.0-dev",
+  "description": "JP-CORE V2.0.0 differential package for development",
+  "author": "JAMI NeXEHRS FHIR IGWG",
+  "fhirVersions": [
+    "4.3.0"
+  ],
+  "dependencies": {
+    "hl7.fhir.r4.core": "4.3.0"
+  },
+  "url": "http://jpfhir.jp/fhir/core",
+  "canonical": "http://jpfhir.jp/fhir/core"
+}
