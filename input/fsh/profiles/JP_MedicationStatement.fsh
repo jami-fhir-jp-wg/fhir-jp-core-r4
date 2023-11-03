@@ -170,16 +170,4 @@ Description: "このProfileは服薬状況を示すものであり，診療情�
 * note ^short = "他のフィールドには記述できないこのstatementについての追加情報"
 * note ^definition = "他の属性には記載できないこのstatementについての備考情報"
 * dosage only JP_MedicationDosage_Injection
-* dosage ^short = "この薬剤がどのように服用されたのか，服用すべきだったのかを示す情報"
-* dosage ^definition = "患者にこの薬剤がどのように服用すべきかを示す情報"
-* dosage.extension contains
-    JP_MedicationDosage_DosageComment named dosageComment ..* and
-    JP_MedicationDosage_Device named device ..* and
-    JP_MedicationDosage_Line named line ..* and
-    JP_MedicationDosage_LineComment named lineComment ..* and
-    JP_MedicationDosage_RateComment named rateComment ..*
-* dosage.route.extension contains JP_MedicationDosage_RouteComment named routeComment ..*
-* dosage.method.extension contains JP_MedicationDosage_MethodComment named methodComment ..*
-* dosage.site.extension contains 
-    $bodySite named bodySite ..* and
-    JP_MedicationDosage_SiteComment named siteComment ..*
+

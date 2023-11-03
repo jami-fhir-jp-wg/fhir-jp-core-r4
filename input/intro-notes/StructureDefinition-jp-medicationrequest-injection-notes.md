@@ -37,7 +37,7 @@ JP Core MedicationRequest Injectionプロファイルで使用される拡張は
 
 
 ### 用語定義
-HL7 FHIRの基底規格では、薬剤コードをはじめとして、剤形などでSNOMED CTが使われているが、日本ではライセンスの問題もあり普及していない。代替としてJAHIS注射データ交換規約やSS-MIX2で使われている用語集を採用した。
+HL7 FHIRの基底規格では、薬剤コードをはじめとして、剤形などでSNOMED CTが使われているが、国としてライセンスを取得していない。代替としてJAHIS注射データ交換規約やSS-MIX2で使われている用語集を採用した。
 
 HL7 ver 2系では用語集を識別するコーディングシステム名(以下、「CS名」）は文字列であったが、FHIRではURIを指定する必要があるため、それぞれにURIを割り当てた。以下に使用する用語集のCS名とURI表記を列記する。
 
@@ -50,7 +50,7 @@ HL7 ver 2系では用語集を識別するコーディングシステム名(以�
 |剤形|MERIT-9(剤形)|http://jpfhir.jp/fhir/core/CodeSystem/JP_MedicationFormMERIT9_CS |
 |処方区分|MERIT-9(処方区分)|http://jpfhir.jp/fhir/core/CodeSystem/JP_MedicationCategoryMERIT9_CS |
 |処方区分|JAHIS注射データ交換規約Ver.2.1C(JHSI表0001)|http://jpfhir.jp/fhir/core/CodeSystem/JHSI0001|
-|用法種別|JAMI処方・注射オーダ標準用法規格(時間的要素・機器区分コード表)|urn:oid:1.2.392.200250.2.2.20.45（仮）|
+|用法種別|JAMI処方・注射オーダ標準用法規格(表14:時間的要素・機器区分コード表)|urn:oid:1.2.392.200250.2.2.20.45|
 |薬品単位|MERIT-9(単位）|urn:oid:1.2.392.100495.20.2.101|
 |力価区分|処方情報 HL7FHIR 記述仕様(力価区分)|urn:oid:1.2.392.100495.20.2.22|
 |頓用条件|JAMI処方・注射オーダ標準用法規格(表6 イベント区分、イベント詳細区分)|http://jpfhir.jp/fhir/core/CodeSystem/JP_MedicationAsNeededConditionJAMI_CS |
@@ -796,7 +796,7 @@ HL7 FHIRでは、注射箋の中で同一の用法を持つ剤グループ(RP)�
 ```
 
 ### 用法種別
-ワンショットや点滴など、薬剤オーダの時間的な区分である用法種別は、JAMI処方・注射オーダ標準用法規格の表14 時間的要素・機器区分コード表を使用し、dosageInstruction.additionalInstruction要素にコードおよび文字列で指定することができる。時間的要素・機器区分コード表を識別するURIとして"urn:oid:1.2.392.200250.2.2.20.45"（仮）を使用する。
+ワンショットや点滴など、薬剤オーダの時間的な区分である用法種別は、JAMI処方・注射オーダ標準用法規格の表14 時間的要素・機器区分コード表を使用し、dosageInstruction.additionalInstruction要素にコードおよび文字列で指定することができる。時間的要素・機器区分コード表を識別するURIとして"urn:oid:1.2.392.200250.2.2.20.45"を使用する。
 
 ```json
 "dosageInstruction": [

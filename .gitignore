@@ -1,4 +1,5 @@
 .DS_Store
+
 Thumbs.db
 /fsh-generated
 /fsh-generated-renamed
@@ -19,19 +20,6 @@ Thumbs.db
 
 # for vscode
 /.vscode
-custom-template/content/.index.db
-custom-template/content/.index.json
-custom-template/content/assets/.index.db
-custom-template/content/assets/.index.json
-custom-template/content/assets/css/.index.db
-custom-template/content/assets/css/.index.json
-custom-template/content/assets/images/.index.db
-custom-template/content/assets/images/.index.json
-custom-template/includes/.index.db
-custom-template/includes/.index.json
-custom-template/layouts/.index.db
-custom-template/layouts/.index.json
-custom-template/package/.index.db
-custom-template/package/.index.json
-custom-template/scripts/.index.db
-custom-template/scripts/.index.json
+.index.json
+.index.db
+

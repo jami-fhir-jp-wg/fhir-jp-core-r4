@@ -1,9 +1,8 @@
 ***v1.1.1***
 
-１）JP_MedicationRequest , JP_MedicationRequest_injectionをJP_MedicationRequestBaseから派生する記述方法をやめ、それぞれにJP_MedicationRequestBaseの内容を展開した。FHIR Validatorの使用法によってはsnapshot展開時にエラーが発生することがあるため。
-利用する側に影響はない。
-
-２）JP_MedicationRequest , JP_MedicationRequest_injection中の説明文、サンプル中のoid記述に誤りがあった（標準用法、補足用法、外用部位など）のを修正した。同じく説明文中のidentifierの記述を追加した。
+* Medication関連
+    * JP_MedicationRequest , JP_MedicationRequest_injectionをJP_MedicationRequestBaseから派生する記述方法をやめ、それぞれにJP_MedicationRequestBaseの内容を展開した。FHIR Validatorの使用法によってはsnapshot展開時にエラーが発生することがあるため。利用する側に影響はない
+    * JP_MedicationRequest , JP_MedicationRequest_injection中の説明文、サンプル中のoid記述に誤りがあった（標準用法、補足用法、外用部位など）のを修正した。同じく説明文中のidentifierの記述を追加した
 
 
 ***v1.1.0***
@@ -77,7 +76,7 @@ v1.0.5 → v1.1.0に変更するあたり、開発環境(Sushi & IG Publisher)�
         
 * OperationおよびSearch Parameter
     * JP Core派生の必要条件ではなく、派生先実装ガイドにて定義するものとして、特にJP CoreのExtension(拡張)にて検索パラメータとして利用頻度の高いと思われるものを定義するようにした
-    * [Search Parameter Registry](https://hl7.org/fhir/R4B/searchparameter-registry.html)に記載されているSeach ParameterはJP Coreでは新たに定義する必要ないと判断し削除した
+    * [Search Parameter Registry](https://hl7.org/fhir/R4/searchparameter-registry.html)に記載されているSeach ParameterはJP Coreでは新たに定義する必要ないと判断し削除した
     * `JP_Coverage`の被保険証関連Extension( `JP_Coverage_InsuredPersonNumber`, `JP_Coverage_InsuredPersonSubNumber`, `JP_Coverage_InsuredPersonSymbol` )に対する検索パラメータを追加した
     * `JP_Organization`の施設関連Extension( `JP_Organization_InsuranceOrganizationCategory`, `JP_Organization_InsuranceOrganizationNo`, `JP_Organization_PrefectureNo` )に対する検索パラメータの追加した
     * `JP_Patient`のカナソート用の検索パラメータを追加した
