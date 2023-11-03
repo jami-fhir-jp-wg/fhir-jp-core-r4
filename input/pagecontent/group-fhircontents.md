@@ -2,4 +2,4 @@
 * [Medicationグループ](group-medication.html)
 * [Diagnosticグループ](group-diagnostic.html)
 * [Clinicalグループ](group-clinical.html)
-* [[Security and Privacyグループ](group-security-and-privacy.html)
+* [Security and Privacyグループ](group-security-and-privacy.html)
