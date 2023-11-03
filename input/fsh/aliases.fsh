@@ -20,6 +20,10 @@ Alias: $media-type = http://terminology.hl7.org/CodeSystem/media-type
 // dicom
 Alias: $dicom-ontology = http://dicom.nema.org/resources/ontology/DCM
 
+// JAMI
+Alias: $JAMI__MedicationMethodDetailDeviceInjection_CS = urn:oid:1.2.392.200250.2.2.20.45
+Alias: $JAMI__MedicationMethodDetailDeviceInjection_VS = http://jami.jp/ValueSet/MedicationMethodDetailDeviceInjection_VS
+
 // loinc
 Alias: $Loinc_CS = http://loinc.org
 
