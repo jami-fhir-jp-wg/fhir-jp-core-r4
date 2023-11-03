@@ -17,6 +17,7 @@
 [JP_AllergyIntolerance]: StructureDefinition-jp-allergyintolerance.html
 [JP_CarePlan]: StructureDefinition-jp-careplan.html
 [JP_Condition]: StructureDefinition-jp-condition.html
+[JP_Condition_Diagnosis]: StructureDefinition-jp-condition-diagnosis.html
 [JP_Consent]: StructureDefinition-jp-consent.html
 [JP_Coverage]: StructureDefinition-jp-coverage.html
 [JP_DiagnosticReport_Common]: StructureDefinition-jp-diagnosticreport-common.html
@@ -63,6 +64,9 @@
 [JP_Procedure]: StructureDefinition-jp-procedure.html
 
 <!-- StructureDefinition: Extension -->
+[JP_Condition_DiseaseOutcome]: StructureDefinition-jp-condition-disease-outcome.html
+[JP_Condition_DiseasePrefixModifier]: StructureDefinition-jp-condition-disease-prefix-modifier.html
+[JP_Condition_DiseasePostfixModifier]: StructureDefinition-jp-condition-disease-postfix-modifier.html
 [JP_Coverage_InsuredPersonNumber]: StructureDefinition-jp-coverage-insuredpersonnumber.html
 [JP_Coverage_InsuredPersonSubNumber]: StructureDefinition-jp-coverage-insuredpersonsubnumber.html
 [JP_Coverage_InsuredPersonSymbol]: StructureDefinition-jp-coverage-insuredpersonsymbol.html
@@ -211,6 +215,7 @@
 <!-- Example -->
 [jp-allergyintolerance-example-1]: AllergyIntolerance-jp-allergyintolerance-example-1.html
 [jp-condition-example-1]: Condition-jp-condition-example-1.html
+[jp-condition-diagnosis-example-1]: Condition-jp-condition-diagnosis-example-1.html
 [jp-coverage-example-1]: Coverage-jp-coverage-example-1.html
 [jp-diagnosticreport-labresult-example-1]: DiagnosticReport-jp-diagnosticreport-labresult-example-1.html
 [jp-diagnosticreport-radiology-example-1]: DiagnosticReport-jp-diagnosticreport-radiology-example-1.html

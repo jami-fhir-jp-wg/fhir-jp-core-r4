@@ -62,7 +62,7 @@ pages:
 #-----------------------------------------
 menu:
   FHIRJP: index.html
-  Guidances:
+  Guidances: 
     総合ガイダンス: guide-general.html
     MustSupportとCardinality: guide-mustSupportCardinality.html
     欠損値の扱い: guide-handlingOfNonExistentData.html
@@ -70,7 +70,7 @@ menu:
     文字列検索: guide-stringSearch.html
     利用上の注意事項: guide-precautions.html
     更新履歴: update_history.html
-  FHIRContents:
+  FHIRContents: 
     Administration: group-administration.html
     Medication: group-medication.html
     Diagnostic: group-diagnostic.html
@@ -92,7 +92,7 @@ parameters:  # see https://confluence.hl7.org/display/FHIR/Implementation+Guide+
     - fsh-generated/includes
     #- input/summaries
   path-expansion-params: '../../input/_resources/exp-params.json'
-  # no-narrative:
+  # no-narrative: 
   #  - CodeSystem/*
   active-tables: 'false'
   apply-version: 'true'
@@ -117,6 +117,7 @@ parameters:  # see https://confluence.hl7.org/display/FHIR/Implementation+Guide+
     - http://jpfhir.jp/fhir/core/StructureDefinition/JP_AllergyIntolerance
     - http://jpfhir.jp/fhir/core/StructureDefinition/JP_CarePlan
     - http://jpfhir.jp/fhir/core/StructureDefinition/JP_Condition
+    - http://jpfhir.jp/fhir/core/StructureDefinition/JP_Condition_Diagnosis
     - http://jpfhir.jp/fhir/core/StructureDefinition/JP_Consent
     - http://jpfhir.jp/fhir/core/StructureDefinition/JP_Coverage
     - http://jpfhir.jp/fhir/core/StructureDefinition/JP_DiagnosticReport_Common
@@ -161,6 +162,8 @@ parameters:  # see https://confluence.hl7.org/display/FHIR/Implementation+Guide+
     - http://jpfhir.jp/fhir/core/StructureDefinition/JP_Practitioner
     - http://jpfhir.jp/fhir/core/StructureDefinition/JP_PractitionerRole
     - http://jpfhir.jp/fhir/core/StructureDefinition/JP_Procedure
+    - http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_Condition_DiseasePrefixModifier
+    - http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_Condition_DiseasePostfixModifier
     - http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_Coverage_InsuredPersonNumber
     - http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_Coverage_InsuredPersonSubNumber
     - http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_Coverage_InsuredPersonSymbol
@@ -201,6 +204,18 @@ parameters:  # see https://confluence.hl7.org/display/FHIR/Implementation+Guide+
     - http://jpfhir.jp/fhir/core/SearchParameter/JP_Organization_InsuranceOrganizationNo_SP
     - http://jpfhir.jp/fhir/core/SearchParameter/JP_Organization_PrefectureNo_SP
     - http://jpfhir.jp/fhir/core/SearchParameter/JP_Patient_KanaSort_SP
+    - http://jpfhir.jp/fhir/core/CodeSystem/JP_ConditionDiseaseModifierReceipt_CS
+    - urn:oid:1.2.392.200119.4.101.6
+    - urn:oid:1.2.392.200119.4.101.2
+    - urn:oid:1.2.392.200119.4.201.2
+    - urn:oid:1.2.392.200119.4.201.5
+    - http://jpfhir.jp/fhir/core/CodeSystem/JP_ConditionDiseaseCodeICD10_CS
+    - http://jpfhir.jp/fhir/core/CodeSystem/JP_ConditionDiseaseCodeICD11_CS
+    - http://jpfhir.jp/fhir/core/CodeSystem/JP_ConditionDiseaseCodeReceipt_CS
+    - http://jpfhir.jp/fhir/core/CodeSystem/HL70241
+    - http://jpfhir.jp/fhir/core/CodeSystem/JHSD0006
+    - http://jpfhir.jp/fhir/core/CodeSystem/JP_ConditionDiseaseOutcomeReceipt_CS
+    - http://jpfhir.jp/fhir/core/CodeSystem/JP_ConditionDiseaseModifierReceipt_CS
     - http://jpfhir.jp/fhir/Examples/CodeSystem/JP_MedicationAdministrationDosageComment_CS
     - http://jpfhir.jp/fhir/Examples/CodeSystem/JP_MedicationRequestDosageInstructionLine_CS
     - http://jpfhir.jp/fhir/Examples/CodeSystem/JP_MedicationAdministrationDosageLineComment_CS
@@ -227,6 +242,18 @@ parameters:  # see https://confluence.hl7.org/display/FHIR/Implementation+Guide+
     - http://jpfhir.jp/fhir/core/CodeSystem/JP_Undefined_CS
     - http://jpfhir.jp/fhir/core/CodeSystem/JP_Undefined_CS
     - http://jpfhir.jp/fhir/core/ValueSet/JP_AllergyIntolerance_VS
+    - http://jpfhir.jp/fhir/core/ValueSet/JP_ConditionDiseaseCodeMEDISExchange_VS
+    - http://jpfhir.jp/fhir/core/ValueSet/JP_ConditionDiseaseCodeMEDISRecordNo_VS
+    - http://jpfhir.jp/fhir/core/ValueSet/JP_ConditionDiseaseCodeICD10_VS
+    - http://jpfhir.jp/fhir/core/ValueSet/JP_ConditionDiseaseCodeICD11_VS
+    - http://jpfhir.jp/fhir/core/ValueSet/JP_ConditionDiseaseCodeReceipt_VS
+    - http://jpfhir.jp/fhir/core/ValueSet/JP_ConditionDiseaseOutcomeHL70241_VS
+    - http://jpfhir.jp/fhir/core/ValueSet/JP_ConditionDiseaseOutcomeHL70241_JHSD0006_VS
+    - http://jpfhir.jp/fhir/core/ValueSet/JP_ConditionDiseaseOutcomeJHSD0006_VS
+    - http://jpfhir.jp/fhir/core/ValueSet/JP_ConditionDiseaseOutcomeReceipt_VS
+    - http://jpfhir.jp/fhir/core/ValueSet/JP_ConditionDiseaseModifierMEDISExchange_VS
+    - http://jpfhir.jp/fhir/core/ValueSet/JP_ConditionDiseaseModifierMEDISRecordNo_VS
+    - http://jpfhir.jp/fhir/core/ValueSet/JP_ConditionDiseaseModifierReceipt_VS
     - http://jpfhir.jp/fhir/core/ValueSet/JP_ConditionSeverity_VS
     - http://jpfhir.jp/fhir/core/ValueSet/JP_Department_SsMix_VS
     - http://jpfhir.jp/fhir/core/ValueSet/JP_Department_SsMix2Digits_VS
