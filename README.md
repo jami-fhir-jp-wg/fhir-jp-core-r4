@@ -32,7 +32,11 @@ _genonceの実行にてheep sizeのエラーが発生する場合、メモリ量
 > git fetch
 > git pull
 
-# (初回のみ実行)IgPublisher.jarのダウンロード
+
+# (初回＋更新時のみ実行)TerminologyServerのPackageを入手
+> _updateTx.bat
+
+# (初回＋更新時のみ実行)IgPublisher.jarのダウンロード
 > _updatePublisher.bat
 
 # IGPublisherの実行
@@ -51,6 +55,9 @@ $ git clone https://github.com/jami-fhir-jp-wg/fhir-jp-core-r4.git
 $ cd fhir-jp-core-r4
 $ git fetch
 $ git pull
+
+# (初回＋更新時のみ実行)TerminologyServerのPackageを入手
+> bash _updateTx.sh
 
 # (初回のみ実行)IgPublisher.jarのダウンロード
 $ bash _updatePublisher.sh
