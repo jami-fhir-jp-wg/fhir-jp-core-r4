@@ -14,7 +14,7 @@ Description: "Detailed Descriptions for the elements in the Consent resource."
 * status ^short = "draft | proposed | active | rejected | inactive | entered-in-error"
 * status ^definition = "Indicates the current state of this consent."
 * scope from ConsentScopeCodes (extensible)
-* scope ^short = "	Which of the four areas this resource covers (extensible)"
+* scope ^short = "Which of the four areas this resource covers (extensible)"
 * scope ^definition = "A selector of the type of consent being presented: ADR, Privacy, Treatment, Research. This list is now extensible."
 * category from ConsentCategoryCodes (extensible)
 * category ^short = "Classification of the consent statement - for indexing/retrieval"
