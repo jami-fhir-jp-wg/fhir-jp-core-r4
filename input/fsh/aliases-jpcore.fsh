@@ -98,6 +98,7 @@ Alias: $JP_Organization_InsuranceOrganizationCategory = http://jpfhir.jp/fhir/co
 Alias: $JP_Organization_InsuranceOrganizationNo = http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_Organization_InsuranceOrganizationNo
 Alias: $JP_Organization_PrefectureNo = http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_Organization_PrefectureNo
 Alias: $JP_Patient_Race = http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_Patient_Race
+Alias: $JP_PlanDefinition_ChemotherapyRegimen_RegimenType = http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_PlanDefinition_ChemotherapyRegimen_RegimenType
 
 // CapabilityStatement
 Alias: $JP_Client_CapabilityStatement = http://jpfhir.jp/fhir/core/CapabilityStatement/JP_Client_CapabilityStatement
@@ -197,6 +198,7 @@ Alias: $JP_ProcedureOutcome_CS = http://jpfhir.jp/fhir/core/CodeSystem/JP_Proced
 Alias: $JP_ProcedureReason_CS = http://jpfhir.jp/fhir/core/CodeSystem/JP_Undefined_CS
 Alias: $JP_SimpleObservationCategory_CS = http://jpfhir.jp/fhir/core/CodeSystem/JP_SimpleObservationCategory_CS
 Alias: $JP_Undefined_CS = http://jpfhir.jp/fhir/core/CodeSystem/JP_Undefined_CS
+Alias: $JP_ChemotherapyRegimen_RegimenType_CS = http://jpfhir.jp/fhir/core/CodeSystem/JP_ChemotherapyRegimen_RegimenType_CS
 
 // ValueSet
 Alias: $JP_AllergyIntolerance_VS = http://jpfhir.jp/fhir/core/ValueSet/JP_AllergyIntolerance_VS
@@ -296,3 +298,5 @@ Alias: $JP_RadiologyModality_VS = http://jpfhir.jp/fhir/core/ValueSet/JP_Radiolo
 Alias: $JP_ReasonCodesJed_VS = http://jpfhir.jp/fhir/core/ValueSet/JP_ReasonCodesJed_VS
 Alias: $JP_SimpleObservationCategory_VS = http://jpfhir.jp/fhir/core/ValueSet/JP_SimpleObservationCategory_VS
 Alias: $JP_Undefined_VS = http://jpfhir.jp/fhir/core/ValueSet/JP_Undefined_VS
+
+Alias: $JP_ChemotherapyRegimen_RegimenType_VS = http://jpfhir.jp/fhir/core/ValueSet/JP_ChemotherapyRegimen_RegimenType_VS

@@ -183,6 +183,9 @@ parameters:  # see https://confluence.hl7.org/display/FHIR/Implementation+Guide+
     - http://jpfhir.jp/fhir/core/StructureDefinition/JP_Practitioner
     - http://jpfhir.jp/fhir/core/StructureDefinition/JP_PractitionerRole
     - http://jpfhir.jp/fhir/core/StructureDefinition/JP_Procedure
+    - http://jpfhir.jp/fhir/core/StructureDefinition/JP_PlanDefinition_ChemotherapyRegimen
+    - http://jpfhir.jp/fhir/core/StructureDefinition/JP_ActivityDefinition_ChemotherapyRegimen_Injection
+    - http://jpfhir.jp/fhir/core/StructureDefinition/JP_ActivityDefinition_ChemotherapyRegimen_Oral
     - http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_Condition_DiseasePostfixModifier
     - http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_Condition_DiseasePrefixModifier
     - http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_Coverage_InsuredPersonNumber
