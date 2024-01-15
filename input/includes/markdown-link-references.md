@@ -75,6 +75,9 @@
 [JP_Practitioner]: StructureDefinition-jp-practitioner.html
 [JP_PractitionerRole]: StructureDefinition-jp-practitionerrole.html
 [JP_Procedure]: StructureDefinition-jp-procedure.html
+[JP_PlanDefinition_ChemotherapyRegimen]: StructureDefinition-jp-plandefinition-chemotherapyregimen.html
+[JP_ActivityDefinition_ChemotherapyRegimen_Injection]: StructureDefinition-jp-activitydefinition-chemotherapyregimen-injection.html
+[JP_ActivityDefinition_ChemotherapyRegimen_Oral]: StructureDefinition-jp-activitydefinition-chemotherapyregimen-oral.html
 
 <!-- StructureDefinition: Extension -->
 [JP_Condition_DiseasePostfixModifier]: StructureDefinition-jp-condition-disease-postfix-modifier.html
