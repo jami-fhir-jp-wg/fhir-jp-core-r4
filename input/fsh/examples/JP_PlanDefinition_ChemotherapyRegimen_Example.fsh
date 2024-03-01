@@ -21,6 +21,10 @@ Usage: #example
     * code = #focus
     * display = "Clinical Focus"
   * valueCodeableConcept = $JP_ConditionDiseaseCodeMEDISRecordNo_CS#20069739 "大腸癌"
+    * extension[0]
+      * url = #JP_Condition_DiseasePrefixModifier
+      * valueCodeableConcept = $JP_ConditionDiseaseModifierMEDISRecordNo_CS#27002376 "切除不能な進行・再発の"
+    * text = "切除不能な進行・再発の大腸癌"
 * action[0]
   * textEquivalent = "14日サイクルを 6回繰り返す"
   * timingTiming

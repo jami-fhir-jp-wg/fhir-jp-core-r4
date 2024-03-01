@@ -22,9 +22,6 @@ Description: "このプロファイルはPlanDefinitionリソースに対して�
     * system = "http://terminology.hl7.org/CodeSystem/plan-definition-type"
     * code = #clinical-protocol
     * display = "Clinical Protocol"
-    * id 0..0
-    * version 0..0
-    * userSelected 0..0
 // * status
 * experimental 0..0
 * subject[x] 0..0
@@ -35,6 +32,55 @@ Description: "このプロファイルはPlanDefinitionリソースに対して�
 * contact 0..0
 * description 0..0
 * useContext ^short = "適応疾患（がんの種類）"
+* useContext.code
+  * ^short = "コンテキストの種別（固定値: focus）"
+  * id 0..0
+  * coding
+    * system = "http://terminology.hl7.org/CodeSystem/usage-context-type"
+    * code = #focus
+    * display = "Clinical Focus"
+* useContext.value[x] only CodeableConcept
+  * ^short = "傷病名コード"
+  * ^definition = "レジメンの適応疾患を識別するための傷病名コードを指定する。"
+* useContext.valueCodeableConcept.coding ^slicing.discriminator.type = #value
+* useContext.valueCodeableConcept.coding ^slicing.discriminator.path = "system"
+* useContext.valueCodeableConcept.coding ^slicing.rules = #open
+* useContext.valueCodeableConcept.coding ^slicing.ordered = false
+* useContext.valueCodeableConcept.coding contains
+    medisExchange 0..1 and
+    medisRecordNo 0..1 and
+    receipt 0..1 and
+    icd10 0..1
+* useContext.valueCodeableConcept.coding[medisExchange] from $JP_ConditionDiseaseCodeMEDISExchange_VS (required)
+  * system = $JP_ConditionDiseaseCodeMEDISExchange_CS (exactly)
+  * code 1..
+  * ^short = "MEDIS ICD10対応標準病名マスター(交換用コード)。【詳細参照】"
+  * ^definition = "MEDIS ICD10対応標準病名マスターの管理番号。"
+  * ^comment = "JP_ConditionDiseaseCodeMEDISExchange_VSの中から適切なコードを指定する。"
+* useContext.valueCodeableConcept.coding[medisRecordNo] from $JP_ConditionDiseaseCodeMEDISRecordNo_VS (required)
+  * system = $JP_ConditionDiseaseCodeMEDISRecordNo_CS (exactly)
+  * code 1..
+  * ^short = "MEDIS ICD10対応標準病名マスター(管理番号)。【詳細参照】"
+  * ^definition = "MEDIS ICD10対応標準病名マスターの管理番号。"
+  * ^comment = "JP_ConditionDiseaseCodeMEDISRecordNo_VSの中から適切なコードを指定する。"
+* useContext.valueCodeableConcept.coding[receipt] from $JP_ConditionDiseaseCodeReceipt_VS (required)
+  * .system = $JP_ConditionDiseaseCodeReceipt_CS (exactly)
+  * code 1..
+  * ^short = "レセプト電算用傷病名マスター。【詳細参照】"
+  * ^definition = "レセプト電算用傷病名マスター。"
+  * ^comment = "JP_ConditionDiseaseCodeReceipt_VSの中から適切なコードを指定する。"
+* useContext.valueCodeableConcept.coding[icd10] from $JP_ConditionDiseaseCodeICD10_VS (required)
+  * system = $JP_ConditionDiseaseCodeICD10_CS (exactly)
+  * code 1..
+  * ^short = "ICD-10コード。【詳細参照】"
+  * ^definition = "ICD-10コード。"
+  * ^comment = "JP_ConditionDiseaseCodeICD10_VSの中から適切なコードを指定する。"
+* useContext.valueCodeableConcept.extension ^slicing.discriminator.type = #value
+* useContext.valueCodeableConcept.extension ^slicing.discriminator.path = "url"
+* useContext.valueCodeableConcept.extension ^slicing.rules = #open
+* useContext.valueCodeableConcept.extension contains
+    JP_Condition_DiseasePrefixModifier named diseasePrefixModifier ..* and
+    JP_Condition_DiseasePostfixModifier named diseasePostfixModifier ..*
 * jurisdiction 0..0
 * purpose 0..0
 * usage 0..0
@@ -91,7 +137,7 @@ Description: "このプロファイルはPlanDefinitionリソースに対して�
 Extension: JP_PlanDefinition_ChemotherapyRegimen_RegimenType
 Id: jp-plandefinition-chemotherapyregimen-regimentype
 Title: "JP Core PlanDefinition ChemotherapyRegimen RegimenType Extension"
-Description: "レジメン種別に関する情報を格納するためのExtension。"
+Description: "レジメン種別に関する情報を格納するためのExtension"
 * ^url = $JP_PlanDefinition_ChemotherapyRegimen_RegimenType
 * ^status = #draft
 * ^date = "2023-11-30"
@@ -106,7 +152,7 @@ Description: "レジメン種別に関する情報を格納するためのExtens
 Extension: JP_PlanDefinition_ChemotherapyRegimen_TimingDaysOfCycle
 Id: jp-plandefinition-chemotherapyregimen-timingdaysofcycle
 Title: "JP Core PlanDefinition ChemotherapyRegimen TimingDaysOfCycle Extension"
-Description: "周期の日数に関する情報を格納するためのExtension。"
+Description: "周期の日数に関する情報を格納するためのExtension"
 * ^url = "http://hl7.org/fhir/StructureDefinition/timing-daysOfCycle"
 * ^status = #draft
 * ^date = "2023-11-30"
