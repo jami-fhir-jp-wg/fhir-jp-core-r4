@@ -34,11 +34,9 @@ Description: "このプロファイルはPlanDefinitionリソースに対して�
 * useContext ^short = "適応疾患（がんの種類）"
 * useContext.code
   * ^short = "コンテキストの種別（固定値: focus）"
-  * id 0..0
-  * coding
-    * system = "http://terminology.hl7.org/CodeSystem/usage-context-type"
-    * code = #focus
-    * display = "Clinical Focus"
+  * system = "http://terminology.hl7.org/CodeSystem/usage-context-type"
+  * code = #focus
+  * display = "Clinical Focus"
 * useContext.value[x] only CodeableConcept
   * ^short = "傷病名コード"
   * ^definition = "レジメンの適応疾患を識別するための傷病名コードを指定する。"
