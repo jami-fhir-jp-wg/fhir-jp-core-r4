@@ -27,19 +27,19 @@ HL7 V2系では用語集を識別するコーディングシステム名(以下�
 
 |分類|CS名|URI|
 |---------|----|---------------------------|
-|医薬品|HOT7|urn:oid:1.2.392.200119.4.403.2|
-|医薬品|HOT9|urn:oid:1.2.392.200119.4.403.1|
-|医薬品|HOT13|urn:oid:1.2.392.200119.4.402.1|
-|医薬品|YJコード|urn:oid:1.2.392.100495.20.1.73|
-|医薬品|⼀般処⽅名マスター|urn:oid:1.2.392.100495.20.1.81|
+|医薬品|HOT7|http://medis.or.jp/CodeSystem/master-HOT7|
+|医薬品|HOT9|http://medis.or.jp/CodeSystem/master-HOT9|
+|医薬品|HOT13|http://medis.or.jp/CodeSystem/master-HOT13|
+|医薬品|YJコード|http://capstandard.jp/iyaku.info/CodeSystem/YJ-code|
+|医薬品|⼀般処⽅名マスター|http://jpfhir.jp/fhir/core/mhlw/CodeSystem/MedicationGeneralOrderCode|
 |剤形|MERIT-9(剤形)|http://jpfhir.jp/fhir/core/CodeSystem/JP_MedicationFormMERIT9_CS |
-|薬品単位|MERIT-9(単位）|urn:oid:1.2.392.100495.20.2.101|
-|力価区分|処方情報 HL7FHIR 記述仕様(力価区分)|urn:oid:1.2.392.100495.20.2.22|
-|用法|JAMI処方・注射オーダ標準用法規格(用法コード)|urn:oid:1.2.392.200250.2.2.20|
-|用法|JAMI処方・注射オーダ標準用法規格(補足用法コード)|urn:oid:1.2.392.200250.2.2.20.22|
-|部位|JAMI処方・注射オーダ標準用法規格(部位コード)|urn:oid:1.2.392.200250.2.2.20.32|
-|投与方法|JAMI処方・注射オーダ標準用法規格(基本用法区分)|urn:oid:1.2.392.200250.2.2.20.30|
-|投与経路|HL7 V2(使用者定義表0162)|http://terminology.hl7.org/CodeSystem/v2-0162|
+|薬品単位|MERIT-9(単位）|http://jpfhir.jp/fhir/core/mhlw/CodeSystem/MedicationUnitMERIT9Code|
+|力価区分|処方情報 HL7FHIR 記述仕様(力価区分)|http://jpfhir.jp/fhir/core/mhlw/CodeSystem/MedicationIngredientStrengthType|
+|用法|JAMI処方・注射オーダ標準用法規格(用法コード)|http://jami.jp/CodeSystem/MedicationUsage|
+|用法|JAMI処方・注射オーダ標準用法規格(補足用法コード)|http://jami.jp/CodeSystem/MedicationUsageAdditional|
+|部位|JAMI処方・注射オーダ標準用法規格(部位コード)|http://jami.jp/CodeSystem/MedicationBodySiteExternal|
+|投与方法|JAMI処方・注射オーダ標準用法規格(基本用法区分)|http://jami.jp/CodeSystem/MedicationMethodBasicUsage|
+|投与経路|HL7 V2(使用者定義表0162)|http://jpfhir.jp/fhir/core/CodeSystem/route-codes|
 |入外区分|HL7V2(HL7表0482)|http://terminology.hl7.org/CodeSystem/v2-0482|
 
 ### 項目の追加
@@ -62,7 +62,7 @@ HL7 V2系では用語集を識別するコーディングシステム名(以下�
 | SHALL            | identifier    | token  | GET [base]/MedicationDispense?identifier=http://myhospital.com/fhir/medication\|1234567890 |
 | SHOULD            | patient      | reference | GET [base]/MedicationDispense?patient=123456   |
 | SHOULD           | patient,whenhandedover | referenece,date  | GET [base]/MedicationDispense?patient=123456&whenhandedover=eq2013-01-14 |
-| MAY           | whenhandedover,whenprepared,context,code,performer| date,date,token,token,token | GET [base]/MedicationDispense?code=urn:oid:1.2.392.200119.4.403.1\|105271807  |
+| MAY           | whenhandedover,whenprepared,context,code,performer| date,date,token,token,token | GET [base]/MedicationDispense?code=http://medis.or.jp/CodeSystem/master-HOT9\|105271807  |
 
 ##### 必須検索パラメータ
 
@@ -124,81 +124,7 @@ HL7 V2系では用語集を識別するコーディングシステム名(以下�
 
 #### Operation一覧
 
-JP Core MedicationDispense リソースに対して使用される操作は次の通りである。
-
-- $everything：[base]/MedicationDispense/[id]/$everything
-
-  - この操作が呼び出された特定のMedicationDispenseに関連する全ての情報を返す
-    
-
-#### Operation 詳細
-
-##### $everything 操作
-
-この操作は、この操作が呼び出された特定のMedicationDispenseリソースに関連する全ての情報を返す。応答は "searchset" タイプのBundleリソースである。サーバは、少なくとも、識別されたMedicationDispenseコンパートメントに含まれる全てのリソースと、それらから参照されるすべてのリソースを返すことが望ましい。
-
-この操作の公式なURLは以下である。
-
-```
-http://hl7.jp/fhir/OperationDefinition/MedicationDispense-everything
-```
-
-URL: [base]/MedicationDispense/[id]/$everything
-
-本操作は、べき等な操作である。
-
-
-###### 入力パラメータ
-
-| 名前   | 多重度 | 型      | 説明                                                         |
-| ------ | ------ | ------- | ------------------------------------------------------------ |
-| start  | 0..1   | date    | 特定の日付範囲で提供されたケアに関連する全ての記録を意味する。開始日が指定されていない場合、終了日以前のすべてのレコードが対象に含まれる。 |
-| end    | 0..1   | date    | 特定の日付範囲で提供されたケアに関連する全ての記録を意味する。終了日が指定されていない場合、開始日以降のすべてのレコードが対象に含まれる。 |
-| _since | 0..1   | instant | 指定された日時以降に更新されたリソースのみが応答に含まれる。 |
-| _type  | 0..*   | code    | 応答に含むFHIRリソース型を、カンマ区切りで指定する。指定されない場合は、サーバは全てのリソース型を対象とする。 |
-| _count | 0..1   | integer | Bundleの1ページに含まれるリソース件数を指定。                |
-
-###### 出力パラメータ
-
-| 名前   | 多重度 | 型     | 説明                                                         |
-| ------ | ------ | ------ | ------------------------------------------------------------ |
-| return | 1..1   | Bundle | バンドルのタイプは"searchset"である。この操作の結果は、リソースとして直接返される。 |
-
-###### 例
-
-リクエスト：単一のMedicationDispenseに関連する全てのリソースを取得する。
-
-```
-GET [base]/MedicationDispense/1234567890/$everything
-[some headers]
-```
-
-レスポンス：指定されたMedicationDispenseに関連する全てのリソースを返す。
-
-```
-HTTP/1.1 200 OK
-[other headers]
-
-{
-  "resourceType": "Bundle",
-  "id": "example",
-  "meta": {
-    "lastUpdated": "2014-08-18T01:43:33Z"
-  },
-  "type": "searchset",
-  "entry": [
-    {
-      "fullUrl": "http://example.org/fhir/MedicationDispense/1234567890",
-      "resource": {
-        "resourceType": "MedicationDispense",
-
-          ・・・
-
-       },
-    }
-  ]
-}  
-```
+JP Core MedicationDispense リソースに対する操作は定義されていない。
 
 ### サンプル
 下記の内容の処方に従って調剤する例をFHIRで表現する場合のサンプルを示す。
@@ -222,7 +148,7 @@ MedicationDispenseは薬剤をCodeableConceptとして1つまでしか持つか�
 "quantity": {
   "value": 21,
   "unit": "錠",
-  "system": "urn:oid:1.2.392.100495.20.2.101",
+  "system": "http://jpfhir.jp/fhir/core/mhlw/CodeSystem/MedicationUnitMERIT9Code",
   "code": "TAB"
 },
 "daysSupply": {
@@ -310,7 +236,7 @@ MedicationDispenseは薬剤をCodeableConceptとして1つまでしか持つか�
 単一の薬剤に対する調剤結果は、MedicationDispenseに対して定義した拡張「JP_MedicationDispense_Preparation」を使用する。
 この拡張は、CodeableConcept型を使用してテキストによる指示とコードによる指示のどちらかを記述することができる。
 一つの薬剤に対して、複数の指示を記録する場合には、この拡張を、拡張単位で繰り返して記録する。 
-調剤結果で使用するコードは、処方情報 HL7FHIR 記述仕様(調剤指示)("urn:oid:1.2.392.200250.2.2.30.10")を推奨する。
+調剤結果で使用するコードは、処方情報 HL7FHIR 記述仕様(調剤指示)("http://jami.jp/CodeSystem/DrugDispensePreparationMethod")を推奨する。
 
 薬剤単位の調剤結果を表すインスタンス例を示す。
 ```json
@@ -321,7 +247,7 @@ MedicationDispenseは薬剤をCodeableConceptとして1つまでしか持つか�
       "coding": [
         {
           "code": "C",
-          "system": "urn:oid:1.2.392.200250.2.2.30.10",
+          "system": "http://jami.jp/CodeSystem/DrugDispensePreparationMethod",
           "display": "粉砕指示"
         }
       ]

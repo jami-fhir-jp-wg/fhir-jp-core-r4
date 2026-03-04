@@ -8,19 +8,12 @@ Title: "JP Core Observation PhysicalExam Profile"
 Description: "このプロファイルはObservationリソースに対して、身体所見のデータを送受信するための制約と拡張を定めたものである。"
 * ^url = "http://jpfhir.jp/fhir/core/StructureDefinition/JP_Observation_PhysicalExam"
 * ^status = #active
-* ^date = "2023-10-31"
+* ^date = "2025-07-30"
 * . ^short = "身体所見に関する測定や簡単な観察事実（assertion）"
 * . ^definition = "身体所見に関する測定や簡単な観察事実"
 * . ^comment = "身体所見に関するObservation（検査測定や観察事実）の制約プロフィール"
 * category 1..
-* category ^slicing.discriminator[+].type = #value
-* category ^slicing.discriminator[=].path = "$this"
-* category ^slicing.rules = #open
-* category contains physicalExam 1..1
-* category[physicalExam] from JP_SimpleObservationCategory_VS (required)
-* category[physicalExam].coding.system = $JP_SimpleObservationCategory_CS (exactly)
-* category[physicalExam].coding.code 1..
-* category[physicalExam].coding.code = $JP_SimpleObservationCategory_CS#exam (exactly)
+* category[first].coding.code = $JP_SimpleObservationCategory_CS#exam (exactly)
 * category ^comment = "【JP Core仕様】基底仕様のカテゴリ「exam」固定とする"
 * code ^comment = "【JP Core仕様】所見の有無を表すコード（固定値）"
 * code from JP_PhysicalExamCode_VS (preferred)
@@ -45,7 +38,7 @@ Description: "このプロファイルはObservationリソースに対して、�
 effectivePeriod：医療者が確認した期間"
 * valueCodeableConcept from $v2-0136 (preferred)
 * valueCodeableConcept ^short = "所見の有無（Y or N）を指定する"
-* bodySite from JP_ObservationPhysicalExamBodySite_VS (preferred)
+//* bodySite from JP_ObservationPhysicalExamBodySite_VS (preferred)
 * bodySite ^comment = "ICD-11"
 * method from JP_ObservationPhysicalExamMethod_VS (preferred)
 * method ^comment = "MEDIS症状・所見マスターの「診察方法」"

@@ -5,10 +5,10 @@ Description: "HL7表0241-Patient Outcome コードシステム"
 * ^url = $JP_ConditionDiseaseOutcomeHL70241_CS
 * ^status = #active
 * ^experimental = false
-* ^date = "2023-08-05"
+* ^date = "2024-12-30"
 * ^caseSensitive = true
 * ^content = #complete
-* ^copyright = "copyright HL7 Japan (出典：HL7-0241)"
+* ^copyright = "Copyright HL7 Japan (出典：HL7-0241)"
 
 * #D "死亡"
 * #R "回復"

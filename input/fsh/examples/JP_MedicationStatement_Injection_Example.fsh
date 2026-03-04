@@ -14,11 +14,9 @@ Usage: #example
 * dateAsserted = "2020-05-01T12:28:17+09:00"
 * informationSource = Reference(Patient/jp-patient-example-1)
 * derivedFrom = Reference(MedicationRequest/jp-medicationrequest-injection-example-2)
-* reasonCode = urn:oid:1.2.392.200119.4.101.6#TQ7A "急性気管支炎"
-* dosage.extension[0].url = "http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_MedicationDosage_Device"
-* dosage.extension[=].valueReference = Reference(Device/jp-medicationstatement-injection-device-example-1)
-* dosage.extension[+].url = "http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_MedicationDosage_Line"
-* dosage.extension[=].valueCodeableConcept = $JP_MedicationExampleLine_CS#01 "末梢ルート"
+* reasonCode = $JP_Disease_MEDIS_Concept_CS#TQ7A "急性気管支炎"
+* dosage.extension[device].valueReference = Reference(Device/jp-medicationstatement-injection-device-example-1)
+* dosage.extension[line].valueCodeableConcept = $JP_MedicationExampleLine_CS#01 "末梢ルート"
 * dosage.text = "主管 静脈注射 左腕"
 * dosage.timing.repeat.boundsPeriod.start = "2016-07-01T08:00:00+09:00"
 * dosage.timing.repeat.boundsPeriod.end = "2016-07-01T13:00:00+09:00"
@@ -36,12 +34,12 @@ Title: "JP Core Medication Example ソリタ－＋アドナ注"
 Description: "ソリタ－＋アドナ注"
 Usage: #inline
 * status = #active
-* ingredient[0].itemCodeableConcept = $JP_MedicationCodeHOT9_CS#107750603 "ソリタ－Ｔ３号輸液５００ｍＬ"
+* ingredient[0].itemCodeableConcept = $JP_MedicationCodeHOT9_CS#107750603 "ソリタ－Ｔ３号輸液　５００ｍＬ"
 * ingredient[=].strength.extension.url = "http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_Medication_IngredientStrength_StrengthType"
 * ingredient[=].strength.extension.valueCodeableConcept = $JP_MedicationIngredientStrengthStrengthType_CS#1 "製剤量"
 * ingredient[=].strength.numerator = 1 $JP_MedicationUnitMERIT9_CS#HON "本"
 * ingredient[=].strength.denominator = 1 $JP_MedicationUnitMERIT9_CS#TIME "回"
-* ingredient[+].itemCodeableConcept = $JP_MedicationCodeHOT9_CS#108010002 "アドナ注（静脈用）５０ｍｇ／１０ｍＬ"
+* ingredient[+].itemCodeableConcept = $JP_MedicationCodeHOT9_CS#108010002 "アドナ注（静脈用）５０ｍｇ　０．５％１０ｍＬ"
 * ingredient[=].strength.extension.url = "http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_Medication_IngredientStrength_StrengthType"
 * ingredient[=].strength.extension.valueCodeableConcept = $JP_MedicationIngredientStrengthStrengthType_CS#1 "製剤量"
 * ingredient[=].strength.numerator = 1 $JP_MedicationUnitMERIT9_CS#AMP "アンプル"

@@ -8,7 +8,7 @@ Title: "JP Core Practitioner Profile"
 Description: "このプロファイルはPractitionerリソースに対して、医療従事者のデータを送受信するための基礎となる制約と拡張を定めたものである。"
 * ^url = "http://jpfhir.jp/fhir/core/StructureDefinition/JP_Practitioner"
 * ^status = #active
-* ^date = "2023-10-31"
+* ^date = "2024-12-30"
 * . ^short = "ヘルスケアまたは関連サービスの提供に正式な責任を負う人"
 * . ^definition = "A person who is directly or indirectly involved in the provisioning of healthcare.  
 医療の提供に直接または間接的に関与する者をいう。"
@@ -139,12 +139,12 @@ Practitioner.identifier.systemは以下の割り当てる。
 麻薬施用者免許番号の場合のsystemはFixed Valueの urn:oid:1.2.392.100495.20.3.32.1[都道府県番号] を使用する。  
 ( 頭に1をつけて末尾3桁で表現する。これは北海道などの場合、都道府県番号は01になるが、OIDでは先頭が0は許可されていないため、頭に1をつけて3桁で表現する)  
 つまり麻薬施用者免許番号を発行した都道府県ごとにsystemも異なる値となる。  
-医籍登録番号のsystemはFixed Valueの urn:oid:1.2.392.100495.20.3.31 を使用する。"
+医籍登録番号のsystemはFixed Valueの http://jpfhir.jp/fhir/core/mhlw/IdSystem/medicalRegistrationNumber を使用する。"
 * qualification.identifier ^definition = "この人物のこの役割における資格に適用される識別子。"
 * qualification.identifier ^comment = "【JP Core仕様】identifierには資格番号を入力する。  
 Codeは、v2 table 0360が例としてのっている。0360は、USER-DEFINED TABLES であるため、適切なCodeがなければ追加できる。  
 Periodにはその資格の開始日・終了日を入力する。（例：麻薬資格者の有効期限等の格納）  
-医籍登録番号　Practitioner.qualification.identifier　urn:oid:1.2.392.100495.20.3.31  
+医籍登録番号　Practitioner.qualification.identifier　http://jpfhir.jp/fhir/core/mhlw/IdSystem/medicalRegistrationNumber  
 麻薬施用者番号　Practitioner.qualification.identifier　urn:oid:1.2.392.100495.20.3.32.都道府県OID番号  
 　　（都道府県OID番号は、都道府県番号2桁の先頭に１をつけた3桁の番号）"
 * qualification.identifier ^requirements = "多くの場合、資格には特定の識別子が割り当てられる。"
@@ -152,7 +152,7 @@ Periodにはその資格の開始日・終了日を入力する。（例：麻�
 * qualification.code ^comment = "すべての用語の使用がこの一般的なパターンに適合するわけではない。いくつかのケースでは、モデルはCodeableConceptを使用せず、Codingを直接使用し、テキスト、コーディング、翻訳、要素間の関係、および前後の調整を管理するための独自の構造を提供することが望ましい。"
 * qualification.period ^definition = "資格が有効な期間。"
 * qualification.period ^comment = "使用のコンテキストは、範囲全体が適用されるか（例：「患者はこの時間範囲で病院の入院患者であった」）、範囲内の1つの値が適用されるか（例：「この2つの時間の間に患者に与える」）を指定する。  
-期間は、期間(経過時間の尺度)には使用されない。[Duration](http://hl7.org/fhir/R4B/datatypes.html#Duration)を参照のこと。"
+期間は、期間(経過時間の尺度)には使用されない。[Duration](http://hl7.org/fhir/R4/datatypes.html#Duration)を参照のこと。"
 * qualification.period ^requirements = "資格は期間限定のものが多く、取り消されることもある。"
 * qualification.issuer ^definition = "資格を規制し、発行する機関"
 * qualification.issuer ^comment = "参照は実際のFHIRリソースへの参照でなければならず、解決可能でなければならない。解決は URL からの検索、またはリソースタイプによって、絶対参照を正規の URL として扱い、ローカルのレジストリ/リポジトリで検索することで行うことができる。"
@@ -221,7 +221,7 @@ Periodにはその資格の開始日・終了日を入力する。（例：麻�
 * qualification[narcoticPrescriptionLicenseNumber].issuer only Reference(JP_Organization)
 * qualification[narcoticPrescriptionLicenseNumber].identifier.assigner only Reference(JP_Organization)
 * qualification[medicalRegistrationNumber].identifier ^short = "医籍登録番号"
-* qualification[medicalRegistrationNumber].identifier.system = "urn:oid:1.2.392.100495.20.3.31" (exactly)
+* qualification[medicalRegistrationNumber].identifier.system = $JP_IdSystemMedicalRegistrationNumber (exactly)
 * qualification[medicalRegistrationNumber].identifier.value ^short = "医籍登録番号"
 * qualification[medicalRegistrationNumber].identifier.value ^comment = "医籍登録番号"
 * qualification[medicalRegistrationNumber].code from JP_MedicalLicenseCertificate_VS (required)

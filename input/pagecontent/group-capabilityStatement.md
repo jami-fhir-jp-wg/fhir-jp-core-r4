@@ -26,7 +26,7 @@ JP Coreを派生したサイトでは、アクタ毎にこれらの機能定義�
 
 ### 検索パラメータ(Search Parameter)定義
 #### 対象検索パラメータの列挙
-FHIR BASEにある定義済み検索パラメータ([Defined Search Parameters](https://www.hl7.org/fhir/R4B/searchparameter-registry.html))や[JP Coreで定義された検索パラメータ](group-searchParameter.html)の中より、適合するものがないかを確認しあればこれを採用する。
+FHIR BASEにある定義済み検索パラメータ([Defined Search Parameters](https://www.hl7.org/fhir/R4/searchparameter-registry.html))や[JP Coreで定義された検索パラメータ](group-searchParameter.html)の中より、適合するものがないかを確認しあればこれを採用する。
 もし適合するものが見つからない場合、独自にSearch Parameterを定義した上で追加する。
 
 ## Capability Statementの実装例

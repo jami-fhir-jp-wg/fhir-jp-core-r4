@@ -8,7 +8,7 @@ Title: "JP Core Procedure Profile"
 Description: "このプロファイルはProcedureリソースに対して、患者に対する医療的な処置のデータを送受信するための共通の制約と拡張を定めたものである。"
 * ^url = "http://jpfhir.jp/fhir/core/StructureDefinition/JP_Procedure"
 * ^status = #active
-* ^date = "2023-10-31"
+* ^date = "2025-07-30"
 * . ^short = "Procedureリソース"
 * . ^definition = "患者に対して、または患者のために実行されているか実行されたアクション。これは、手術のような身体的介入、または長期サービス、カウンセリング、催眠療法のような低侵襲性である可能性がある。"
 * text ^short = "このリソースを人間が解釈するためのテキスト要約"
@@ -24,7 +24,7 @@ Description: "このプロファイルはProcedureリソースに対して、患
 【JP Core仕様】Observation_LabResultにならい、任意。"
 * partOf only Reference(JP_Procedure or JP_Observation_Common or JP_MedicationAdministration)
 * partOf ^short = "このプロシジャーが構成要素やステップとなるより大きな医療行為"
-* partOf ^definition = "【JP Core仕様】https://www.hl7.org/fhir/R4B/procedure.htmlを参照"
+* partOf ^definition = "【JP Core仕様】https://www.hl7.org/fhir/R4/procedure.htmlを参照"
 * partOf ^comment = "MedicationAdministrationリソースにはProcedureへのpartOf参照があるが、これは循環参照ではない。たとえば、麻酔MedicationAdministrationは外科的処置の一部である（MedicationAdministration.partOf = Procedure）。  
 また、たとえば、IV投薬管理用にIVポートを挿入する手順は、投薬管理の一部である（Procedure.partOf = MedicationAdministration）。  
 【JP Core仕様】Observation_LabResultにならい、任意。"
@@ -44,9 +44,9 @@ Description: "このプロファイルはProcedureリソースに対して、患
 * subject ^definition = "プロシジャーが実行された対象の人、動物、またはグループ。"
 * subject ^comment = "参照は、実際のFHIRリソースへの参照であり、解決可能でなければならない（アクセス制御、一時的な利用不能などを可能にする）。解決は、URLからの検索、またはリソースタイプによって該当する場合は、絶対参照を正規のURLとして扱い、ローカルレジストリ/リポジトリで検索することによって行うことができる。"
 * encounter only Reference(JP_Encounter)
-* encounter ^short = "このプロシジャーの記録が作成された受療の状況"
-* encounter ^definition = "プロシジャーが作成または実行された受療の状況、またはこの記録の作成が緊密に関連している受療の状況。"
-* encounter ^comment = "これは通常、イベントが発生した出会いの中で行われるが、活動によっては、出会いの公式な終了前または終了後に開始されても、出会いの文脈と結びついている場合がある。"
+* encounter ^short = "このプロシジャーの記録が作成されたEncounterの状況"
+* encounter ^definition = "プロシジャーが作成または実行されたEncounterの状況、またはこの記録の作成が緊密に関連している受療の状況。"
+* encounter ^comment = "これは通常、イベントが発生したEncounterの中で行われるが、活動によっては、Encounterの公式な終了前または終了後に開始されても、Encounterの文脈と結びついている場合がある。"
 * performed[x] ^short = "いつこのプロシジャーが実施されたか"
 * performed[x] ^definition = "Procedureが行われた推定または実際の日付、日時、期間、または年齢。複数の日付にまたがる複雑なProcedureをサポートするために期間を許可し、Procedureの長さを把握することも可能。"
 * performed[x] ^comment = "年齢は一般的に、患者が手技が行われた年齢を報告するときに使用される。  
@@ -122,8 +122,8 @@ Procedure.reasonReferenceを使用して、Condition | Observation | Procedure |
 *注釈は、計算機処理れきる「変更」情報を伝達するために使用されるべきではない*。 （ユーザの行動を強制することはほとんど不可能であるため、これはSHOULDとする）。"
 * focalDevice ^short = "このプロシジャーの際に操作、埋め込み、または削除されたデバイス"
 * focalDevice ^definition = "Procedureが行われる局所に、あるいは、そこから、埋め込まれる、取り外される、またはその他の操作（キャリブレーション、バッテリー交換、プロテーゼの装着、陰圧ドレインバックの装着など）が行われるデバイス。"
-* focalDevice.action ^definition = "Procedure中にデバイスに起こった変化の種類。【JP Core仕様】https://www.hl7.org/fhir/R4B/procedure.htmlを参照"
-* focalDevice.manipulated ^definition = "Procedure中に操作（変更）されたデバイス。【JP Core仕様】https://www.hl7.org/fhir/R4B/procedure.htmlを参照"
+* focalDevice.action ^definition = "Procedure中にデバイスに起こった変化の種類。【JP Core仕様】https://www.hl7.org/fhir/R4/procedure.htmlを参照"
+* focalDevice.manipulated ^definition = "Procedure中に操作（変更）されたデバイス。【JP Core仕様】https://www.hl7.org/fhir/R4/procedure.htmlを参照"
 * usedReference only Reference(Device or JP_Medication or Substance)
 * usedReference ^short = "プロシジャー中に使用されるアイテム"
 * usedReference ^definition = "プロシジャーの一部として使用される薬剤、機器およびその他の物質を特定する。"
@@ -161,7 +161,7 @@ Procedure.reasonReferenceを使用して、Condition | Observation | Procedure |
 * outcome from JP_ProcedureOutcome_VS (example)
 * performer.function from JP_ProcedurePerformerRole_VS (example)
 * reasonCode from JP_ProcedureReason_VS (example)
-* bodySite from JP_ProcedureBodySite_VS (example)
+//* bodySite from JP_ProcedureBodySite_VS (example)
 * complication from JP_ProcedureCondition_VS (example)
 * followUp from JP_ProcedureFollowUp_VS (example)
 * focalDevice.action from JP_ProcedureDeviceAction_VS (preferred)

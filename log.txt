@@ -1,0 +1,172 @@
+Checking internet connection...
+104.196.166.17 Ç©ÇÁÇÃâûìö: ÉoÉCÉgêî =32 éûä‘ =159ms TTL=119
+We're online
+FHIR IG Publisher Version 2.1.2 (Git# 1fdde7f9e667). Built 2026-03-01T18:54:08.225Z (59 hours old)  
+Detected Java version: 17.0.10 from C:\Program Files\Java\jdk-17 on Windows 11/amd64 (64bit). 8104MB available
+dir = C:\Users\rikim\git\fhir-jp-core-r4, path = C:\Program Files\PowerShell\7;c:\Users\rikim\AppData\Roaming\Code\User\globalStorage\github.copilot-chat\debugCommand;c:\Users\rikim\AppData\Roaming\Code\User\globalStorage\github.copilot-chat\copilotCli;C:\Program Files\Volta\;C:\Ruby33-x64\bin;C:\Program Files\Common Files\Oracle\Java\javapath;C:\Python312\Scripts\;C:\Python312\;C:\windows\system32;C:\windows;C:\windows\System32\Wbem;C:\windows\System32\WindowsPowerShell\v1.0\;C:\windows\System32\OpenSSH\;C:\Program Files (x86)\Vagrant\bin;C:\ProgramData\chocolatey\bin;C:\Program Files\Java\jdk-17\bin;C:\Program Files\Microsoft SQL Server\150\Tools\Binn\;C:\Program Files\Microsoft SQL Server\Client SDK\ODBC\170\Tools\Binn\;c:\Users\rikim\AppData\Local\Programs\cursor\resources\app\bin;C:\Program Files (x86)\Microsoft SQL Server\160\DTS\Binn\;C:\Program Files\Docker\Docker\resources\bin;C:\PROGRA~1\JPKI;C:\Program Files (x86)\Common Files\Sony Shared\FeliCaLibrary;C:\Program Files\Common Files\Sony Shared\FeliCaLibrary;C:\Program Files (x86)\Common Files\Sony Shared\FeliCaNFCLibrary;C:\Program Files\Common Files\Sony Shared\FeliCaNFCLibrary;C:\Program Files (x86)\Windows Kits\10\Windows Performance Toolkit\;C:\Program Files\dotnet\;C:\Program Files\CMake\bin;C:\Program Files (x86)\Google\Cloud SDK\google-cloud-sdk\bin;C:\Program Files\nodejs\;C:\Program Files\Git\cmd;C:\Program Files\PowerShell\7\;C:\Program Files\PowerToys\DSCModules\;C:\Users\rikim\.local\bin;C:\Users\rikim\AppData\Local\Volta\bin;C:\Users\rikim\AppData\Local\Microsoft\WindowsApps;C:\Users\rikim\AppData\Local\Programs\Microsoft VS Code\bin;C:\dev\flutter\bin;C:\Users\rikim\.dotnet\tools;C:\Users\rikim\AppData\Roaming\npm
+Parameters: -ig .                                                                                   
+Character encoding = UTF-8 / UTF-8                                                                  
+Start Clock @ 2026Âπ¥3Êúà4Êó•Ê∞¥ÊõúÊó• 15ÊôÇ27ÂàÜ29Áßí Êó•Êú¨Ê®ôÊ∫ñÊôÇ (2026-03-04T15:27:29+09:00)                              
+                                                                                                    
+Build FHIR IG from C:\Users\rikim\git\fhir-jp-core-r4\.                                              (00:00.049 / 00:00.050, 20Mb)
+API keys loaded from C:\Users\rikim\.fhir\fhir-settings.json                                         (00:00.009 / 00:00.058, 20Mb)
+Package Cache: C:\Users\rikim\.fhir\packages                                                         (00:00.012 / 00:00.071, 20Mb)
+Run Sushi on C:\Users\rikim\git\fhir-jp-core-r4                                                      (00:00.032 / 00:00.103, 21Mb)
+Sushi: info  Running SUSHI v3.18.0 (implements FHIR Shorthand specification v3.0.0)                  (00:08.573 / 00:08.677, 22Mb)
+Sushi: info  Arguments:                                                                              (00:00.001 / 00:08.678, 22Mb)
+Sushi: info    --out C:\Users\rikim\git\fhir-jp-core-r4                                              (00:00.001 / 00:08.680, 22Mb)
+Sushi: info    C:\Users\rikim\git\fhir-jp-core-r4                                                    (00:00.001 / 00:08.681, 22Mb)
+Sushi: info  Using configuration file: C:\Users\rikim\git\fhir-jp-core-r4\sushi-config.yaml          (00:04.385 / 00:13.066, 22Mb)
+Sushi: info  Importing FSH text...                                                                   (00:00.122 / 00:13.189, 22Mb)
+Sushi: info  Preprocessed 222 documents with 381 aliases.                                            (00:04.095 / 00:17.285, 22Mb)
+Sushi: info  Imported 198 definitions and 188 instances.                                             (00:01.220 / 00:18.505, 22Mb)
+Sushi: info  Loaded virtual package sushi-r5forR4#1.0.0 with 7 resources                             (00:00.149 / 00:18.655, 22Mb)
+Sushi: info  Resolved hl7.fhir.uv.tools.r4#latest to concrete version 1.1.0                          (00:01.419 / 00:20.074, 22Mb)
+Sushi: info  Loaded hl7.fhir.uv.tools.r4#1.1.0 with 119 resources                                    (00:00.187 / 00:20.261, 22Mb)
+Sushi: info  Resolved hl7.terminology.r4#latest to concrete version 7.0.1                            (00:00.272 / 00:20.534, 22Mb)
+Sushi: info  Loaded hl7.terminology.r4#7.0.1 with 4096 resources                                     (00:04.791 / 00:25.326, 22Mb)
+Sushi: info  Loaded jpfhir-terminology#1.4.0 with 204 resources                                      (00:00.882 / 00:26.209, 22Mb)
+Sushi: info  Loaded hl7.fhir.r4b.core#4.3.0 with 3497 resources                                      (00:05.783 / 00:31.992, 22Mb)
+Sushi: info  Resolved hl7.fhir.uv.extensions.r4#latest to concrete version 5.2.0                     (00:00.266 / 00:32.259, 22Mb)
+Sushi: info  Loaded hl7.fhir.uv.extensions.r4#5.2.0 with 759 resources                               (00:01.407 / 00:33.666, 22Mb)
+Sushi: info  Loaded virtual package sushi-local#LOCAL with 0 resources                               (00:00.011 / 00:33.677, 22Mb)
+Sushi: info  Converting FSH to FHIR resources...                                                     (00:00.030 / 00:33.707, 22Mb)
+Sushi: warn  http://hl7.org/fhir/StructureDefinition/encounter-associatedEncounter|4.0.1 was requested, but SUSHI found http://hl7.org/fhir/StructureDefinition/encounter-associatedEncounter|5.2.0 (00:10.778 / 00:44.486, 22Mb)
+Sushi:   File: C:\Users\rikim\git\fhir-jp-core-r4\input\fsh\profiles\JP_Encounter.fsh                (00:00.004 / 00:44.491, 22Mb)
+Sushi:   Line: 15                                                                                    (00:00.002 / 00:44.493, 22Mb)
+Sushi: warn  http://hl7.org/fhir/StructureDefinition/patient-religion|4.0.1 was requested, but SUSHI found http://hl7.org/fhir/StructureDefinition/patient-religion|5.2.0 (00:27.059 / 01:11.553, 22Mb)
+Sushi:   File: C:\Users\rikim\git\fhir-jp-core-r4\input\fsh\profiles\JP_Patient.fsh                  (00:00.004 / 01:11.558, 22Mb)
+Sushi:   Line: 14 - 17                                                                               (00:00.003 / 01:11.561, 22Mb)
+Sushi: warn  http://hl7.org/fhir/StructureDefinition/patient-birthPlace|4.0.1 was requested, but SUSHI found http://hl7.org/fhir/StructureDefinition/patient-birthPlace|5.2.0 (00:00.003 / 01:11.564, 22Mb)
+Sushi:   File: C:\Users\rikim\git\fhir-jp-core-r4\input\fsh\profiles\JP_Patient.fsh                  (00:00.005 / 01:11.569, 22Mb)
+Sushi:   Line: 14 - 17                                                                               (00:00.003 / 01:11.572, 22Mb)
+Sushi: info  Converted 118 FHIR StructureDefinitions.                                                (00:09.565 / 01:21.138, 22Mb)
+Sushi: info  Converted 30 FHIR CodeSystems.                                                          (00:01.974 / 01:23.113, 22Mb)
+Sushi: info  Converted 50 FHIR ValueSets.                                                            (00:02.945 / 01:26.058, 22Mb)
+Sushi: info  Converted 188 FHIR instances.                                                           (00:31.858 / 01:57.917, 22Mb)
+Sushi: info  Exporting FHIR resources as JSON...                                                     (00:00.001 / 01:57.919, 22Mb)
+Sushi: info  Exported 336 FHIR resources as JSON.                                                    (00:01.256 / 01:59.175, 22Mb)
+Sushi: info  Assembling Implementation Guide sources...                                              (00:00.019 / 01:59.195, 22Mb)
+Sushi: info  Generated ImplementationGuide-jpfhir.jp.core.json                                       (00:00.090 / 01:59.285, 22Mb)
+Sushi: info  Assembled Implementation Guide sources; ready for IG Publisher.                         (00:00.004 / 01:59.289, 22Mb)
+Sushi: ========================= SUSHI RESULTS ===========================                           (00:00.004 / 01:59.294, 22Mb)
+Sushi: |  -------------------------------------------------------------  |                           (00:00.004 / 01:59.298, 22Mb)
+Sushi: | |    Profiles   |  Extensions  |   Logicals   |   Resources   | |                           (00:00.004 / 01:59.302, 22Mb)
+Sushi: | |-------------------------------------------------------------| |                           (00:00.004 / 01:59.306, 22Mb)
+Sushi: | |      74       |      44      |      0       |       0       | |                           (00:00.003 / 01:59.310, 22Mb)
+Sushi: |  -------------------------------------------------------------  |                           (00:00.004 / 01:59.314, 22Mb)
+Sushi: |  -------------------------------------------------------------  |                           (00:00.003 / 01:59.318, 22Mb)
+Sushi: | |      ValueSets     |    CodeSystems    |     Instances      | |                           (00:00.003 / 01:59.322, 22Mb)
+Sushi: | |-------------------------------------------------------------| |                           (00:00.003 / 01:59.326, 22Mb)
+Sushi: | |         50         |        30         |        188         | |                           (00:00.003 / 01:59.330, 22Mb)
+Sushi: |  -------------------------------------------------------------  |                           (00:00.003 / 01:59.334, 22Mb)
+Sushi: |                                                                 |                           (00:00.002 / 01:59.336, 22Mb)
+Sushi: ===================================================================                           (00:00.002 / 01:59.338, 22Mb)
+Sushi: | You should mullet over.                0 Errors      3 Warnings |                           (00:00.003 / 01:59.342, 22Mb)
+Sushi: ===================================================================                           (00:00.004 / 01:59.347, 22Mb)
+Root directory: C:\Users\rikim\git\fhir-jp-core-r4                                                   (00:00.161 / 01:59.508, 22Mb)
+Unable to load IG as an r5 IG - try R4 (property code is a class com.google.gson.JsonPrimitive looking for an object) (00:01.258 / 02:00.767, 51Mb)
+Load Template from #custom-template                                                                  (00:01.961 / 02:02.728, 35Mb)
+ Load Template from fhir.base.template#current                                                       (00:00.054 / 02:02.783, 36Mb)
+Scanning directory: C:\Users\rikim\git\fhir-jp-core-r4\template
+======================================================================
+Terminology Cache is at C:\Users\rikim\git\fhir-jp-core-r4\input-cache\txcache. 18 files in cache    (01:30.118 / 03:32.901, 161Mb)
+Core Package hl7.fhir.r4b.core#4.3.0                                                                 (00:00.004 / 03:32.906, 161Mb)
+Running Terminology Log: C:\Users\rikim\AppData\Local\Temp\ohfu-fhir-ig-17354660501579401817.html
+Connect to Terminology Server at http://tx.fhir.org                                                  (00:20.042 / 03:52.948, 555Mb)
+[39mLoad Package hl7.fhir.pubpack#0.2.4
+[0;39m[39mLoad Package hl7.fhir.xver-extensions#0.1.0
+[0;39mVersion mismatch. This IG is version 4.3.0, while the IG 'hl7.terminology.r4' is from version 4.0.1 (will try to run anyway) (00:04.772 / 03:57.721, 413Mb)
+[39mLoad Package hl7.terminology.r4#7.0.1
+[0;39mVersion mismatch. This IG is version 4.3.0, while the IG 'hl7.fhir.uv.extensions.r4' is from version 4.0.1 (will try to run anyway) (00:03.695 / 04:01.416, 400Mb)
+[39mLoad Package hl7.fhir.uv.extensions.r4#5.2.0
+[0;39mVersion mismatch. This IG is version 4.3.0, while the IG 'jpfhir-terminology' is from version 4.0.1 (will try to run anyway) (00:04.464 / 04:05.881, 721Mb)
+Ignore Dependency on Core FHIR hl7.fhir.r4.core#4.0.1, from package 'jpfhir-terminology#1.4.0'       (00:00.003 / 04:05.885, 721Mb)
+[39mLoad Package jpfhir-terminology#1.4.0
+[0;39mVersion mismatch. This IG is version 4.3.0, while the IG 'hl7.fhir.uv.tools.r4' is from version 4.0.1 (will try to run anyway) (00:00.183 / 04:06.068, 725Mb)
+[39mLoad Package hl7.fhir.uv.tools.r4#0.9.0
+[0;39mLoad R5 Specials
+Cannot find or generate snapshot for base definition http://hl7.org/fhir/StructureDefinition/CanonicalResource from http://hl7.org/fhir/StructureDefinition/TestCases
+Initialization complete                                                                              (00:02.653 / 04:08.722, 865Mb)
+Load IG                                                                                              (00:00.002 / 04:08.724, 865Mb)
+Load Content                                                                                         (00:00.029 / 04:08.753, 865Mb)
+Using ja as the default narrative language. (Implementation Guide param i18n-default-lang)           (00:00.320 / 04:09.074, 909Mb)
+Process Loaded Resources                                                                             (00:06.794 / 04:15.868, 608Mb)
+Generating Snapshots                                                                                 (00:05.140 / 04:21.009, 625Mb)
+[33mCan't find Extension definition for http://hl7.org/fhir/StructureDefinition/encounter-associatedEncounter|4.0.1 but trying to go on
+[0;39m[33mCan't find Extension definition for http://hl7.org/fhir/StructureDefinition/patient-religion|4.0.1 but trying to go on
+[0;39m[33mCan't find Extension definition for http://hl7.org/fhir/StructureDefinition/patient-birthPlace|4.0.1 but trying to go on
+[0;39m
+
+Signing Certificate: RSA key for Subject: OU=IG Publisher, L=Ann Arbor, CN=hl7.org, O=HL7, ST=Missouri, C=us from: OU=IG Publisher, L=Ann Arbor, CN=hl7.org, O=HL7, ST=Missouri, C=us
+Fetch http://jpfhir.jp/fhir/core/package-list.json for version check                                 (00:09.506 / 04:30.515, 1Gb)
+Checking Language                                                                                    (00:00.349 / 04:30.865, 1Gb)
+Load Dependency Info                                                                                 (00:00.008 / 04:30.873, 1Gb)
+Load Info                                                                                            (00:00.004 / 04:30.878, 1Gb)
+Load Paths                                                                                           (00:00.004 / 04:30.882, 1Gb)
+Check R4 / R4B                                                                                       (00:00.003 / 04:30.886, 1Gb)
+Assign Comparison Ids                                                                                (00:00.224 / 04:31.110, 820Mb)
+Propagating status                                                                                   (00:00.004 / 04:31.115, 820Mb)
+Generating Narratives                                                                                (00:00.003 / 04:31.118, 820Mb)
+Validating Conformance Resources                                                                     (00:12.052 / 04:43.170, 1Gb)
+Check profiles & code systems                                                                        (00:39.418 / 05:22.588, 1Gb)
+Check realm rules                                                                                    (00:00.009 / 05:22.598, 1Gb)
+Previous Version Comparison                                                                          (00:00.002 / 05:22.600, 1Gb)
+Checking for Bundles to sign                                                                         (00:00.061 / 05:22.662, 1Gb)
+Validating Resources                                                                                 (00:00.001 / 05:22.664, 1Gb)
+Processing Provenance Records                                                                        (00:11.104 / 05:33.768, 2Gb)
+Generating Translation artifacts                                                                     (00:00.002 / 05:33.771, 2Gb)
+Generating Outputs in C:\Users\rikim\git\fhir-jp-core-r4\output                                      (00:07.639 / 05:41.410, 1Gb)
+Generate Native Outputs                                                                              (00:06.516 / 05:47.927, 1Gb)
+Run Template                                                                                         (09:10.401 / 14:58.329, 2Gb)
+Generate HTML Outputs                                                                                (00:05.562 / 15:03.891, 1Gb)
+XSLT Error:  Error reported by XML parser: 1„Éê„Ç§„Éà„ÅÆUTF-8„Ç∑„Éº„Ç±„É≥„Çπ„ÅÆ„Éê„Ç§„Éà1„ÅåÁÑ°Âäπ„Åß„Åô„ÄÇ
+Exception generating xslt page C:\Users\rikim\git\fhir-jp-core-r4\temp\pages\_includes\intoronotes-resources\observation_microbiology_structure.PNG for _includes\intoronotes-resources\observation_microbiology_structure.PNG in C:\Users\rikim\git\fhir-jp-core-r4\temp\pages: org.xml.sax.SAXParseException; lineNumber: 1; columnNumber: 1; 1„Éê„Ç§„Éà„ÅÆUTF-8„Ç∑„Éº„Ç±„É≥„Çπ„ÅÆ„Éê„Ç§„Éà1„ÅåÁÑ°Âäπ„Åß„Åô„ÄÇ (05:08.321 / 20:12.213, 2Gb)
+Generate Spreadsheets                                                                                (00:00.655 / 20:12.869, 2Gb)
+Generate Summaries                                                                                   (00:31.165 / 20:44.034, 1Gb)
+Generating Summary Outputs                                                                           (00:00.006 / 20:44.040, 1Gb)
+Table of contents has a section with more than 222 entries.  Collapsing will not work reliably
+DB Cumulative Time invested: 00:00:03.599
+Sending Usage Stats to Server                                                                        (01:58.144 / 22:42.184, 2Gb)
+## Memory (MB): Use = 2854, Free = 681, Total = 3536, Max = 8104                                     (00:00.007 / 22:42.192, 2Gb)
+Reclaiming memory...                                                                                 (00:00.001 / 22:42.194, 2Gb)
+## Memory (MB): Use = 1511, Free = 2024, Total = 3536, Max = 8104                                    (00:00.812 / 22:43.006, 1Gb)
+Run jekyll: jekyll build --destination "C:\Users\rikim\git\fhir-jp-core-r4\output" (in folder C:\Users\rikim\git\fhir-jp-core-r4\temp\pages) (00:00.037 / 22:43.044, 1Gb)
+Due to a known issue, Jekyll errors are lost between Java and Ruby in windows systems.               (00:00.006 / 22:43.051, 1Gb)
+If the build process hangs at this point, you have to go to a                                        (00:00.005 / 22:43.056, 1Gb)
+command prompt, and then run these two commands:                                                     (00:00.005 / 22:43.061, 1Gb)
+                                                                                                     (00:00.005 / 22:43.067, 1Gb)
+cd C:\Users\rikim\git\fhir-jp-core-r4\temp\pages                                                     (00:00.005 / 22:43.072, 1Gb)
+jekyll build --destination "C:\Users\rikim\git\fhir-jp-core-r4\output"                               (00:00.005 / 22:43.077, 1Gb)
+                                                                                                     (00:00.005 / 22:43.082, 1Gb)
+and then investigate why Jekyll has failed                                                           (00:00.005 / 22:43.088, 1Gb)
+Troubleshooting Note: usual cases for Jekyll to fail are:                                            (00:00.004 / 22:43.092, 1Gb)
+* A failure to produce a fragment that is already logged in the output above                         (00:00.005 / 22:43.098, 1Gb)
+* A reference to a manually edited file that hasn't been provided                                    (00:00.005 / 22:43.103, 1Gb)
+Jekyll: Source: C:/Users/rikim/git/fhir-jp-core-r4/temp/pages                                        (00:09.434 / 22:52.537, 1Gb)
+Jekyll: Generating...                                                                                (00:00.002 / 22:52.540, 1Gb)
+Jekyll: done in 115.185 seconds.                                                                     (01:55.181 / 24:47.721, 1Gb)
+[39m
+[0;39m[39mInstalling jpfhir.jp.core#dev
+[0;39m[39m done.
+[0;39mChecking Output HTML                                                                                 (00:50.314 / 25:38.036, 1Gb)
+Processed C:\Users\rikim\git\fhir-jp-core-r4\output - % reduction = 99 (331687552 ==> 3501165)
+found 5009 files                                                                                     (00:21.413 / 25:59.449, 3Gb)
+........................................
+........................................
+  ... 5009 html files, 0 pages invalid xhtml (0%)                                                    (05:05.353 / 31:04.802, 1Gb)
+  ... 1350014 links, 2 broken links (0%)                                                             (00:00.002 / 31:04.804, 1Gb)
+Generate fragment-usage-analysis.csv                                                                 (00:00.001 / 31:04.805, 1Gb)
+Build final .zip                                                                                     (00:00.014 / 31:04.820, 1Gb)
+Final .zip built                                                                                     (00:32.044 / 31:36.864, 1Gb)
+[39mInstalling hl7.fhir.r4.core#4.0.1 to the package cache
+[0;39m[39m  Fetching:
+[0;39m[39m
+[0;39m[39mInstalling hl7.fhir.r4.core#4.0.1
+[0;39m[39m done.
+[0;39mBuilt. Times: loading: 00:22.118, generate: 29:52.746, narrative generation: 00:12.048, realm-rules: 00:00.002, previous-version: 00:00.000, jekyll: 02:04.873, validation: 00:50.459 (#336), template: 00:05.618 (#3) (02:46.748 / 34:23.612, 2Gb)
+Generating QA                                                                                        (00:00.005 / 34:23.618, 2Gb)
+Validation output in C:\Users\rikim\git\fhir-jp-core-r4\output\qa.html
+Errors: 158, Warnings: 144, Info: 102, Broken Links: 2 (00:01.770 / 34:25.388, 2Gb)
+Finished @ 2026/03/04 16:01. Max Memory Used = 3Gb. Log file saved in c:\temp\fhir-ig-publisher-tmp.log (00:00.108 / 34:25.496, 2Gb)
+ë±çsÇ∑ÇÈÇ…ÇÕâΩÇ©ÉLÅ[ÇâüÇµÇƒÇ≠ÇæÇ≥Ç¢ . . . 

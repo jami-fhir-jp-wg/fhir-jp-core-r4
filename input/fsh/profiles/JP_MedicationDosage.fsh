@@ -12,7 +12,7 @@ Title: "JP Core MedicationDosage Base DataType"
 Description: "このデータタイプは薬剤用法のDosageベースとして基礎となる制約と拡張のうち共通部分を定めている。"
 * ^url = "http://jpfhir.jp/fhir/core/StructureDefinition/JP_MedicationDosageBase"
 * ^status = #active
-* ^date = "2023-10-31"
+* ^date = "2025-07-30"
 * . ^short = "薬の服用方法・服用した方法、または服用すべき方法"
 * . ^definition = "薬の服用方法・服用した方法、または服用すべき方法"
 
@@ -67,15 +67,15 @@ Medication(薬剤)が必要なときに指定された量とスケジュール�
     unitDigit1 ..1 and
     unitDigit2 ..1
 * method.coding[unitDigit1] from JP_MedicationMethodJAMIBasicUsage_VS (preferred)
-* method.coding[unitDigit1].system = "urn:oid:1.2.392.200250.2.2.20.30" (exactly)
+* method.coding[unitDigit1].system = $JP_MedicationMethodJAMIBasicUsage_CS (exactly)
 * method.coding[unitDigit1] ^short = "投与⽅法に対応するJAMI 用法コード表基本用法１桁コード"
 * method.coding[unitDigit1] ^definition = "投与⽅法に対応するJAMI 用法コード表基本用法１桁コードを識別するURI。"
 * method.coding[unitDigit1] ^comment = "コードは臨時で列記したものや、コードのリストからSNOMED CTのように公式に定義されたものまである（HL7 v3 core principle を参照)。FHIR自体ではコーディング規約を定めてはいないし、意味を暗示するために利用されない(SHALL NOT)。一般的に UserSelected = trueの場合には一つのコードシステムが使われる。"
 * method.coding[unitDigit1] ^requirements = "他のコードシステムへの変換や代替のコードシステムを使ってエンコードしてもよい。"
 * method.coding[unitDigit2] from JP_MedicationMethodJAMIDetailUsage_VS (preferred)
-* method.coding[unitDigit2].system = "urn:oid:1.2.392.200250.2.2.20.40" (exactly)
+* method.coding[unitDigit2].system = $JP_MedicationMethodJAMIDetailUsage_CS (exactly)
 * method.coding[unitDigit2] ^short = "投与⽅法に対応するJAMI 用法コード表基本用法2桁コード"
-* method.coding[unitDigit2] ^definition = "投与⽅法に対応するJAMI 用法コード表基本用法2桁コードを識別するURI。２桁コードurn:oid:1.2.392.200250.2.2.20.40"
+* method.coding[unitDigit2] ^definition = "投与⽅法に対応するJAMI 用法コード表基本用法2桁コードを識別するURI。２桁コードhttp://jami.jp/CodeSystem/MedicationUsage"
 * method.coding[unitDigit2] ^comment = "コードは臨時で列記したものや、コードのリストからSNOMED CTのように公式に定義されたものまである（HL7 v3 core principle を参照)。FHIR自体ではコーディング規約を定めてはいないし、意味を暗示するために利用されない(SHALL NOT)。一般的に UserSelected = trueの場合には一つのコードシステムが使われる。"
 * method.coding[unitDigit2] ^requirements = "他のコードシステムへの変換や代替のコードシステムを使ってエンコードしてもよい。"
 * method.text ^short = "投与⽅法のテキスト表現"
@@ -277,9 +277,9 @@ Description: "投与速度コメントを格納するための拡張"
 * ^status = #active
 * ^date = "2023-10-31"
 * ^context[+].type = #element
-* ^context[=].expression = "Dosage"
+* ^context[=].expression = "Dosage.doseAndRate"
 * ^context[+].type = #element
-* ^context[=].expression = "MedicationAdministration.dosage.doseAndRate"
+* ^context[=].expression = "MedicationAdministration.dosage"
 * . ^short = "投与速度コメント"
 * . ^definition = "投与速度コメントを格納するための拡張"
 * url = $JP_MedicationDosage_RateComment (exactly)
@@ -366,7 +366,8 @@ Description: "指示ラインを格納するための拡張"
 * . ^definition = "指示ラインを格納する拡張"
 * url = $JP_MedicationDosage_Line (exactly)
 * value[x] only CodeableConcept
-* valueCodeableConcept.coding from $JP_MedicationExampleLine_VS (example)
+* valueCodeableConcept from JP_MedicationExampleLine_VS (example)
+// * valueString ^short = "テキスト記載"
 
 // ------------------------------
 //JP_MedicationDosage_PeriodOfUse

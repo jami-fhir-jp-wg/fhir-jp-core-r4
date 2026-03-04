@@ -1,31 +1,31 @@
 
 // hl7
+Alias: $bodySite = http://hl7.org/fhir/StructureDefinition/bodySite
+Alias: $capabilityStatement-combination = http://hl7.org/fhir/StructureDefinition/capabilitystatement-search-parameter-combination
+Alias: $capabilityStatement-expectation = http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation
+Alias: $encounter-associatedEncounter = http://hl7.org/fhir/StructureDefinition/encounter-associatedEncounter
 Alias: $iso21090-EN-representation = http://hl7.org/fhir/StructureDefinition/iso21090-EN-representation
 Alias: $patient-birthPlace = http://hl7.org/fhir/StructureDefinition/patient-birthPlace
 Alias: $patient-religion = http://hl7.org/fhir/StructureDefinition/patient-religion
-Alias: $capabilityStatement-expectation = http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation
-Alias: $capabilityStatement-combination = http://hl7.org/fhir/StructureDefinition/capabilitystatement-search-parameter-combination
-Alias: $encounter-associatedEncounter = http://hl7.org/fhir/StructureDefinition/encounter-associatedEncounter
 Alias: $units-of-time = http://hl7.org/fhir/ValueSet/units-of-time
-Alias: $bodySite = http://hl7.org/fhir/StructureDefinition/bodySite
 
 // hl7-terminology
-Alias: $v2-0136 = http://terminology.hl7.org/ValueSet/v2-0136
-Alias: $observation-category = http://terminology.hl7.org/CodeSystem/observation-category
 Alias: $diagnostic-service-sectionid-cs = http://terminology.hl7.org/CodeSystem/v2-0074
+Alias: $media-type = http://terminology.hl7.org/CodeSystem/media-type
+Alias: $observation-category = http://terminology.hl7.org/CodeSystem/observation-category
 Alias: $patient-race-cs = http://terminology.hl7.org/CodeSystem/v3-Race
 Alias: $patient-race-vs = http://terminology.hl7.org/ValueSet/v3-Race
-Alias: $media-type = http://terminology.hl7.org/CodeSystem/media-type
+Alias: $v2-0136 = http://terminology.hl7.org/ValueSet/v2-0136
 
 // dicom
 Alias: $dicom-ontology = http://dicom.nema.org/resources/ontology/DCM
 
-// JAMI
-Alias: $JAMI__MedicationMethodDetailDeviceInjection_CS = urn:oid:1.2.392.200250.2.2.20.45
-Alias: $JAMI__MedicationMethodDetailDeviceInjection_VS = http://jami.jp/ValueSet/MedicationMethodDetailDeviceInjection_VS
-
 // loinc
 Alias: $Loinc_CS = http://loinc.org
 
-// JPCor定義はaliases-jpcore.fshに記載すること
+// JAMI
+Alias: $jami-ePreDispenseInstruction-vs = http://jpfhir.jp/fhir/ePrescription/ValueSet/jami-ePreDispenseInstruction
+Alias: $jami-DrugDispensePreparationMethod-cs = http://jami.jp/CodeSystem/DrugDispensePreparationMethod
 
+
+// JPCor定義はaliases-jpcore.fshに記載すること

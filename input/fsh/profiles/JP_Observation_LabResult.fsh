@@ -8,7 +8,7 @@ Title: "JP Core Observation LabResult Profile"
 Description: "このプロファイルはObservationリソースに対して、検体検査結果のデータを送受信するための制約と拡張を定めたものである。"
 * ^url = "http://jpfhir.jp/fhir/core/StructureDefinition/JP_Observation_LabResult"
 * ^status = #active
-* ^date = "2023-10-31"
+* ^date = "2025-07-30"
 * . ^short = "検体検査結果"
 * . ^definition = "検体検査結果の格納に使用する。"
 * . ^comment = "すべてのObservation（検査測定や観察事実）の制約プロファイル"
@@ -37,27 +37,20 @@ Description: "このプロファイルはObservationリソースに対して、�
 * status ^comment = "【JP Core仕様】v2.5の「F」に相当する値は「final」であるが、ここでは 必須コード表「ObservationStatus」より、全てのコード値を使用可とする。  
 (registered | preliminary | final | amended |   corrected | cancelled | entered-in-error | unknown)"
 * category 1..
-
-* category ^slicing.discriminator.type = #value
-* category ^slicing.discriminator.path = "$this"
-* category ^slicing.rules = #open
-* category contains laboratory 1..1
 * insert SetDefinition(category.coding, コード化されたカテゴリー)
 
-* category[laboratory] ^comment = "【JP Core仕様】推奨コード表「JP Core Simple Observation Category CodeSystem」より、このプロファイルでは「laboratory」固定とする。  
+* category[first] 1..1 
+* category[first] ^comment = "【JP Core仕様】推奨コード表「JP Core Simple Observation Category CodeSystem」より、このプロファイルでは「laboratory」固定とする。  
 (social-history | vital-signs | imaging | laboratory | procedure | survey | exam | therapy | activity)"
-* category[laboratory].coding ^comment = "【JP Core仕様】推奨コード表「JP Core Simple Observation Category CodeSystem」より、このプロファイルでは「laboratory」固定とする。"
+* category[first].coding ^comment = "【JP Core仕様】推奨コード表「JP Core Simple Observation Category CodeSystem」より、このプロファイルでは「laboratory」固定とする。"
 
-* insert SetDefinition(category[laboratory], 検体検査では、http://jpfhir.jp/fhir/core/CodeSystem/JP_SimpleObservationCategory_CS のコード表から\"laboratory\"を設定する。)
-* insert SetDefinition(category[laboratory].coding.system, 検体検査では、http://jpfhir.jp/fhir/core/CodeSystem/JP_SimpleObservationCategory_CS のコード表を使用する。)
-* insert SetDefinition(category[laboratory].coding.code, 検体検査を表すコード laboratory を設定する。)
+* insert SetDefinition(category[first], 検体検査では、http://jpfhir.jp/fhir/core/CodeSystem/JP_SimpleObservationCategory_CS のコード表から\"laboratory\"を設定する。)
+* insert SetDefinition(category[first].coding.system, 検体検査では、http://jpfhir.jp/fhir/core/CodeSystem/JP_SimpleObservationCategory_CS のコード表を使用する。)
+* insert SetDefinition(category[first].coding.code, 検体検査を表すコード laboratory を設定する。)
 
-* category[laboratory] from JP_SimpleObservationCategory_VS (required)
-* category[laboratory].coding.system = $JP_SimpleObservationCategory_CS (exactly)
-* category[laboratory].coding 1..1
-* category[laboratory].coding.code = $JP_SimpleObservationCategory_CS#laboratory (exactly)
-* category[laboratory].coding.system 1..1
-* category[laboratory].coding.code 1..1
+* category[first].coding.code = $JP_SimpleObservationCategory_CS#laboratory (exactly)
+* category[first].coding.system 1..1
+* category[first].coding.code 1..1
 
 * code from $JP_ObservationLabResultCode_VS (preferred)
 * code ^definition = "検査の内容の説明。検査名称。"
@@ -92,6 +85,7 @@ URIは本WGで定義する。"
 * effective[x] 1..
 * effective[x] only dateTime or Period or Timing
 * effective[x] ^definition = "検体検査の場合は、検体採取日時。"
+* effective[x] ^short = "検体を採取した日時または期間"
 * effective[x] ^comment = "【JP Core仕様】このプロファイルでは、検体採取日時を設定し、必須とする。  
 effectiveInstant  
 instant型はイベント発生のログ時間であり、未使用とする。"
@@ -100,7 +94,7 @@ instant型はイベント発生のログ時間であり、未使用とする。"
 * performer ^definition = "検査値を確認した責任者。検査実施責任者情報。"
 * performer ^comment = "【JP Core仕様】検査に直接責任を負う個人(つまり検査を実行、もしくは検証した人)の識別子。"
 * value[x] only Quantity or CodeableConcept or string
-* value[x] ^short = "同じ検査項目でも、システム（施設）により、使うデータ型が異なる可能性あり【詳細参照】"
+* value[x] ^short = "検体検査結果の値"
 * value[x] ^definition = "検体検査の結果として決定された情報。"
 * value[x] ^comment = "以下のデータ型はSS-MIX2では未使用のため、未使用とした。今後の議論で使用の必要性が出れば復活させる。  
 valueBoolean  
@@ -134,7 +128,7 @@ textのみでの使用は基本的に不可とし、必ずcodingを設定する�
 * interpretation ^definition = "検査結果値の、（高、低、正常）といったカテゴリー評価。結果報告書に記載されることもある情報。"
 * interpretation ^comment = "【JP Core仕様】拡張可コード表「ObservationInterpretationCodes」を使用する。  
 コード表が大きいため、下記参照。  
-https://www.hl7.org/fhir/R4B/valueset-observation-interpretation.html"
+https://www.hl7.org/fhir/R4/valueset-observation-interpretation.html"
 * interpretation ^requirements = "特に数値結果については、結果の重要性を完全に理解するために解釈を必要とする場合がある。"
 * note ^definition = "検査、あるいは結果に関するコメント。フリーテキストの追加情報として使用可能。"
 * note ^comment = "May include general statements about the observation, or statements about significant, unexpected or unreliable results values, or information about its source when relevant to its interpretation."

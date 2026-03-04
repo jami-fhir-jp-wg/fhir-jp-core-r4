@@ -2,7 +2,7 @@
 
 Patient リソースは、次の要素を持たなければならない。
 
-- identifier ：患者を識別するための識別子は必須要素でありidentifier.value が必ず存在しなければならない、またidentifierの名前空間を表すidentifier.systemも組み合わせて、医療機関固有の患者番号を表現することが一般的である
+- identifier : 患者を識別するための識別子は必須要素でありidentifier.value が必ず存在しなければならない、またidentifierの名前空間を表すidentifier.systemも組み合わせて、医療機関固有の患者番号を表現することが一般的である
 
 ### Extensions定義
 
@@ -22,7 +22,7 @@ JP Patient リソースで使用される拡張は次の通りである。
 
 - [nameRepresentationUse](https://hl7.org/fhir/R4B/extension-iso21090-en-representation.html)
 
-  - 患者氏名(Patient.name)の漢字表記・カナ表記識別のために使用する
+  - 患者氏名(Patient.name)の漢字表記・カナ・ローマ字表記識別のために使用する
 
 ## 利用方法
 
@@ -32,7 +32,7 @@ JP Patient リソースで使用される拡張は次の通りである。
 
 | コンフォーマンス | パラメータ    | 型     | 例                                                           |
 | ---------------- | ------------- | ------ | ------------------------------------------------------------ |
-| SHALL            | identifier    | token  | GET [base]/Patient?identifier=urn:oid:1.2.392.100495.20.3.51.11312345670\|123456 |
+| SHALL            | identifier    | token  | GET [base]/Patient?identifier=urn:oid:1.2.392.100495.20.3.51.1+[医療機関コード10桁]\|123456 |
 | SHOULD            | name          | string | GET [base]/Patient?name=山田%20太郎                            |
 | SHOULD           | birthdate,name | date,string  | GET [base]/Patient?birthdate=eq2013-01-14&name=山田%20太郎  |
 | SHOULD           | birthdate,gender | date,token  | GET [base]/Patient?birthdate=eq2013-01-14&gender=male  |

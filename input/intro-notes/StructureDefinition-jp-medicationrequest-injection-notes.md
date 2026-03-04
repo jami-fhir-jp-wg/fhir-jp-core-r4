@@ -20,7 +20,6 @@ JP Core MedicationRequest Injectionプロファイルで使用される拡張は
 
 |拡張|説明|定義|値型|
 |:----|:----|:----|:----|
-|調剤結果|薬剤単位の調剤結果|[JP_MedicationDispense_Preparation]|CodeableConcept|
 |RP内薬剤番号|RP内の薬剤の連番を格納する拡張<br/>《medicationReference配下》|[JP_Medication_Ingredient_DrugNo]|integer|
 |力価区分|投与量が製剤単位か成分単位かを格納する拡張<br/>《medicationReference配下》|[JP_Medication_IngredientStrength_StrengthType]|CodeableConcept|
 |用法コメント|用法コメントを格納するための拡張<br/>《dosageInstruction配下》|[JP_MedicationDosage_DosageComment]|CodeableConcept/String|
@@ -43,25 +42,25 @@ HL7 ver 2系では用語集を識別するコーディングシステム名(以�
 
 |分類|CS名|URI|
 |---------|----|---------------------------|
-|医薬品|HOT7|urn:oid:1.2.392.200119.4.403.2|
-|医薬品|HOT9|urn:oid:1.2.392.200119.4.403.1|
-|医薬品|HOT13|urn:oid:1.2.392.200119.4.402.1|
-|医薬品|YJコード|urn:oid:1.2.392.100495.20.1.73|
+|医薬品|HOT7|http://medis.or.jp/CodeSystem/master-HOT7|
+|医薬品|HOT9|http://medis.or.jp/CodeSystem/master-HOT9|
+|医薬品|HOT13|http://medis.or.jp/CodeSystem/master-HOT13|
+|医薬品|YJコード|http://capstandard.jp/iyaku.info/CodeSystem/YJ-code|
 |剤形|MERIT-9(剤形)|http://jpfhir.jp/fhir/core/CodeSystem/JP_MedicationFormMERIT9_CS |
 |処方区分|MERIT-9(処方区分)|http://jpfhir.jp/fhir/core/CodeSystem/JP_MedicationCategoryMERIT9_CS |
 |処方区分|JAHIS注射データ交換規約Ver.2.1C(JHSI表0001)|http://jpfhir.jp/fhir/core/CodeSystem/JHSI0001|
-|用法種別|JAMI処方・注射オーダ標準用法規格(表14:時間的要素・機器区分コード表)|urn:oid:1.2.392.200250.2.2.20.45|
-|薬品単位|MERIT-9(単位）|urn:oid:1.2.392.100495.20.2.101|
-|力価区分|処方情報 HL7FHIR 記述仕様(力価区分)|urn:oid:1.2.392.100495.20.2.22|
+|用法種別|JAMI処方・注射オーダ標準用法規格(時間的要素・機器区分コード表)|http://jami.jp/CodeSystem/MedicationUsage（仮）|
+|薬品単位|MERIT-9(単位）|http://jpfhir.jp/fhir/core/mhlw/CodeSystem/MedicationUnitMERIT9Code|
+|力価区分|処方情報 HL7FHIR 記述仕様(力価区分)|http://jpfhir.jp/fhir/core/mhlw/CodeSystem/MedicationIngredientStrengthType|
 |頓用条件|JAMI処方・注射オーダ標準用法規格(表6 イベント区分、イベント詳細区分)|http://jpfhir.jp/fhir/core/CodeSystem/JP_MedicationAsNeededConditionJAMI_CS |
 |頓用条件|MERIT-9(頓用指示)|http://jpfhir.jp/fhir/core/CodeSystem/JP_MedicationAsNeededConditionMERIT9_CS |
-|投与部位|JAMI処方・注射オーダ標準用法規格(部位コード)|urn:oid:1.2.392.200250.2.2.20.32|
+|投与部位|JAMI処方・注射オーダ標準用法規格(部位コード)|http://jami.jp/CodeSystem/MedicationBodySiteExternal|
 |投与部位|HL7 V2(HL7表0550)|http://terminology.hl7.org/CodeSystem/v2-0550|
 |投与部位(修飾子)|HL7 V2(HL7表0495)|http://terminology.hl7.org/CodeSystem/v2-0495|
 |投与装置|HL7 V2(使用者定義表0164)|http://terminology.hl7.org/CodeSystem/v2-0164|
-|投与方法|JAMI処方・注射オーダ標準用法規格(基本用法区分)|urn:oid:1.2.392.200250.2.2.20.30|
+|投与方法|JAMI処方・注射オーダ標準用法規格(基本用法区分)|http://jami.jp/CodeSystem/MedicationMethodBasicUsage|
 |投与手技|HL7 V2(使用者定義表0165)|http://terminology.hl7.org/CodeSystem/v2-0165|
-|投与手技|JAMI処方・注射オーダ標準用法規格(用法詳細区分)|urn:oid:1.2.392.200250.2.2.20.40|
+|投与手技|JAMI処方・注射オーダ標準用法規格(用法詳細区分)|http://jami.jp/CodeSystem/MedicationMethodDetailUsage|
 |投与手技|JAHIS注射データ交換規約Ver.2.1C(JHSI表0003)|http://jpfhir.jp/fhir/core/CodeSystem/JHSI0003|
 |投与経路|HL7 V2(使用者定義表0162)|http://jpfhir.jp/fhir/core/CodeSystem/route-codes|
 |入外区分|HL7 V2(HL7表0482)|http://terminology.hl7.org/CodeSystem/v2-0482|
@@ -90,7 +89,7 @@ HL7 ver 2系では用語集を識別するコーディングシステム名(以�
 | SHOULD            | patient      | reference | GET [base]/MedicationRequest?patient=123456   |
 | SHOULD           | patient,date | reference,date  | GET [base]/MedicationRequest?patient=123456&date=eq2013-01-14 |
 | SHOULD           | patient,authoredon | reference,date  | GET [base]/MedicationRequest?patient=123456&authoredon=eq2013-01-14 |
-| MAY           | date,authoredon,category,code,requester | date,date,token,token,reference | GET [base]/MedicationRequest?code=urn:oid:1.2.392.200119.4.403.1\|105271807  |
+| MAY           | date,authoredon,category,code,requester | date,date,token,token,reference | GET [base]/MedicationRequest?code=http://medis.or.jp/CodeSystem/master-HOT9\|105271807  |
 
 ##### 必須検索パラメータ
 
@@ -166,81 +165,7 @@ HL7 ver 2系では用語集を識別するコーディングシステム名(以�
 
 #### Operation一覧
 
-JP Core MedicationRequest Injection リソースに対して使用される操作は次の通りである。
-
-- $everything：[base]/MedicationRequest/[id]/$everything
-
-  - この操作が呼び出された特定のMedicationRequestに関連する全ての情報を返す
-    
-
-#### Operation 詳細
-
-##### $everything 操作
-
-この操作は、この操作が呼び出された特定のMedicationRequestリソースに関連する全ての情報を返す。応答は "searchset" タイプのBundleリソースである。サーバは、少なくとも、識別されたMedicationRequestコンパートメントに含まれる全てのリソースと、それらから参照されるすべてのリソースを返すことが望ましい。
-
-この操作の公式なURLは以下である。
-
-```
-http://hl7.jp/fhir/OperationDefinition/MedicationRequest-everything
-```
-
-URL: [base]/MedicationRequest/[id]/$everything
-
-本操作は、べき等な操作である。
-
-
-###### 入力パラメータ
-
-| 名前   | 多重度 | 型      | 説明                                                         |
-| ------ | ------ | ------- | ------------------------------------------------------------ |
-| start  | 0..1   | date    | 特定の日付範囲で提供されたケアに関連する全ての記録を意味する。開始日が指定されていない場合、終了日以前のすべてのレコードが対象に含まれる。 |
-| end    | 0..1   | date    | 特定の日付範囲で提供されたケアに関連する全ての記録を意味する。終了日が指定されていない場合、開始日以降のすべてのレコードが対象に含まれる。 |
-| _since | 0..1   | instant | 指定された日時以降に更新されたリソースのみが応答に含まれる。 |
-| _type  | 0..*   | code    | 応答に含むFHIRリソース型を、カンマ区切りで指定する。指定されない場合は、サーバは全てのリソース型を対象とする。 |
-| _count | 0..1   | integer | Bundleの1ページに含まれるリソース件数を指定。                |
-
-###### 出力パラメータ
-
-| 名前   | 多重度 | 型     | 説明                                                         |
-| ------ | ------ | ------ | ------------------------------------------------------------ |
-| return | 1..1   | Bundle | バンドルのタイプは"searchset"である。この操作の結果は、リソースとして直接返される。 |
-
-###### 例
-
-リクエスト：単一のMedicationRequestに関連する全てのリソースを取得する。
-
-```
-GET [base]/MedicationRequest/1234567890/$everything
-[some headers]
-```
-
-レスポンス：指定されたMedicationRequestに関連する全てのリソースを返す。
-
-```
-HTTP/1.1 200 OK
-[other headers]
-
-{
-  "resourceType": "Bundle",
-  "id": "example",
-  "meta": {
-    "lastUpdated": "2014-08-18T01:43:33Z"
-  },
-  "type": "searchset",
-  "entry": [
-    {
-      "fullUrl": "http://example.org/fhir/MedicationRequest/1234567890",
-      "resource": {
-        "resourceType": "MedicationRequest",
-
-          ・・・
-
-       },
-    }
-  ]
-}  
-```
+JP Core MedicationRequest Injection リソースに対する操作は定義されていない。
 
 ### サンプル
 ホリゾン注射液１０ｍｇ１アンプルを左腕に静脈注射する処方例をFHIRで表現する場合のサンプルを示す。
@@ -275,7 +200,7 @@ dosageInstruction.doseAndRate.doseQuantity要素には、情報が得られる�
             {
               "code": "107750602",
               "display": "ソリタ－Ｔ３号輸液５００ｍＬ",
-              "system": "urn:oid:1.2.392.200119.4.403.1"
+              "system": "http://medis.or.jp/CodeSystem/master-HOT9"
             }
           ]
         },
@@ -283,13 +208,13 @@ dosageInstruction.doseAndRate.doseQuantity要素には、情報が得られる�
           "numerator": {
             "value": 1,
             "unit": "本",
-            "system": "urn:oid:1.2.392.100495.20.2.101",
+            "system": "http://jpfhir.jp/fhir/core/mhlw/CodeSystem/MedicationUnitMERIT9Code",
             "code": "HON"
           },
           "denominator": {
             "value": 1,
             "unit": "回",
-            "system": "urn:oid:1.2.392.100495.20.2.101",
+            "system": "http://jpfhir.jp/fhir/core/mhlw/CodeSystem/MedicationUnitMERIT9Code",
             "code": "TIME"
           }
         }
@@ -299,7 +224,7 @@ dosageInstruction.doseAndRate.doseQuantity要素には、情報が得られる�
             {
               "code": "108010001",
               "display": "アドナ注（静脈用）50mg／10mL",
-              "system": "urn:oid:1.2.392.200119.4.403.1"
+              "system": "http://medis.or.jp/CodeSystem/master-HOT9"
             }
           ]
         },
@@ -307,13 +232,13 @@ dosageInstruction.doseAndRate.doseQuantity要素には、情報が得られる�
           "numerator": {
             "value": 1,
             "unit": "アンプル",
-            "system": "urn:oid:1.2.392.100495.20.2.101",
+            "system": "http://jpfhir.jp/fhir/core/mhlw/CodeSystem/MedicationUnitMERIT9Code",
             "code": "AMP"
           },
           "denominator": {
             "value": 1,
             "unit": "回",
-            "system": "urn:oid:1.2.392.100495.20.2.101",
+            "system": "http://jpfhir.jp/fhir/core/mhlw/CodeSystem/MedicationUnitMERIT9Code",
             "code": "TIME"
           }
         }
@@ -383,7 +308,7 @@ dosageInstruction.doseAndRate.doseQuantity要素には、情報が得られる�
         {
           "code": "107750602",
           "display": "ソリタ－Ｔ３号輸液５００ｍＬ",
-          "system": "urn:oid:1.2.392.200119.4.403.1"
+          "system": "http://medis.or.jp/CodeSystem/master-HOT9"
         }
       ]
     },
@@ -394,7 +319,7 @@ dosageInstruction.doseAndRate.doseQuantity要素には、情報が得られる�
           "valueCodeableConcept": {
             "coding": [
               {
-                "system": "urn:oid:1.2.392.100495.20.2.22",
+                "system": "http://jpfhir.jp/fhir/core/mhlw/CodeSystem/MedicationIngredientStrengthType",
                 "code": "1",
                 "display": "製剤量"
               }
@@ -405,13 +330,13 @@ dosageInstruction.doseAndRate.doseQuantity要素には、情報が得られる�
       "numerator": {
         "value": 1,
         "unit": "本",
-        "system": "urn:oid:1.2.392.100495.20.2.101",
+        "system": "http://jpfhir.jp/fhir/core/mhlw/CodeSystem/MedicationUnitMERIT9Code",
         "code": "HON"
       },
       "denominator": {
         "value": 1,
         "unit": "回",
-        "system": "urn:oid:1.2.392.100495.20.2.101",
+        "system": "http://jpfhir.jp/fhir/core/mhlw/CodeSystem/MedicationUnitMERIT9Code",
         "code": "TIME"
       }
     },
@@ -523,7 +448,7 @@ dosageInstruction.doseAndRate.doseQuantity要素には、情報が得られる�
 ```
 
 ### 投与部位の記述方法
-投与部位を指定する場合は、dosageInstruction.site 要素に、CodeableConcept型で指定する。部位コードは、JAMI標準用法コード 表13 外用部位コード（"urn:oid:1.2.392.200250.2.2.20.32"）を推奨する。
+投与部位を指定する場合は、dosageInstruction.site 要素に、CodeableConcept型で指定する。部位コードは、JAMI標準用法コード 表13 外用部位コード（"http://jami.jp/CodeSystem/MedicationBodySiteExternal"）を推奨する。
 HL7表0550 身体部位("http://terminology.hl7.org/CodeSystem/v2-0550")とHL7表0495 身体部位修飾子("http://terminology.hl7.org/CodeSystem/v2-0495")を組み合わせて使用してもよいが、その場合は拡張「BodyStructure」を使用する。
 この拡張は BodyStructureリソースを参照することができるので、location 要素にHL7表0550 身体部位("http://terminology.hl7.org/CodeSystem/v2-0550")のコードを、locationQualifier 要素に
 身体部位修飾子("http://terminology.hl7.org/CodeSystem/v2-0495")のコードをそれぞれ指定したBodyStructureリソースをMedicationRequestリソースのcontained属性に内包し、それをExtension.valueReference 要素で参照するようにする。
@@ -536,7 +461,7 @@ HL7表0550 身体部位("http://terminology.hl7.org/CodeSystem/v2-0550")とHL7�
     "site": {
       "coding": [
         {
-          "system": "urn:oid:1.2.392.200250.2.2.20.32",
+          "system": "http://jami.jp/CodeSystem/MedicationBodySiteExternal",
           "code": "73L",
           "display": "左腕"
         }
@@ -593,7 +518,7 @@ HL7表0550 身体部位("http://terminology.hl7.org/CodeSystem/v2-0550")とHL7�
 ### 投与経路、投与手技の記述方法
 「静脈内」「眼内」などの投与経路は、dosageInstruction.route 要素にコードまたは文字列で指定する。使用するコード表はHL7 V2の使用者定義表0162 投薬経路を推奨し、その場合識別するURIとして、"http://jpfhir.jp/fhir/core/CodeSystem/route-codes"を使用する。
 
-「0:静脈注射」、「1:中心静脈注射」などJAMI標準用法コードにて用法詳細区分として表現される区分（注射では「投与手技」とも呼ばれる）は、dosageInstruction.method 要素にコードまたは文字列で指定する。 用法詳細区分を識別するURIとして、"urn:oid:1.2.392.200250.2.2.20.30"を使用する。HL7 V2の使用者定義表0165("http://terminology.hl7.org/CodeSystem/v2-0165")やJAHIS注射データ交換規約のJHSI表0003 精密持続点滴("http://jpfhir.jp/fhir/core/CodeSystem/JHSI0003)を使用してもよい。
+「0:静脈注射」、「1:中心静脈注射」などJAMI標準用法コードにて用法詳細区分として表現される区分（注射では「投与手技」とも呼ばれる）は、dosageInstruction.method 要素にコードまたは文字列で指定する。 用法詳細区分を識別するURIとして、"http://jami.jp/CodeSystem/MedicationMethodBasicUsage"を使用する。HL7 V2の使用者定義表0165("http://terminology.hl7.org/CodeSystem/v2-0165")やJAHIS注射データ交換規約のJHSI表0003 精密持続点滴("http://jpfhir.jp/fhir/core/CodeSystem/JHSI0003)を使用してもよい。
 
 ```json
 "route": {
@@ -608,7 +533,7 @@ HL7表0550 身体部位("http://terminology.hl7.org/CodeSystem/v2-0550")とHL7�
 "method": {
   "coding": [
     {
-      "system": "urn:oid:1.2.392.200250.2.2.20.40",
+      "system": "http://jami.jp/CodeSystem/MedicationMethodDetailUsage",
       "code": "30",
       "display": "静脈注射"
     }
@@ -680,29 +605,29 @@ HL7 V2の使用者定義表0164 投薬装置を使用してもよい。
 ]
 ```
 
-### 注射箋番号(オーダID)の記述方法
-注射箋を識別する番号も、同様に MedicationRequestリソースの identifier 要素で表現することができる。Identifier 型のsystem 要素には、保険医療機関番号を含む注射箋ID の名前空間を表すOID（urn:oid:1.2.392.100495.20.3.11.1[保険医療機関コード(10 桁)]）を指定する。全国で⼀意になる発番ルールにもとづく場合には "urn:oid:1.2.392.100495.20.3.11" とする。
+### 注射箋オーダ番号(オーダID)の記述方法
+注射箋を識別する番号も、同様に MedicationRequestリソースの identifier 要素で表現することができる。
 
 ```json
 "identifier": [
   {
-    "system": "urn:oid:1.2.392.100495.20.3.11.1.11311234567",
+    "system": "http://jpfhir.jp/fhir/core/IdSystem/resourceInstance-identifier",
     "value": "2020-00123456"
   },
 ]
 ```
 
 ### RP番号、薬剤番号、施用番号の記述方法
-HL7 FHIRでは、注射箋の中で同一の用法を持つ剤グループ(RP)は、剤単位に個別のMedicationRequestリソースに展開される。このとき、剤グループの番号（RP番号と呼ぶ）と、同一剤グループ内での順番は、いずれも MedicationRequestリソースの identifier で表現することができる。RP番号を識別するURIとして、"urn:oid:1.2.392.100495.20.3.81"を使用する。同一剤グループ内での順番を識別するURIとして、"urn:oid:1.2.392.100495.20.3.82"を使用する。value は 文字列型であり、数値はゼロサプレス、つまり、"01"でなく"1"と指定すること。
+HL7 FHIRでは、注射箋の中で同一の用法を持つ剤グループ(RP)は、剤単位に個別のMedicationRequestリソースに展開される。このとき、剤グループの番号（RP番号と呼ぶ）と、同一剤グループ内での順番は、いずれも MedicationRequestリソースの identifier で表現することができる。RP番号を識別するURIとして、"http://jpfhir.jp/fhir/core/mhlw/IdSystem/Medication-RPGroupNumber"を使用する。同一剤グループ内での順番を識別するURIとして、"http://jpfhir.jp/fhir/core/mhlw/IdSystem/MedicationAdministrationIndex"を使用する。value は 文字列型であり、数値はゼロサプレス、つまり、"01"でなく"1"と指定すること。
 
 ```json
 "identifier": [
   {
-    "system": "urn:oid:1.2.392.100495.20.3.81",
+    "system": "http://jpfhir.jp/fhir/core/mhlw/IdSystem/Medication-RPGroupNumber",
     "value": "1"
   },
   {
-    "system": "urn:oid:1.2.392.100495.20.3.82",
+    "system": "http://jpfhir.jp/fhir/core/mhlw/IdSystem/MedicationAdministrationIndex",
     "value": "1"
   }
 ]
@@ -796,7 +721,7 @@ HL7 FHIRでは、注射箋の中で同一の用法を持つ剤グループ(RP)�
 ```
 
 ### 用法種別
-ワンショットや点滴など、薬剤オーダの時間的な区分である用法種別は、JAMI処方・注射オーダ標準用法規格の表14 時間的要素・機器区分コード表を使用し、dosageInstruction.additionalInstruction要素にコードおよび文字列で指定することができる。時間的要素・機器区分コード表を識別するURIとして"urn:oid:1.2.392.200250.2.2.20.45"を使用する。
+ワンショットや点滴など、薬剤オーダの時間的な区分である用法種別は、JAMI処方・注射オーダ標準用法規格の表14 時間的要素・機器区分コード表を使用し、dosageInstruction.additionalInstruction要素にコードおよび文字列で指定することができる。時間的要素・機器区分コード表を識別するURIとして"http://jami.jp/CodeSystem/MedicationUsage"（仮）を使用する。
 
 ```json
 "dosageInstruction": [
@@ -804,7 +729,7 @@ HL7 FHIRでは、注射箋の中で同一の用法を持つ剤グループ(RP)�
     "additionalInstruction": [
       {
         "coding": [ {
-          "system": "urn:oid:1.2.392.200250.2.2.20.45",
+          "system": "http://jami.jp/CodeSystem/MedicationUsage",
           "code": "1",
           "display": "ワンショット"
         } ]

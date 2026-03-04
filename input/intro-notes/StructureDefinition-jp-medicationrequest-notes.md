@@ -30,30 +30,30 @@ HL7 V2系では用語集を識別するコーディングシステム名(以下�
 
 |分類|CS名|URI|
 |---------|----|---------------------------|
-|医薬品|HOT7|urn:oid:1.2.392.200119.4.403.2|
-|医薬品|HOT9|urn:oid:1.2.392.200119.4.403.1|
-|医薬品|HOT13|urn:oid:1.2.392.200119.4.402.1|
-|医薬品|YJコード|urn:oid:1.2.392.100495.20.1.73|
-|医薬品|⼀般処⽅名マスター|urn:oid:1.2.392.100495.20.1.81|
+|医薬品|HOT7|http://medis.or.jp/CodeSystem/master-HOT7|
+|医薬品|HOT9|http://medis.or.jp/CodeSystem/master-HOT9|
+|医薬品|HOT13|http://medis.or.jp/CodeSystem/master-HOT13|
+|医薬品|YJコード|http://capstandard.jp/iyaku.info/CodeSystem/YJ-code|
+|医薬品|⼀般処⽅名マスター|http://jpfhir.jp/fhir/core/mhlw/CodeSystem/MedicationGeneralOrderCode|
 |剤形|MERIT-9(剤形)|http://jpfhir.jp/fhir/core/CodeSystem/JP_MedicationFormMERIT9_CS|
 |処方区分|MERIT-9(処方区分)|http://jpfhir.jp/fhir/core/CodeSystem/JP_MedicationCategoryMERIT9_CS|
 |処方区分|JAHIS処方データ交換規約Ver.3.0C(JHSP表0007)|http://jpfhir.jp/fhir/core/CodeSystem/JHSP0007|
-|薬品単位|MERIT-9(単位）|urn:oid:1.2.392.100495.20.2.101|
-|力価区分|処方情報HL7 FHIR記述仕様(力価区分)|urn:oid:1.2.392.100495.20.2.22|
-|調剤指示|処方情報HL7 FHIR記述仕様(調剤指示)|urn:oid:1.2.392.200250.2.2.30.10|
-|用法|JAMI処方・注射オーダ標準用法規格(用法コード)|urn:oid:1.2.392.200250.2.2.20|
-|用法|JAMI処方・注射オーダ標準用法規格(補足用法コード)|urn:oid:1.2.392.200250.2.2.20.22|
-|投与部位|JAMI処方・注射オーダ標準用法規格(部位コード)|urn:oid:1.2.392.200250.2.2.20.32|
+|薬品単位|MERIT-9(単位）|http://jpfhir.jp/fhir/core/mhlw/CodeSystem/MedicationUnitMERIT9Code|
+|力価区分|処方情報HL7 FHIR記述仕様(力価区分)|http://jpfhir.jp/fhir/core/mhlw/CodeSystem/MedicationIngredientStrengthType|
+|調剤指示|処方情報HL7 FHIR記述仕様(調剤指示)|http://jami.jp/CodeSystem/DrugDispensePreparationMethod|
+|用法|JAMI処方・注射オーダ標準用法規格(用法コード)|http://jami.jp/CodeSystem/MedicationUsage|
+|用法|JAMI処方・注射オーダ標準用法規格(補足用法コード)|http://jami.jp/CodeSystem/MedicationUsageAdditional|
+|投与部位|JAMI処方・注射オーダ標準用法規格(部位コード)|http://jami.jp/CodeSystem/MedicationBodySiteExternal|
 |投与経路|HL7 V2(使用者定義表0162)|http://jpfhir.jp/fhir/core/CodeSystem/route-codes|
-|投与方法2桁コード|JAMI処方・注射オーダ標準用法規格(用法詳細区分)|urn:oid:1.2.392.200250.2.2.20.40|
+|投与方法2桁コード|JAMI処方・注射オーダ標準用法規格(用法詳細区分)|http://jami.jp/CodeSystem/MedicationMethodDetailUsage|
 |入外区分|HL7 V2(HL7表0482)|http://terminology.hl7.org/CodeSystem/v2-0482|
 
 ### 制約一覧
 JP Core MedicationRequest リソースは、以下の制約を満たさなければならない。
-- dosageInstruction.doseAndRage.rateRatio.denominator.value : １日量を記述する場合"1"に固定される
-- dosageInstruction.doseAndRage.rateRatio.denominator.unit : １日量を記述する場合"日"に固定される
-- dosageInstruction.doseAndRage.rateRatio.denominator.system : １日量を記述する場合"http://unitsofmeasure.org"に固定される
-- dosageInstruction.doseAndRage.rateRatio.denominator.code : １日量を記述する場合"d"に固定される
+- dosageInstruction.doseAndRate.rateRatio.denominator.value : １日量を記述する場合"1"に固定される
+- dosageInstruction.doseAndRate.rateRatio.denominator.unit : １日量を記述する場合"日"に固定される
+- dosageInstruction.doseAndRate.rateRatio.denominator.system : １日量を記述する場合"http://unitsofmeasure.org"に固定される
+- dosageInstruction.doseAndRate.rateRatio.denominator.code : １日量を記述する場合"d"に固定される
 
 ### 項目の追加
 療養担当則23条では、「保険医は、処方箋を交付する場合には、様式第二号若しくは第二号の二又はこれらに準ずる様式の処方箋に必要な事項を記載しなければならない。」とされており、外来処方、院内処方の区分を明示していない。したがって、個別のユースケースにおいては一部を省略されることも前提の上で、規格としてはこれに準拠すべきと考え、様式に収載されている以下の項目を追加した。
@@ -78,7 +78,7 @@ JP Core MedicationRequest リソースは、以下の制約を満たさなけれ
 | SHOULD           | patient,date | reference,date  | GET [base]/MedicationRequest?patient=123456&date=eq2013-01-14 |
 | SHOULD           | patient,authoredon | reference,date  | GET [base]/MedicationRequest?patient=123456&authoredon=eq2013-01-14 |
 | SHOULD         | patient,jp-medication-start | date | GET [base]/MedicationRequest?patient=123456&jp-meditation-start=eq2013-03-21 |
-| MAY           | date,authoredon,category,code,requester | date,date,token,token,reference | GET [base]/MedicationRequest?code=urn:oid:1.2.392.200119.4.403.1\|105271807  |
+| MAY           | date,authoredon,category,code,requester | date,date,token,token,reference | GET [base]/MedicationRequest?code=http://medis.or.jp/CodeSystem/master-HOT9\|105271807  |
 
 ##### 必須検索パラメータ
 
@@ -167,81 +167,7 @@ JP Core MedicationRequest リソースは、以下の制約を満たさなけれ
 
 #### Operation一覧
 
-JP MedicationRequest リソースに対して使用される操作は次の通りである。
-
-- $everything：[base]/MedicationRequest/[id]/$everything
-
-  - この操作が呼び出された特定のMedicationRequestに関連する全ての情報を返す
-    
-
-#### Operation 詳細
-
-#####  $everything 操作
-
-この操作は、この操作が呼び出された特定のMedicationRequestリソースに関連する全ての情報を返す。応答は "searchset" タイプのBundleリソースである。サーバは、少なくとも、識別されたMedicationRequestコンパートメントに含まれる全てのリソースと、それらから参照されるすべてのリソースを返すことが望ましい。
-
-この操作の公式なURLは以下である。
-
-```
-http://hl7.jp/fhir/OperationDefinition/MedicationRequest-everything
-```
-
-URL: [base]/MedicationRequest/[id]/$everything
-
-本操作は、べき等な操作である。
-
-
-###### 入力パラメータ
-
-| 名前   | 多重度 | 型      | 説明                                                         |
-| ------ | ------ | ------- | ------------------------------------------------------------ |
-| start  | 0..1   | date    | 特定の日付範囲で提供されたケアに関連する全ての記録を意味する。開始日が指定されていない場合、終了日以前のすべてのレコードが対象に含まれる。 |
-| end    | 0..1   | date    | 特定の日付範囲で提供されたケアに関連する全ての記録を意味する。終了日が指定されていない場合、開始日以降のすべてのレコードが対象に含まれる。 |
-| _since | 0..1   | instant | 指定された日時以降に更新されたリソースのみが応答に含まれる。 |
-| _type  | 0..*   | code    | 応答に含むFHIRリソース型を、カンマ区切りで指定する。指定されない場合は、サーバは全てのリソース型を対象とする。 |
-| _count | 0..1   | integer | Bundleの1ページに含まれるリソース件数を指定。                |
-
-###### 出力パラメータ
-
-| 名前   | 多重度 | 型     | 説明                                                         |
-| ------ | ------ | ------ | ------------------------------------------------------------ |
-| return | 1..1   | Bundle | バンドルのタイプは"searchset"である。この操作の結果は、リソースとして直接返される。 |
-
-###### 例
-
-リクエスト：単一のMedicationRequestに関連する全てのリソースを取得する。
-
-```
-GET [base]/MedicationRequest/1234567890/$everything
-[some headers]
-```
-
-レスポンス：指定されたMedicationRequestに関連する全てのリソースを返す。
-
-```
-HTTP/1.1 200 OK
-[other headers]
-
-{
-  "resourceType": "Bundle",
-  "id": "example",
-  "meta": {
-    "lastUpdated": "2014-08-18T01:43:33Z"
-  },
-  "type": "searchset",
-  "entry": [
-    {
-      "fullUrl": "http://example.org/fhir/MedicationRequest/1234567890",
-      "resource": {
-        "resourceType": "MedicationRequest",
-
-          ・・・
-
-       },
-    }
-  ]
-}  
-```
+JP MedicationRequest リソースに対する操作は定義されていない。
 
 ### サンプル
 [JAHIS処方データ交換規約 Ver.3.0C](https://www.jahis.jp/standard/detail/id=564)98ページに記載されている下記の処方例をFHIRで表現する場合のサンプルを示す
@@ -299,7 +225,7 @@ Timingデータ型のrepeat.boundsDuration要素を使用した服用期間の�
 ``` 
 
 ### １回量と１日量の記述方法
-2010年1月に医療ミス防止の観点から、慣例として普及していた一日量処方ではなく、1回量処方を推奨するという「内服薬処方せんの記載方法の在り方に関する検討会報告書」が厚生労働省から出された。そもそも、HL7 FHIRでは1回量処方を前提としていることから、本ワーキンググループでも、1回量処方のみの対応で良いとの意見も出た。しかし、8年経過した＝ても処方箋の8割が一日量処方を使用しているとの報告があり、システムによっては1回量処方に対応していないことから一日量処方にも対応することとした。
+2010年1月に医療ミス防止の観点から、慣例として普及していた一日量処方ではなく、1回量処方を推奨するという「内服薬処方せんの記載方法の在り方に関する検討会報告書」が厚生労働省から出された。そもそも、HL7 FHIRでは1回量処方を前提としていることから、本ワーキンググループでも、1回量処方のみの対応で良いとの意見も出た。しかし、2018年の調査でも処方箋の8割が一日量処方を使用しているとの報告があり、システムによっては1回量処方に対応していないことから一日量処方にも対応することとした。
 
 1回量は、dosageInstruction.doseAndRate.doseQuantity要素 にSimpleQuantity型で記述する。単位コードには、医薬品単位略号を使用する。
 
@@ -311,14 +237,14 @@ Timingデータ型のrepeat.boundsDuration要素を使用した服用期間の�
    "doseQuantity": {
       "value": 1,
       "unit": "錠",
-      "system": "urn:oid:1.2.392.100495.20.2.101",
+      "system": "http://jpfhir.jp/fhir/core/mhlw/CodeSystem/MedicationUnitMERIT9Code",
       "code": "TAB"
    },
    "rateRatio": {
       "numerator": {
          "value": 3,
          "unit": "錠",
-         "system": "urn:oid:1.2.392.100495.20.2.101",
+         "system": "http://jpfhir.jp/fhir/core/mhlw/CodeSystem/MedicationUnitMERIT9Code",
          "code": "TAB"
       },
       "denominator": {
@@ -334,7 +260,7 @@ Timingデータ型のrepeat.boundsDuration要素を使用した服用期間の�
 doseQuantityエレメントは省略可能(0..1)である。
 
 ### 力価区分の記述方法
-用量は製剤量で記述することを基本とするが、必要に応じて原薬量指定も可能とする。この識別は、dosageInstruction.doseAndRate.type 要素に、力価区分コードを指定することで行い、製剤量は「1」、原薬量は「2」とする。本要素は、安全性のため省略せずに必須とする。
+用量は製剤量で記述することを基本とするが、必要に応じて原薬量指定も可能とする。この識別は、dosageInstruction.doseAndRate.type 要素に、力価区分コードを指定することで行い、製剤量は「1」、原薬量は「2」とする。本要素は、省略せず記入されることが望ましい。
 
 投与量「1回1錠（1日3錠）」を製剤量で記録したインスタンス例を示す。
 ```json
@@ -345,7 +271,7 @@ doseQuantityエレメントは省略可能(0..1)である。
         "type": {
           "coding": [
             {
-              "system": "urn:oid:1.2.392.100495.20.2.22",
+              "system": "http://jpfhir.jp/fhir/core/mhlw/CodeSystem/MedicationIngredientStrengthType",
               "code": "1",
               "display": "製剤量"
             }
@@ -354,14 +280,14 @@ doseQuantityエレメントは省略可能(0..1)である。
         "doseQuantity": {
           "value": 1,
           "unit": "錠",
-          "system": "urn:oid:1.2.392.100495.20.2.101",
+          "system": "http://jpfhir.jp/fhir/core/mhlw/CodeSystem/MedicationUnitMERIT9Code",
           "code": "TAB"
         },
         "rateRatio": {
           "numerator": {
             "value": 3,
             "unit": "錠",
-            "system": "urn:oid:1.2.392.100495.20.2.101",
+            "system": "http://jpfhir.jp/fhir/core/mhlw/CodeSystem/MedicationUnitMERIT9Code",
             "code": "TAB"
           },
           "denominator": {
@@ -384,7 +310,7 @@ doseQuantityエレメントは省略可能(0..1)である。
   "quantity": {
     "value": 21,
     "unit": "錠",
-    "system": "urn:oid:1.2.392.100495.20.2.101",
+    "system": "http://jpfhir.jp/fhir/core/mhlw/CodeSystem/MedicationUnitMERIT9Code",
     "code": "TAB"
   },
   "expectedSupplyDuration": {
@@ -398,7 +324,7 @@ doseQuantityエレメントは省略可能(0..1)である。
 
 ### 調剤指示の記述方法
 単一の薬剤に対する調剤指示は、dispenseRequest要素に対して定義した拡張「InstructionForDispense」を使用する。この拡張は、CodeableConcept型を使用して、コード化された指示ないしテキストによる指示を記録できる。両方を併記してもよい。テキストによる指示を記録する場合は text要素を使用する。一つの薬剤に対して、複数の指示を記録する場合には、この拡張を、拡張単位で繰り返して記録する。 
-調剤指示で使用するコードは、処方情報HL7 FHIR記述仕様(調剤指示)("urn:oid:1.2.392.200250.2.2.30.10")を推奨する。
+調剤指示で使用するコードは、処方情報HL7 FHIR記述仕様(調剤指示)("http://jami.jp/CodeSystem/DrugDispensePreparationMethod")を推奨する。
 
 薬剤単位の調剤指示を表すインスタンス例を示す。
 ```json
@@ -416,7 +342,7 @@ doseQuantityエレメントは省略可能(0..1)である。
         "coding": [
           {
             "code": "C",
-            "system": "urn:oid:1.2.392.200250.2.2.30.10",
+            "system": "http://jami.jp/CodeSystem/DrugDispensePreparationMethod",
             "display": "粉砕指示"
           }
         ]
@@ -426,7 +352,7 @@ doseQuantityエレメントは省略可能(0..1)である。
 ```
 
 ### 外用部位の記述方法
-外用用法で部位を指定する場合は、dosageInstruction.site 要素に、CodeableConcept型で指定する。部位コードは、JAMI標準用法コード 表13 外用部位コード（"urn:oid:1.2.392.200250.2.2.20.32"）を使用する。
+外用用法で部位を指定する場合は、dosageInstruction.site 要素に、CodeableConcept型で指定する。部位コードは、JAMI標準用法コード 表13 外用部位コード（"http://jami.jp/CodeSystem/MedicationBodySiteExternal"）を使用する。
 ```json
 "dosageInstruction": [
   {
@@ -435,7 +361,7 @@ doseQuantityエレメントは省略可能(0..1)である。
       "code": {
         "coding": [
           {
-            "system": "urn:oid:1.2.392.200250.2.2.20",
+            "system": "http://jami.jp/CodeSystem/MedicationUsage",
             "code": "2H73000000000000",
             "display": "外用・点眼・１日３回"
           }
@@ -445,7 +371,7 @@ doseQuantityエレメントは省略可能(0..1)である。
     "site": {
       "coding": [
         {
-          "system": "urn:oid:1.2.392.200250.2.2.20.32",
+          "system": "http://jami.jp/CodeSystem/MedicationBodySiteExternal",
           "code": "26R",
           "display": "右眼"
         }
@@ -467,33 +393,33 @@ doseQuantityエレメントは省略可能(0..1)である。
   "quantity": {
     "value": 10,
     "unit": "錠",
-    "system": "urn:oid:1.2.392.100495.20.2.101",
+    "system": "http://jpfhir.jp/fhir/core/mhlw/CodeSystem/MedicationUnitMERIT9Code",
     "code": "TAB"
   }
 }
 ```
 
 ### RP番号、薬剤番号の記述方法
-HL7 FHIRでは、処方箋の中で同一の用法を持つ剤グループ(RP)は、剤単位に個別のMedicationRequestリソースに展開される。このとき、剤グループの番号（RP番号と呼ぶ）と、同一剤グループ内での順番は、いずれも MedicationRequestリソースの identifier で表現することができる。RP番号を識別するURIとして、"urn:oid:1.2.392.100495.20.3.81"を使用する。同一剤グループ内での順番を識別するURIとして、"urn:oid:1.2.392.100495.20.3.82"を使用する。value は 文字列型であり、数値はゼロサプレス、つまり、"01"でなく"1"と指定すること。
+HL7 FHIRでは、処方箋の中で同一の用法を持つ剤グループ(RP)は、剤単位に個別のMedicationRequestリソースに展開される。このとき、剤グループの番号（RP番号と呼ぶ）と、同一剤グループ内での順番は、いずれも MedicationRequestリソースの identifier で表現することができる。RP番号を識別するURIとして、"http://jpfhir.jp/fhir/core/mhlw/IdSystem/Medication-RPGroupNumber"を使用する。同一剤グループ内での順番を識別するURIとして、"http://jpfhir.jp/fhir/core/mhlw/IdSystem/MedicationAdministrationIndex"を使用する。value は 文字列型であり、数値はゼロサプレス、つまり、"01"でなく"1"と指定すること。
 ```json
 "identifier": [
   {
-    "system": "urn:oid:1.2.392.100495.20.3.81",
+    "system": "http://jpfhir.jp/fhir/core/mhlw/IdSystem/Medication-RPGroupNumber",
     "value": "1"
   },
   {
-    "system": "urn:oid:1.2.392.100495.20.3.82",
+    "system": "http://jpfhir.jp/fhir/core/mhlw/IdSystem/MedicationAdministrationIndex",
     "value": "1"
   }
 ]
 ```
 
-### 処方箋番号(オーダID)の記述方法
-処方箋を識別する番号も、同様に MedicationRequestリソースの identifier 要素で表現することができる。Identifier 型のsystem 要素には、保険医療機関番号を含む処方箋ID の名前空間を表すOID（urn:oid:1.2.392.100495.20.3.11.1[保険医療機関コード(10 桁)]）を指定する。全国で⼀意になる発番ルールにもとづく場合には "urn:oid:1.2.392.100495.20.3.11" とする。
+### 処方箋オーダ番号(オーダID)の記述方法
+処方箋（処方オーダ）の識別子も、同様に MedicationRequestリソースの identifier 要素で表現することができる。
 ```json
 "identifier": [
   {
-    "system": "urn:oid:1.2.392.100495.20.3.11.1.11311234567",
+    "system": "http://jpfhir.jp/fhir/core/IdSystem/resourceInstance-identifier",
     "value": "2020-00123456"
   },
 ]
@@ -502,7 +428,7 @@ HL7 FHIRでは、処方箋の中で同一の用法を持つ剤グループ(RP)�
 ### 投与方法、投与経路
 投与経路はdosageInstruction.route 要素にコードまたは文字列で指定する。使用するコード表は HL7 V2の使用者定義表0162 投薬経路を推奨し、その場合識別するURIとして、"http://jpfhir.jp/fhir/core/CodeSystem/route-codes"を使用する。
 
-「A:貼付」、「B:塗布」などJAMI標準用法コードにて用法詳細区分として表現される区分は、dosageInstruction.method 要素にコードまたは文字列で指定する。 用法詳細区分を識別するURIとして、"urn:oid:1.2.392.200250.2.2.20.40"を使用する。コードを指定する場合、基本用法区分＋用法詳細区分の２桁で指定する。
+「A:貼付」、「B:塗布」などJAMI標準用法コードにて用法詳細区分として表現される区分は、dosageInstruction.method 要素にコードまたは文字列で指定する。 用法詳細区分を識別するURIとして、"http://jami.jp/CodeSystem/MedicationMethodDetailUsage"を使用する。コードを指定する場合、基本用法区分＋用法詳細区分の２桁で指定する。
 
 ```json
 "route": {
@@ -517,7 +443,7 @@ HL7 FHIRでは、処方箋の中で同一の用法を持つ剤グループ(RP)�
 "method": {
   "coding": [
     {
-      "system": "urn:oid:1.2.392.200250.2.2.20.40",
+      "system": "http://jami.jp/CodeSystem/MedicationMethodDetailUsage",
       "code": "2B",
       "display": "塗布"
     }
@@ -567,8 +493,18 @@ HL7 FHIRでは、処方箋の中で同一の用法を持つ剤グループ(RP)�
 ```
 
 ### 各種コメントの記述方法
-薬剤オーダのコメントとしては、薬剤単位につくもの、用法指示などRP単位につくもの、処方箋全体につくものがある。
-全体のコメントはCommunicationリソースを使用し、薬剤単位、RP単位のコメントは、調剤指示以外はコード化されていれば dosageInstruction.additionalInstruction 要素ないしそうでないものは dosageInstruction.patientInstruction 要素を使用し、調剤指示は dispenseRequest要素に対して定義した拡張「InstructionForDispense」を使用する。
+処方オーダに付随するコメントには、薬剤単位につけられるもの、用法指示などRP単位につけられるもの、処方オーダ全体につけられるものがある。
+
+* 処方オーダ全体に対するコメント
+    * Communicationリソースを使用する。
+* 薬剤単位、RP単位のコメント
+    * 調剤指示に関するコメント
+        *  dispenseRequest要素に対して定義した拡張 InstructionForDispense を使用する。
+    * 調剤指示以外についてのコメント
+        * コード化されているもの
+            * dosageInstruction.additionalInstruction を使用する。
+        * コード化されていないもの
+            * dosageInstruction.patientInstruction を使用する。
 
 ### 不均等投与の記述方法
 不均等用法は、「朝1 錠、昼2 錠、夕3 錠服用」など、1 日の中の服用タイミングごとに服用量が変化する用法である。不均等投与を1回投与ごとの複数の用法（1回用法）に分けて記述できる場合は、服用タイミングが異なる複数の剤グループとして表現することができる。しかし、不均等投与を1つの剤グループとして１つの用法（1日用法）でしか表現できないシステムもある。以下では、1回用法のインスタンス例と、1日用法でのインスタンス例をそれぞれ示す。
@@ -595,11 +531,11 @@ HL7 FHIRでは、処方箋の中で同一の用法を持つ剤グループ(RP)�
             "value": "1234567890"
         },
         {
-            "system": "urn:oid:1.2.392.100495.20.3.81",
+            "system": "http://jpfhir.jp/fhir/core/mhlw/IdSystem/Medication-RPGroupNumber",
             "value": "1"
         },
         {
-            "system": "urn:oid:1.2.392.100495.20.3.82",
+            "system": "http://jpfhir.jp/fhir/core/mhlw/IdSystem/MedicationAdministrationIndex",
             "value": "1"
         }
     ],
@@ -608,7 +544,7 @@ HL7 FHIRでは、処方箋の中で同一の用法を持つ剤グループ(RP)�
     "medicationCodeableConcept": {
       "coding": [
         {
-          "system": "urn:oid:1.2.392.200119.4.403.1",
+          "system": "http://medis.or.jp/CodeSystem/master-HOT9",
           "code": "105271807",
           "display": "プレドニン錠５ｍｇ"
         }
@@ -644,7 +580,7 @@ HL7 FHIRでは、処方箋の中で同一の用法を持つ剤グループ(RP)�
           "code": {
             "coding": [
               {
-                "system": "urn:oid:1.2.392.200250.2.2.20",
+                "system": "http://jami.jp/CodeSystem/MedicationUsage",
                 "code": "1011000400000000",
                 "display": "内服・経口・１日１回朝食後"
               }
@@ -663,7 +599,7 @@ HL7 FHIRでは、処方箋の中で同一の用法を持つ剤グループ(RP)�
         "method": {
           "coding": [
             {
-              "system": "urn:oid:1.2.392.200250.2.2.20.40",
+              "system": "http://jami.jp/CodeSystem/MedicationMethodDetailUsage",
               "code": "10",
               "display": "経口"
             }
@@ -674,7 +610,7 @@ HL7 FHIRでは、処方箋の中で同一の用法を持つ剤グループ(RP)�
             "type": {
               "coding": [
                 {
-                  "system": "urn:oid:1.2.392.100495.20.2.22",
+                  "system": "http://jpfhir.jp/fhir/core/mhlw/CodeSystem/MedicationIngredientStrengthType",
                   "code": "1",
                   "display": "製剤量"
                 }
@@ -683,7 +619,7 @@ HL7 FHIRでは、処方箋の中で同一の用法を持つ剤グループ(RP)�
             "doseQuantity": {
               "value": 4,
               "unit": "錠",
-              "system": "urn:oid:1.2.392.100495.20.2.101",
+              "system": "http://jpfhir.jp/fhir/core/mhlw/CodeSystem/MedicationUnitMERIT9Code",
               "code": "TAB"
             }
           }
@@ -694,7 +630,7 @@ HL7 FHIRでは、処方箋の中で同一の用法を持つ剤グループ(RP)�
       "quantity": {
         "value": 28,
         "unit": "錠",
-        "system": "urn:oid:1.2.392.100495.20.2.101",
+        "system": "http://jpfhir.jp/fhir/core/mhlw/CodeSystem/MedicationUnitMERIT9Code",
         "code": "TAB"
       },
       "expectedSupplyDuration": {
@@ -708,7 +644,7 @@ HL7 FHIRでは、処方箋の中で同一の用法を持つ剤グループ(RP)�
       "allowedCodeableConcept": {
         "coding": [
           {
-            "system": "urn:oid:1.2.392.100495.20.2.41",
+            "system": "http://jpfhir.jp/fhir/core/mhlw/CodeSystem/MedicationSubstitutionProhibittedCategory",
             "code": "0",
             "display": "変更可"
           }
@@ -740,11 +676,11 @@ HL7 FHIRでは、処方箋の中で同一の用法を持つ剤グループ(RP)�
         "value": "1234567890"
       },
       {
-        "system": "urn:oid:1.2.392.100495.20.3.81",
+        "system": "http://jpfhir.jp/fhir/core/mhlw/IdSystem/Medication-RPGroupNumber",
         "value": "2"
       },
       {
-        "system": "urn:oid:1.2.392.100495.20.3.82",
+        "system": "http://jpfhir.jp/fhir/core/mhlw/IdSystem/MedicationAdministrationIndex",
         "value": "1"
       }
     ],
@@ -753,7 +689,7 @@ HL7 FHIRでは、処方箋の中で同一の用法を持つ剤グループ(RP)�
     "medicationCodeableConcept": {
       "coding": [
         {
-          "system": "urn:oid:1.2.392.200119.4.403.1",
+          "system": "http://medis.or.jp/CodeSystem/master-HOT9",
           "code": "105271807",
           "display": "プレドニン錠５ｍｇ"
         }
@@ -789,7 +725,7 @@ HL7 FHIRでは、処方箋の中で同一の用法を持つ剤グループ(RP)�
           "code": {
             "coding": [
               {
-                "system": "urn:oid:1.2.392.200250.2.2.20",
+                "system": "http://jami.jp/CodeSystem/MedicationUsage",
                 "code": "1011004000000000",
                 "display": "内服・経口・１日１回昼食後"
               }
@@ -808,7 +744,7 @@ HL7 FHIRでは、処方箋の中で同一の用法を持つ剤グループ(RP)�
         "method": {
           "coding": [
             {
-              "system": "urn:oid:1.2.392.200250.2.2.20.40",
+              "system": "http://jami.jp/CodeSystem/MedicationMethodDetailUsage",
               "code": "10",
               "display": "経口"
             }
@@ -819,7 +755,7 @@ HL7 FHIRでは、処方箋の中で同一の用法を持つ剤グループ(RP)�
             "type": {
               "coding": [
                 {
-                  "system": "urn:oid:1.2.392.100495.20.2.22",
+                  "system": "http://jpfhir.jp/fhir/core/mhlw/CodeSystem/MedicationIngredientStrengthType",
                   "code": "1",
                   "display": "製剤量"
                 }
@@ -828,7 +764,7 @@ HL7 FHIRでは、処方箋の中で同一の用法を持つ剤グループ(RP)�
             "doseQuantity": {
               "value": 2,
               "unit": "錠",
-              "system": "urn:oid:1.2.392.100495.20.2.101",
+              "system": "http://jpfhir.jp/fhir/core/mhlw/CodeSystem/MedicationUnitMERIT9Code",
               "code": "TAB"
             }
           }
@@ -839,7 +775,7 @@ HL7 FHIRでは、処方箋の中で同一の用法を持つ剤グループ(RP)�
       "quantity": {
         "value": 14,
         "unit": "錠",
-        "system": "urn:oid:1.2.392.100495.20.2.101",
+        "system": "http://jpfhir.jp/fhir/core/mhlw/CodeSystem/MedicationUnitMERIT9Code",
         "code": "TAB"
       },
       "expectedSupplyDuration": {
@@ -853,7 +789,7 @@ HL7 FHIRでは、処方箋の中で同一の用法を持つ剤グループ(RP)�
       "allowedCodeableConcept": {
         "coding": [
           {
-            "system": "urn:oid:1.2.392.100495.20.2.41",
+            "system": "http://jpfhir.jp/fhir/core/mhlw/CodeSystem/MedicationSubstitutionProhibittedCategory",
             "code": "0",
             "display": "変更可"
           }
@@ -885,11 +821,11 @@ HL7 FHIRでは、処方箋の中で同一の用法を持つ剤グループ(RP)�
         "value": "1234567890"
       },
       {
-        "system": "urn:oid:1.2.392.100495.20.3.81",
+        "system": "http://jpfhir.jp/fhir/core/mhlw/IdSystem/Medication-RPGroupNumber",
         "value": "3"
       },
       {
-        "system": "urn:oid:1.2.392.100495.20.3.82",
+        "system": "http://jpfhir.jp/fhir/core/mhlw/IdSystem/MedicationAdministrationIndex",
         "value": "1"
       }
     ],
@@ -898,7 +834,7 @@ HL7 FHIRでは、処方箋の中で同一の用法を持つ剤グループ(RP)�
     "medicationCodeableConcept": {
       "coding": [
         {
-          "system": "urn:oid:1.2.392.200119.4.403.1",
+          "system": "http://medis.or.jp/CodeSystem/master-HOT9",
           "code": "105271807",
           "display": "プレドニン錠５ｍｇ"
         }
@@ -934,7 +870,7 @@ HL7 FHIRでは、処方箋の中で同一の用法を持つ剤グループ(RP)�
           "code": {
             "coding": [
               {
-                "system": "urn:oid:1.2.392.200250.2.2.20
+                "system": "http://jami.jp/CodeSystem/MedicationUsage
                 "code": "1011040000000000",
                 "display": "内服・経口・１日１回夕食後"
               }
@@ -953,7 +889,7 @@ HL7 FHIRでは、処方箋の中で同一の用法を持つ剤グループ(RP)�
         "method": {
           "coding": [
             {
-              "system": "urn:oid:1.2.392.200250.2.2.20.40",
+              "system": "http://jami.jp/CodeSystem/MedicationMethodDetailUsage",
               "code": "10",
               "display": "経口"
             }
@@ -964,7 +900,7 @@ HL7 FHIRでは、処方箋の中で同一の用法を持つ剤グループ(RP)�
             "type": {
               "coding": [
                 {
-                  "system": "urn:oid:1.2.392.100495.20.2.22",
+                  "system": "http://jpfhir.jp/fhir/core/mhlw/CodeSystem/MedicationIngredientStrengthType",
                   "code": "1",
                   "display": "製剤量"
                 }
@@ -973,7 +909,7 @@ HL7 FHIRでは、処方箋の中で同一の用法を持つ剤グループ(RP)�
             "doseQuantity": {
               "value": 1,
               "unit": "錠",
-              "system": "urn:oid:1.2.392.100495.20.2.101",
+              "system": "http://jpfhir.jp/fhir/core/mhlw/CodeSystem/MedicationUnitMERIT9Code",
               "code": "TAB"
             }
           }
@@ -984,7 +920,7 @@ HL7 FHIRでは、処方箋の中で同一の用法を持つ剤グループ(RP)�
       "quantity": {
         "value": 7,
         "unit": "錠",
-        "system": "urn:oid:1.2.392.100495.20.2.101",
+        "system": "http://jpfhir.jp/fhir/core/mhlw/CodeSystem/MedicationUnitMERIT9Code",
         "code": "TAB"
       },
       "expectedSupplyDuration": {
@@ -998,7 +934,7 @@ HL7 FHIRでは、処方箋の中で同一の用法を持つ剤グループ(RP)�
       "allowedCodeableConcept": {
         "coding": [
           {
-            "system": "urn:oid:1.2.392.100495.20.2.41",
+            "system": "http://jpfhir.jp/fhir/core/mhlw/CodeSystem/MedicationSubstitutionProhibittedCategory",
             "code": "0",
             "display": "変更可"
           }
@@ -1032,11 +968,11 @@ HL7 FHIRでは、処方箋の中で同一の用法を持つ剤グループ(RP)�
       "value": "1234567890"
     },
     {
-      "system": "urn:oid:1.2.392.100495.20.3.81",
+      "system": "http://jpfhir.jp/fhir/core/mhlw/IdSystem/Medication-RPGroupNumber",
       "value": "4"
     },
     {
-      "system": "urn:oid:1.2.392.100495.20.3.82",
+      "system": "http://jpfhir.jp/fhir/core/mhlw/IdSystem/MedicationAdministrationIndex",
       "value": "1"
     }
   ],
@@ -1045,7 +981,7 @@ HL7 FHIRでは、処方箋の中で同一の用法を持つ剤グループ(RP)�
   "medicationCodeableConcept": {
     "coding": [
       {
-        "system": "urn:oid:1.2.392.200119.4.403.1",
+        "system": "http://medis.or.jp/CodeSystem/master-HOT9",
         "code": "105271807",
         "display": "プレドニン錠５ｍｇ"
       }
@@ -1061,7 +997,7 @@ HL7 FHIRでは、処方箋の中で同一の用法を持つ剤グループ(RP)�
         {
           "coding": [
             {
-              "system": "urn:oid:1.2.392.200250.2.2.20.22",
+              "system": "http://jami.jp/CodeSystem/MedicationUsageAdditional",
               "code": "V14NNNNN",
               "display": "不均等・１回目・４錠"
             }
@@ -1070,7 +1006,7 @@ HL7 FHIRでは、処方箋の中で同一の用法を持つ剤グループ(RP)�
         {
           "coding": [
             {
-              "system": "urn:oid:1.2.392.200250.2.2.20.22",
+              "system": "http://jami.jp/CodeSystem/MedicationUsageAdditional",
               "code": "V22NNNNN",
               "display": "不均等・２回目・２錠"
             }
@@ -1079,7 +1015,7 @@ HL7 FHIRでは、処方箋の中で同一の用法を持つ剤グループ(RP)�
         {
           "coding": [
             {
-              "system": "urn:oid:1.2.392.200250.2.2.20.22",
+              "system": "http://jami.jp/CodeSystem/MedicationUsageAdditional",
               "code": "V31NNNNN",
               "display": "不均等・３回目・１錠"
             }
@@ -1099,7 +1035,7 @@ HL7 FHIRでは、処方箋の中で同一の用法を持つ剤グループ(RP)�
         "code": {
           "coding": [
             {
-              "system": "urn:oid:1.2.392.200250.2.2.20",
+              "system": "http://jami.jp/CodeSystem/MedicationUsage",
               "code": "1013044400000000",
               "display": "１日３回毎食後"
             }
@@ -1118,7 +1054,7 @@ HL7 FHIRでは、処方箋の中で同一の用法を持つ剤グループ(RP)�
       "method": {
         "coding": [
           {
-            "system": "urn:oid:1.2.392.200250.2.2.20.40",
+            "system": "http://jami.jp/CodeSystem/MedicationMethodDetailUsage",
             "code": "10",
             "display": "経口"
           }
@@ -1129,7 +1065,7 @@ HL7 FHIRでは、処方箋の中で同一の用法を持つ剤グループ(RP)�
           "type": {
             "coding": [
               {
-                "system": "urn:oid:1.2.392.100495.20.2.22",
+                "system": "http://jpfhir.jp/fhir/core/mhlw/CodeSystem/MedicationIngredientStrengthType",
                 "code": "1",
                 "display": "製剤量"
               }
@@ -1139,7 +1075,7 @@ HL7 FHIRでは、処方箋の中で同一の用法を持つ剤グループ(RP)�
             "numerator": {
               "value": 7,
               "unit": "錠",
-              "system": "urn:oid:1.2.392.100495.20.2.101",
+              "system": "http://jpfhir.jp/fhir/core/mhlw/CodeSystem/MedicationUnitMERIT9Code",
               "code": "TAB"
             },
             "denominator": {
@@ -1157,7 +1093,7 @@ HL7 FHIRでは、処方箋の中で同一の用法を持つ剤グループ(RP)�
     "quantity": {
       "value": 49,
       "unit": "錠",
-      "system": "urn:oid:1.2.392.100495.20.2.101",
+      "system": "http://jpfhir.jp/fhir/core/mhlw/CodeSystem/MedicationUnitMERIT9Code",
       "code": "TAB"
     },
     "expectedSupplyDuration": {
@@ -1171,7 +1107,7 @@ HL7 FHIRでは、処方箋の中で同一の用法を持つ剤グループ(RP)�
     "allowedCodeableConcept": {
       "coding": [
         {
-          "system": "urn:oid:1.2.392.100495.20.2.41",
+          "system": "http://jpfhir.jp/fhir/core/mhlw/CodeSystem/MedicationSubstitutionProhibittedCategory",
           "code": "0",
           "display": "変更可"
         }
@@ -1188,7 +1124,7 @@ HL7 FHIRでは、処方箋の中で同一の用法を持つ剤グループ(RP)�
 隔日指定投与は、連続して服用する日数と、その後の連続して休薬する日数を指定する用法である。
 JAMI標準用法コードを使用する表現方法と、HL7 FHIR本来の表現方法の2種類の表現方法が可能であるが、処方情報HL7 FHIR記述仕様との整合性を考慮してJAMI標準用法コードを使用する方法を推奨する。
 
-JAMI標準用法コードを使用する表現方法では、dosageInstruction.timing.code 要素に CodeableConcept型でJAMI標準用法コード（urn:oid:1.2.392.200250.2.2.20）を指定する。さらに、dosageInstruction.timing.additionalInstruction要素に、CodeableConcept型で、JAMI標準「処方・注射オーダ標準用法規格」 8桁補足用法コード（urn:oid:1.2.392.200250.2.2.20.22）を指定する。詳細は、「JAMI標準 処方注射オーダ標準用法規格」規格書 8.1「日数間隔指定」 を参照のこと。
+JAMI標準用法コードを使用する表現方法では、dosageInstruction.timing.code 要素に CodeableConcept型でJAMI標準用法コード（http://jami.jp/CodeSystem/MedicationUsage）を指定する。さらに、dosageInstruction.timing.additionalInstruction要素に、CodeableConcept型で、JAMI標準「処方・注射オーダ標準用法規格」 8桁補足用法コード（http://jami.jp/CodeSystem/MedicationUsageAdditional）を指定する。詳細は、「JAMI標準 処方注射オーダ標準用法規格」規格書 8.1「日数間隔指定」 を参照のこと。
 
 用法「１日３回 朝昼夕食後 １回１錠 ７日分（隔日投与）」をJAMI標準用法コード、及び、補足用法コードで表現したインスタンス例を示す。
 ```json
@@ -1198,7 +1134,7 @@ JAMI標準用法コードを使用する表現方法では、dosageInstruction.t
     "additionalInstruction": {
       "coding": [
         {
-          "system": "urn:oid:1.2.392.200250.2.2.20.22",
+          "system": "http://jami.jp/CodeSystem/MedicationUsageAdditional",
           "code": "I1100000",
           "display": "隔日投与"
         }
@@ -1216,7 +1152,7 @@ JAMI標準用法コードを使用する表現方法では、dosageInstruction.t
       "code": {
         "coding": [
           {
-            "system": "urn:oid:1.2.392.200250.2.2.20",
+            "system": "http://jami.jp/CodeSystem/MedicationUsage",
             "code": "1013044400000000 ",
             "display": "内服・経口・１日３回朝昼夕食後"
           }
@@ -1244,7 +1180,7 @@ JAMI標準用法コードを使用する表現方法では、dosageInstruction.t
     },
     "code": {
       "coding": [ {
-        "system": "urn:oid:1.2.392.200250.2.2.20",
+        "system": "http://jami.jp/CodeSystem/MedicationUsage",
         "code": "1013044400000000 ",
         "display": "内服・経口・１日３回朝昼夕食後"
       } ]
@@ -1256,7 +1192,7 @@ JAMI標準用法コードを使用する表現方法では、dosageInstruction.t
 曜日指定投与は、「火曜日と金曜日に服用」など、服用する曜日を指定する用法である。
 JAMI標準用法コードを使用する表現方法と、HL7 FHIR本来の表現方法の2種類の表現方法が可能であるが、処方情報HL7 FHIR記述仕様との整合性を考慮してJAMI標準用法コードを使用する方法を推奨する。
 
-JAMI標準用法コードを使用する表現方法では、dosageInstruction.timing.code 要素に CodeableConcept型でJAMI標準用法コード（urn:oid:1.2.392.200250.2.2.20）を指定する。さらに、dosageInstruction.timing.additionalInstruction要素に、CodeableConcept型で、JAMI標準「処方・注射オーダ標準用法規格」 8桁補足用法コード（urn:oid:1.2.392.200250.2.2.20.22）を指定する。詳細は、「JAMI標準 処方注射オーダ標準用法規格」規格書 8.2「曜日指定」 を参照のこと。
+JAMI標準用法コードを使用する表現方法では、dosageInstruction.timing.code 要素に CodeableConcept型でJAMI標準用法コード（http://jami.jp/CodeSystem/MedicationUsage）を指定する。さらに、dosageInstruction.timing.additionalInstruction要素に、CodeableConcept型で、JAMI標準「処方・注射オーダ標準用法規格」 8桁補足用法コード（http://jami.jp/CodeSystem/MedicationUsageAdditional）を指定する。詳細は、「JAMI標準 処方注射オーダ標準用法規格」規格書 8.2「曜日指定」 を参照のこと。
 
 曜日指定投与「１日１回 朝食後 １回１錠 （月曜日、木曜日）」を、JAMI標準用法コードで記録したインスタンス例を示す。
 ```json
@@ -1266,7 +1202,7 @@ JAMI標準用法コードを使用する表現方法では、dosageInstruction.t
     "additionalInstruction": {
       "coding": [
         {
-          "system": "urn:oid:1.2.392.200250.2.2.20.22",
+          "system": "http://jami.jp/CodeSystem/MedicationUsageAdditional",
           "code": "W0100100",
           "display": "月曜日、木曜日"
         }
@@ -1276,7 +1212,7 @@ JAMI標準用法コードを使用する表現方法では、dosageInstruction.t
       "code": {
         "coding": [
           {
-            "system": "urn:oid:1.2.392.200250.2.2.20",
+            "system": "http://jami.jp/CodeSystem/MedicationUsage",
             "code": "1011000400000000 ",
             "display": "内服・経口・１日１回朝食後"
           }
@@ -1285,7 +1221,7 @@ JAMI標準用法コードを使用する表現方法では、dosageInstruction.t
     },
 ```
 
-なお、HL7 FHIR本来の表現方法では、dosageInstruction.timing.repeat.dayOfWeek 要素に値セットDaysOfWeek (https://hl7.org/fhir/R4B/valueset-days-of-week.html) を使用して、服用する曜日に対応するコードを配列で指定する。
+なお、HL7 FHIR本来の表現方法では、dosageInstruction.timing.repeat.dayOfWeek 要素に値セットDaysOfWeek (https://hl7.org/fhir/R4/valueset-days-of-week.html) を使用して、服用する曜日に対応するコードを配列で指定する。
 ```json
 "dosageInstruction": [
   {
@@ -1300,7 +1236,7 @@ JAMI標準用法コードを使用する表現方法では、dosageInstruction.t
       "code": {
         "coding": [ 
           {
-            "system": "urn:oid:1.2.392.200250.2.2.20",
+            "system": "http://jami.jp/CodeSystem/MedicationUsage",
             "code": "1011000400000000 ",
             "display": "内服・経口・１日１回朝食後"
           } 
@@ -1326,7 +1262,7 @@ JAMI標準用法コードを使用する表現方法では、dosageInstruction.t
   "quantity": {
     "value": 56,
     "unit": "錠",
-    "system": "urn:oid:1.2.392.100495.20.2.101",
+    "system": "http://jpfhir.jp/fhir/core/mhlw/CodeSystem/MedicationUnitMERIT9Code",
     "code": "TAB"
   },
   "expectedSupplyDuration": {

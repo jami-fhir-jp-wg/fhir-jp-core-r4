@@ -12,7 +12,9 @@
   * [JP Core ActivityDefinition ChemotherapyRegimen Oral（化学療法レジメン・内服薬）プロファイル][JP_ActivityDefinition_ChemotherapyRegimen_Oral]
 
 ### Extensions
-なし
+* [JP_Condition_DiseaseOutcome]
+* [JP_Condition_DiseasePostfixModifier]
+* [JP_Condition_DiseasePrefixModifier]
 
 
 {% include markdown-link-references.md %}

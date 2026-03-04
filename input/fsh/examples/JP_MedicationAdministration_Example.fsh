@@ -12,11 +12,11 @@ Usage: #example
 * extension[=].valueDateTime = "2016-08-25T00:00:00+09:00"
 * extension[+].url = "http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_MedicationAdministration_Location"
 * extension[=].valueReference = Reference(Location/jp-location-example-ward) "09A病棟 021病室 4ベッド"
-* identifier[rpNumber].system = "urn:oid:1.2.392.100495.20.3.81"
+* identifier[rpNumber].system = $JP_Medication_RPGroupNumber
 * identifier[rpNumber].value = "1"
-* identifier[orderInRp].system = "urn:oid:1.2.392.100495.20.3.82"
+* identifier[orderInRp].system = $JP_MedicationAdministrationIndex
 * identifier[orderInRp].value = "1"
-* identifier[requestIdentifier].system = "http://jpfhir.jp/fhir/core/IdSystem/resourceInstance-identifier"
+* identifier[requestIdentifier].system = $JP_IdSystem_PrescriptionDocumentID
 * identifier[requestIdentifier].value = "1234567890.1.1"
 * status = #completed
 * category = http://terminology.hl7.org/CodeSystem/v2-0482#I "Inpatient Order"
@@ -32,8 +32,8 @@ Usage: #example
 
 Instance: jp-medicationadministration-example-2
 InstanceOf: JP_MedicationAdministration
-Title: "JP Core MedicationAdministration Example 投薬中止 パンスポリンＴ錠１００ １００ｍｇ"
-Description: "投薬中止 パンスポリンＴ錠１００ １００ｍｇ"
+Title: "JP Core MedicationAdministration Example 投薬中止 パンスポリンＴ錠１００　１００ｍｇ"
+Description: "投薬中止 パンスポリンＴ錠１００　１００ｍｇ"
 Usage: #example
 * meta.profile = "http://jpfhir.jp/fhir/core/StructureDefinition/JP_MedicationAdministration"
 * extension[0].url = "http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_MedicationAdministration_RequestDepartment"
@@ -42,15 +42,15 @@ Usage: #example
 * extension[=].valueReference = Reference(Practitioner/jp-practitioner-example-male-1) "大阪 一郎"
 * extension[+].url = "http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_MedicationAdministration_RequestAuthoredOn"
 * extension[=].valueDateTime = "2016-08-25T00:00:00+09:00"
-* identifier[rpNumber].system = "urn:oid:1.2.392.100495.20.3.81"
+* identifier[rpNumber].system = $JP_Medication_RPGroupNumber
 * identifier[rpNumber].value = "1"
-* identifier[orderInRp].system = "urn:oid:1.2.392.100495.20.3.82"
+* identifier[orderInRp].system = $JP_MedicationAdministrationIndex
 * identifier[orderInRp].value = "1"
-* identifier[requestIdentifier].system = "http://jpfhir.jp/fhir/core/IdSystem/resourceInstance-identifier"
+* identifier[requestIdentifier].system = $JP_IdSystem_PrescriptionDocumentID
 * identifier[requestIdentifier].value = "1234567890.1.1"
 * status = #stopped
 * category = http://terminology.hl7.org/CodeSystem/v2-0482#I "Inpatient Order"
-* medicationCodeableConcept = $JP_MedicationCodeHOT9_CS#110926901 "パンスポリンＴ錠１００ １００ｍｇ"
+* medicationCodeableConcept = $JP_MedicationCodeHOT9_CS#110926901 "パンスポリンＴ錠１００　１００ｍｇ"
 * subject = Reference(Patient/jp-patient-example-1)
 * effectiveDateTime = "2016-08-25T08:30:00+09:00"
 * request = Reference(MedicationRequest/jp-medicationrequest-example-2)

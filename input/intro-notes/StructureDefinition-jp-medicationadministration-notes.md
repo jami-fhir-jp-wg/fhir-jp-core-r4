@@ -25,17 +25,17 @@ HL7 V2系では用語集を識別するコーディングシステム名(以下�
 
 |分類|CS名|URI|
 |---------|----|---------------------------|
-|医薬品|HOT7|urn:oid:1.2.392.200119.4.403.2|
-|医薬品|HOT9|urn:oid:1.2.392.200119.4.403.1|
-|医薬品|HOT13|urn:oid:1.2.392.200119.4.402.1|
-|医薬品|YJコード|urn:oid:1.2.392.100495.20.1.73|
-|医薬品|⼀般処⽅名マスター|urn:oid:1.2.392.100495.20.1.81|
-|薬品単位|MERIT-9(単位）|urn:oid:1.2.392.100495.20.2.101|
-|力価区分|処方情報 HL7FHIR 記述仕様(力価区分)|urn:oid:1.2.392.100495.20.2.22|
-|用法|JAMI処方・注射オーダ標準用法規格(用法コード)|urn:oid:1.2.392.200250.2.2.20|
-|用法|JAMI処方・注射オーダ標準用法規格(補足用法コード)|urn:oid:1.2.392.200250.2.2.20.22|
-|部位|JAMI処方・注射オーダ標準用法規格(部位コード)|urn:oid:1.2.392.200250.2.2.20.32|
-|投与方法|JAMI処方・注射オーダ標準用法規格(基本用法区分)|urn:oid:1.2.392.200250.2.2.20.30|
+|医薬品|HOT7|http://medis.or.jp/CodeSystem/master-HOT7|
+|医薬品|HOT9|http://medis.or.jp/CodeSystem/master-HOT9|
+|医薬品|HOT13|http://medis.or.jp/CodeSystem/master-HOT13|
+|医薬品|YJコード|http://capstandard.jp/iyaku.info/CodeSystem/YJ-code|
+|医薬品|⼀般処⽅名マスター|http://jpfhir.jp/fhir/core/mhlw/CodeSystem/MedicationGeneralOrderCode|
+|薬品単位|MERIT-9(単位）|http://jpfhir.jp/fhir/core/mhlw/CodeSystem/MedicationUnitMERIT9Code|
+|力価区分|処方情報 HL7FHIR 記述仕様(力価区分)|http://jpfhir.jp/fhir/core/mhlw/CodeSystem/MedicationIngredientStrengthType|
+|用法|JAMI処方・注射オーダ標準用法規格(用法コード)|http://jami.jp/CodeSystem/MedicationUsage|
+|用法|JAMI処方・注射オーダ標準用法規格(補足用法コード)|http://jami.jp/CodeSystem/MedicationUsageAdditional|
+|部位|JAMI処方・注射オーダ標準用法規格(部位コード)|http://jami.jp/CodeSystem/MedicationBodySiteExternal|
+|投与方法|JAMI処方・注射オーダ標準用法規格(基本用法区分)|http://jami.jp/CodeSystem/MedicationMethodBasicUsage|
 |入外区分|HL7V2(HL7表0482)|http://terminology.hl7.org/CodeSystem/v2-0482|
 
 ### 項目の追加
@@ -59,7 +59,7 @@ MedicationAdministrationリソースでは、依頼元のMedicationRequestリソ
 | SHALL            | identifier    | token  | GET [base]/MedicationAdministration?identifier=http://myhospital.com/fhir/medication\|1234567890 |
 | SHOULD            | patient      | reference | GET [base]/MedicationAdministration?patient=123456   |
 | SHOULD           | patient,effective-time | reference,date  | GET [base]/MedicationAdministration?patient=123456&effective-time=eq2013-01-14 |
-| MAY           | effective-time,code,performer,request | date,token,reference,reference | GET [base]/MedicationAdministration?code=urn:oid:1.2.392.200119.4.403.1\|105271807  |
+| MAY           | effective-time,code,performer,request | date,token,reference,reference | GET [base]/MedicationAdministration?code=http://medis.or.jp/CodeSystem/master-HOT9\|105271807  |
 
 ##### 必須検索パラメータ
 
@@ -121,81 +121,7 @@ MedicationAdministrationリソースでは、依頼元のMedicationRequestリソ
 
 #### Operation一覧
 
-JP MedicationAdministration リソースに対して使用される操作は次の通りである。
-
-- $everything：[base]/MedicationAdministration/[id]/$everything
-
-  - この操作が呼び出された特定のMedicationAdministrationに関連する全ての情報を返す
-    
-
-#### Operation 詳細
-
-##### $everything 操作
-
-この操作は、この操作が呼び出された特定のMedicationAdministrationリソースに関連する全ての情報を返す。応答は "searchset" タイプのBundleリソースである。サーバは、少なくとも、識別されたMedicationAdministrationコンパートメントに含まれる全てのリソースと、それらから参照されるすべてのリソースを返すことが望ましい。
-
-この操作の公式なURLは以下である。
-
-```
-http://hl7.jp/fhir/OperationDefinition/MedicationAdministration-everything
-```
-
-URL: [base]/MedicationAdministration/[id]/$everything
-
-本操作は、べき等な操作である。
-
-
-###### 入力パラメータ
-
-| 名前   | 多重度 | 型      | 説明                                                         |
-| ------ | ------ | ------- | ------------------------------------------------------------ |
-| start  | 0..1   | date    | 特定の日付範囲で提供されたケアに関連する全ての記録を意味する。開始日が指定されていない場合、終了日以前のすべてのレコードが対象に含まれる。 |
-| end    | 0..1   | date    | 特定の日付範囲で提供されたケアに関連する全ての記録を意味する。終了日が指定されていない場合、開始日以降のすべてのレコードが対象に含まれる。 |
-| _since | 0..1   | instant | 指定された日時以降に更新されたリソースのみが応答に含まれる。 |
-| _type  | 0..*   | code    | 応答に含むFHIRリソース型を、カンマ区切りで指定する。指定されない場合は、サーバは全てのリソース型を対象とする。 |
-| _count | 0..1   | integer | Bundleの1ページに含まれるリソース件数を指定。                |
-
-###### 出力パラメータ
-
-| 名前   | 多重度 | 型     | 説明                                                         |
-| ------ | ------ | ------ | ------------------------------------------------------------ |
-| return | 1..1   | Bundle | バンドルのタイプは"searchset"である。この操作の結果は、リソースとして直接返される。 |
-
-###### 例
-
-リクエスト：単一のMedicationAdministrationに関連する全てのリソースを取得する。
-
-```
-GET [base]/MedicationAdministration/1234567890/$everything
-[some headers]
-```
-
-レスポンス：指定されたMedicationAdministrationに関連する全てのリソースを返す。
-
-```
-HTTP/1.1 200 OK
-[other headers]
-
-{
-  "resourceType": "Bundle",
-  "id": "example",
-  "meta": {
-    "lastUpdated": "2014-08-18T01:43:33Z"
-  },
-  "type": "searchset",
-  "entry": [
-    {
-      "fullUrl": "http://example.org/fhir/MedicationAdministration/1234567890",
-      "resource": {
-        "resourceType": "MedicationAdministration",
-
-          ・・・
-
-       },
-    }
-  ]
-}  
-```
+JP MedicationAdministration リソースに対する操作は定義されていない。
 
 ### サンプル
 [JAHIS処方データ交換規約 Ver.3.0C](https://www.jahis.jp/standard/detail/id=564)の137ページに記載されている下記の処方実施をFHIRで表現する場合のサンプルを示す。
@@ -278,9 +204,9 @@ performer.actorには、医療従事者(Practitioner)、または患者(Patient)
 ```
 
 ### 実施情報
-「1:内服」、「2:外用」などJAMI標準用法コードにて基本用法区分として表現される区分は、dosage.route 要素にコードまたは文字列で指定する。基本用法区分を識別するURIとして、"urn:oid:1.2.392.200250.2.2.20.30"を使用する。
+「1:内服」、「2:外用」などJAMI標準用法コードにて基本用法区分として表現される区分は、dosage.route 要素にコードまたは文字列で指定する。基本用法区分を識別するURIとして、"http://jami.jp/CodeSystem/MedicationMethodBasicUsage"を使用する。
 
-「A:貼付」、「B:塗布」などJAMI標準用法コードにて用法詳細区分として表現される区分は、dosage.method 要素にコードまたは文字列で指定する。 用法詳細区分を識別するURIとして、"urn:oid:1.2.392.200250.2.2.20.40"を使用する。
+「A:貼付」、「B:塗布」などJAMI標準用法コードにて用法詳細区分として表現される区分は、dosage.method 要素にコードまたは文字列で指定する。 用法詳細区分を識別するURIとして、"http://jami.jp/CodeSystem/MedicationMethodDetailUsage"を使用する。
 
 投与量は dosage.dose に、SimpleQuantity型で記録する。単位コードには、医薬品単位略号を使用する。
 
@@ -289,7 +215,7 @@ performer.actorには、医療従事者(Practitioner)、または患者(Patient)
   "route": {
     "coding": [
       {
-        "system": "urn:oid:1.2.392.200250.2.2.20.40",
+        "system": "http://jami.jp/CodeSystem/MedicationMethodDetailUsage",
         "code": "10",
         "display": "経口"
       }
@@ -298,7 +224,7 @@ performer.actorには、医療従事者(Practitioner)、または患者(Patient)
   "method": {
     "coding": [
       {
-        "system": "urn:oid:1.2.392.200250.2.2.20.30",
+        "system": "http://jami.jp/CodeSystem/MedicationMethodBasicUsage",
         "code": "1",
         "display": "内服"
       }
@@ -307,7 +233,7 @@ performer.actorには、医療従事者(Practitioner)、または患者(Patient)
   "dose": {
     "value": 1,
     "unit": "錠",
-    "system": "urn:oid:1.2.392.100495.20.2.101",
+    "system": "http://jpfhir.jp/fhir/core/mhlw/CodeSystem/MedicationUnitMERIT9Code",
     "code": "TAB"
   }
 }
@@ -332,7 +258,7 @@ performer.actorには、医療従事者(Practitioner)、または患者(Patient)
       "valueCodeableConcept": {
         "coding": [
           {
-            "system": "urn:oid:1.2.392.200250.2.2.2",
+            "system": "http://jami.jp/SS-MIX2/CodeSystem/ClinicalDepartment",
             "code": "01",
             "display": "内科"
           }

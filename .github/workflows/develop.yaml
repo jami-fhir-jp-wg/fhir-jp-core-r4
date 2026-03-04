@@ -36,10 +36,15 @@ jobs:
         fi
       id: extract_branch
     
+    
     - name: Extract last commit date
       shell: bash
+      env:
+        PR_TITLE: ${{ github.event.pull_request.title }}
       run: |
         echo "date=$(git log -1 --format="%at" | xargs -I{} date -d @{})" >> $GITHUB_OUTPUT
+        title_temp=$(printf '%s' "$PR_TITLE" | sed 's/#/＃/g; s/\n/\\n/g; s/\r/\\r/g; s/\t/\\t/g; s/\[/【/g; s/\]/】/g; s/\:/：/g; s/\-/－/g')
+        echo "encoded_pullrequest_title=$title_temp" >> $GITHUB_ENV
       id: extract_date
 
     - uses: bluwy/substitute-string-action@v1
@@ -52,7 +57,7 @@ jobs:
         date: ${{ steps.extract_date.outputs.date }}
         actor: ${{ github.actor }}
         pullrequest_url: ${{ github.event.pull_request.html_url }}
-        pullrequest_title: ${{ github.event.pull_request.title }}
+        pullrequest_title: ${{ env.encoded_pullrequest_title }}
         _output-file: input/landing_page/_index.yml
 
     - name: Setup npm
@@ -72,7 +77,7 @@ jobs:
       uses: Legion2/download-release-action@v2.1.0
       with:
         repository: HL7/fhir-ig-publisher
-        tag: '1.8.16'
+        tag: '2.0.25'
         path: .
         file: publisher.jar
     
@@ -87,14 +92,14 @@ jobs:
       uses: suisei-cn/actions-download-file@v1.6.0
       id: downloadfile2
       with:
-        url: "https://jpfhir.jp/fhir/core/terminology/jpfhir-terminology.r4-1.1.1.tgz"
+        url: "https://jpfhir.jp/fhir/core/terminology/jpfhir-terminology.r4-1.4.0.tgz"
         target: .    
     
     - name: Prepare for using all dependent packages including Jp modified version of hl7.fhir.r4.core Package 
       env:
         JPPACKAGECOREtgz: fhir_dotFHIR_packages.tgz
-        JPTerminologyCOREdir: jpfhir-terminology#1.1.1
-        JPTerminologyCOREPtgz: jpfhir-terminology.r4-1.1.1.tgz
+        JPTerminologyCOREdir: jpfhir-terminology#1.4.0
+        JPTerminologyCOREPtgz: jpfhir-terminology.r4-1.4.0.tgz
       run: |
         mkdir -p /home/runner/.fhir
         mv $JPPACKAGECOREtgz /home/runner/.fhir/
@@ -120,7 +125,6 @@ jobs:
         unset DISPLAY
         java  -Xmx12G -Djava.awt.headless=true -jar ./input-cache/publisher.jar -ig ig.ini -tx n/a
         mv ./input/landing_page/_index.yml ./output/
-
 
     - name: replace url of html files referring simplifier.net package
       run:  |
@@ -151,6 +155,7 @@ jobs:
         echo "$SSH_PRIVATE_KEY" > key && chmod 600 key
       env:
           SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY_TO_JPFHIR }}
+          
           
     - name: STEP2 = prepare gtz files for upload to remote site
       run: | 

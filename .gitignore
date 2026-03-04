@@ -9,6 +9,7 @@ Thumbs.db
 /template
 /example-backup
 /backup
+/translations
 
 
 # for Emacs
@@ -22,4 +23,3 @@ Thumbs.db
 /.vscode
 .index.json
 .index.db
-

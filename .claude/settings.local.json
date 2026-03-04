@@ -1,0 +1,39 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:hl7.org)",
+      "WebFetch(domain:build.fhir.org)",
+      "WebFetch(domain:hl7.org.au)",
+      "WebFetch(domain:simplifier.net)",
+      "WebFetch(domain:fhir.ch)",
+      "WebSearch",
+      "WebFetch(domain:www.hl7.org)",
+      "WebFetch(domain:www.hl7.eu)",
+      "Bash(ls:*)",
+      "Bash(grep:*)",
+      "Bash(gh issue view:*)",
+      "Bash(gh.exe issue view:*)",
+      "Bash(where.exe:*)",
+      "WebFetch(domain:github.com)",
+      "Bash(git fetch:*)",
+      "Bash(powershell.exe -ExecutionPolicy Bypass -File .specify/scripts/powershell/check-prerequisites.ps1 -Json -PathsOnly)",
+      "Bash(powershell.exe -ExecutionPolicy Bypass -File .specify/scripts/powershell/setup-plan.ps1 -Json)",
+      "Bash(powershell.exe -ExecutionPolicy Bypass -File .specify/scripts/powershell/update-agent-context.ps1 -AgentType claude)",
+      "Bash(powershell.exe -ExecutionPolicy Bypass -File .specify/scripts/powershell/check-prerequisites.ps1 -Json)",
+      "Bash(powershell -ExecutionPolicy Bypass -File .specify/scripts/powershell/check-prerequisites.ps1 -Json -RequireTasks -IncludeTasks)",
+      "Bash(sushi:*)",
+      "Bash(powershell -ExecutionPolicy Bypass -File .specify/scripts/powershell/check-prerequisites.ps1 -Json)",
+      "WebFetch(domain:oraios.github.io)",
+      "Bash(uvx:*)",
+      "Bash(uv:*)",
+      "Bash(claude mcp add serena -- uvx --from \"git+https://github.com/oraios/serena\" serena start-mcp-server --context claude-code --project .)",
+      "mcp__serena__list_dir",
+      "mcp__serena__write_memory",
+      "mcp__serena__list_memories",
+      "Bash(powershell -ExecutionPolicy Bypass -File .specify/scripts/powershell/setup-plan.ps1 -Json)",
+      "Bash(powershell -ExecutionPolicy Bypass -File .specify/scripts/powershell/update-agent-context.ps1 -AgentType claude)",
+      "Bash(pwsh -NoProfile -Command \".specify/scripts/powershell/check-prerequisites.ps1 -Json\")",
+      "Bash(pwsh -NoProfile -Command \".specify/scripts/powershell/check-prerequisites.ps1 -Json -RequireTasks -IncludeTasks\":*)"
+    ]
+  }
+}
