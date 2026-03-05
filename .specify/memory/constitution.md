@@ -22,7 +22,7 @@ Sync Impact Report
 
 ### I. FHIR標準準拠 (FHIR Standard Compliance)
 
-- FHIR R4.0.1 をベースとし、地域要件対応時も
+- FHIR R4.3.0 をベースとし、地域要件対応時も
   FHIR 標準を維持しなければならない
 - JP Core プロファイルを基底 FHIR の代わりに参照しなければならない
   （例: `Reference(JP_Patient)` であって `Reference(Patient)` ではない）
@@ -157,7 +157,7 @@ Sync Impact Report
 JP Core 固有の拡張を作成する前に、以下の3段階の確認を
 行わなければならない:
 
-1. **基底 FHIR 要素の確認**: FHIR R4.0.1 の既存要素で
+1. **基底 FHIR 要素の確認**: FHIR R4.3.0 の既存要素で
    要件を満たせないか確認する
 2. **HL7 共通拡張の確認**: HL7 が公開する共通拡張
    （FHIR Extensions Pack）に該当するものがないか確認する

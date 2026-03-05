@@ -6,11 +6,11 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview / プロジェクト概要
 
-This is a **Japanese FHIR Implementation Guide (IG)** project for JP Core v1.x, a healthcare interoperability specification using FHIR R4.0.1. The project uses **FHIR Shorthand (FSH)** to author FHIR profiles, extensions, and terminology, which are compiled into FHIR resources and published as an HTML implementation guide.
+This is a **Japanese FHIR Implementation Guide (IG)** project for JP Core v2.x, a healthcare interoperability specification using FHIR R4.3.0. The project uses **FHIR Shorthand (FSH)** to author FHIR profiles, extensions, and terminology, which are compiled into FHIR resources and published as an HTML implementation guide.
 
 ### プロジェクトの目的と内容
 
-このプロジェクトは、**日本医療情報学会 FHIR国内実装基盤研究会**が開発する**JP Core 実装ガイド**です。日本国内の医療情報システム間でのデータ交換を標準化するため、FHIR R4.0.1 をベースとした日本固有の実装仕様を定義しています。
+このプロジェクトは、**日本医療情報学会 FHIR国内実装基盤研究会**が開発する**JP Core 実装ガイド**です。日本国内の医療情報システム間でのデータ交換を標準化するため、FHIR R4.3.0 をベースとした日本固有の実装仕様を定義しています。
 
 #### 主な機能と目標
 
@@ -141,7 +141,7 @@ This is a specification project, not software. Validation occurs through:
 ## External Dependencies
 
 - **jpfhir-terminology.r4**: Version 1.3.0 (external terminology dependency)
-- **FHIR R4.0.1**: Base FHIR version
+- **FHIR R4.3.0**: Base FHIR version
 - Various external CodeSystems (LOINC, SNOMED CT, etc.)
 
 ## Technologies Used / 使用技術
@@ -184,7 +184,7 @@ This is a specification project, not software. Validation occurs through:
 
 #### 外部依存・標準規格
 
-- **HL7 FHIR R4.0.1**: ベースとなる医療情報交換標準
+- **HL7 FHIR R4.3.0**: ベースとなる医療情報交換標準
 - **jpfhir-terminology.r4 (v1.3.0)**: 日本固有用語集パッケージ
 - **tx.fhir.org**: HL7 用語検証サーバー
 - **MEDIS**: 日本の医療コードシステム

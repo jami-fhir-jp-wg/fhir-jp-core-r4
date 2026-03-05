@@ -2,7 +2,7 @@
 
 ## Purpose
 Japanese FHIR Implementation Guide (IG) for healthcare interoperability.
-Defines Japan-specific FHIR R4.0.1 profiles, extensions, and terminology for standardized medical data exchange.
+Defines Japan-specific FHIR R4.3.0 profiles, extensions, and terminology for standardized medical data exchange.
 
 ## Tech Stack
 - **FSH (FHIR Shorthand)**: Domain-specific language for FHIR definitions
@@ -15,7 +15,7 @@ Defines Japan-specific FHIR R4.0.1 profiles, extensions, and terminology for sta
 - **Git/GitHub**: Version control with GitHub Actions CI/CD
 
 ## Base Standard
-- FHIR R4.0.1
+- FHIR R4.3.0
 - External dependency: jpfhir-terminology.r4 v1.3.0+
 
 ## Development Platform
