@@ -16,12 +16,12 @@ Usage: #example
 * identifier[prescriptionIdentifierCommon].value = "20230401-0000000001"
 * status = #active
 * intent = #order
-* medicationCodeableConcept = urn:oid:1.2.392.100495.20.2.74#103831601 "カロナール錠２００"
+* medicationCodeableConcept = $JP_MedicationCodeHOT9_CS#103831601 "カロナール錠２００"
 * subject = Reference(jp-patient-example-1)
 * authoredOn = "2023-04-01T12:00:00+09:00"
 * dosageInstruction.text = "内服・経口・１日３回朝昼夕食後"
-* dosageInstruction.timing.code = urn:oid:1.2.392.100495.20.2.31#1013044400000000 "内服・経口・１日３回朝昼夕食後"
-* dosageInstruction.route = urn:oid:2.16.840.1.113883.3.1937.777.10.5.162#PO "口"
+* dosageInstruction.timing.code = $JP_MedicationUsageJAMI_CS#1013044400000000 "内服・経口・１日３回朝昼夕食後"
+* dosageInstruction.route = $JP_MedicationRouteHL70162_CS#PO "口"
 * dosageInstruction.doseAndRate.doseQuantity = 1 $JP_MedicationUnitMERIT9_CS#TAB "錠"
 * dispenseRequest.quantity = 21 $JP_MedicationUnitMERIT9_CS#TAB "錠"
 
@@ -43,12 +43,12 @@ Usage: #example
 * identifier[prescriptionIdentifierCommon].value = "20230401-0000000002"
 * status = #active
 * intent = #order
-* medicationCodeableConcept = urn:oid:1.2.392.100495.20.2.74#110626901 "ロキソプロフェンNa錠６０ｍｇ「サワイ」"
+* medicationCodeableConcept = $JP_MedicationCodeHOT9_CS#110626901 "ロキソプロフェンNa錠６０ｍｇ「サワイ」"
 * subject = Reference(jp-patient-example-1)
 * authoredOn = "2023-04-01T14:00:00+09:00"
 * dosageInstruction.text = "内服・経口・１日３回朝昼夕食後"
-* dosageInstruction.timing.code = urn:oid:1.2.392.100495.20.2.31#1013044400000000 "内服・経口・１日３回朝昼夕食後"
-* dosageInstruction.route = urn:oid:2.16.840.1.113883.3.1937.777.10.5.162#PO "口"
+* dosageInstruction.timing.code = $JP_MedicationUsageJAMI_CS#1013044400000000 "内服・経口・１日３回朝昼夕食後"
+* dosageInstruction.route = $JP_MedicationRouteHL70162_CS#PO "口"
 * dosageInstruction.doseAndRate.doseQuantity = 1 $JP_MedicationUnitMERIT9_CS#TAB "錠"
 * dispenseRequest.quantity = 9 $JP_MedicationUnitMERIT9_CS#TAB "錠"
 
