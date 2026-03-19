@@ -105,7 +105,7 @@ jobs:
         JPPACKAGECOREtgz: fhir_dotFHIR_packages.tgz
         JPTerminologyCOREdir: jpfhir-terminology#1.4.0
         JPTerminologyCOREPtgz: jpfhir-terminology.r4-1.4.0.tgz
-        JPR430tgz: hl7.fhir.r4.core-4.3.0.tgz
+        JPR430tgz: hl7.fhir.r4b.core.4.3.0.tgz
       run: |
         mkdir -p /home/runner/.fhir
         mv $JPPACKAGECOREtgz /home/runner/.fhir/
