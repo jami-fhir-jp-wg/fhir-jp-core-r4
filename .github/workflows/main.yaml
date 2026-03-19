@@ -97,10 +97,10 @@ jobs:
         repository: jami-fhir-jp-wg/fhir430_translation
         tag: '1.0.0'
         path: .
-        file: hl7.fhir.r4.core-4.3.0.tgz
+        file: hl7.fhir.r4b.core.4.3.0.tgz
         token: ${{ secrets.R430_TRANLATE_PAT }}
 
-    - name: Prepare for using all dependent packages including Jp modified version of hl7.fhir.r4.core Package
+    - name: Prepare for using all dependent packages including Jp modified version of hl7.fhir.r4b.core Package
       env:
         JPPACKAGECOREtgz: fhir_dotFHIR_packages.tgz
         JPTerminologyCOREdir: jpfhir-terminology#1.4.0
@@ -122,8 +122,8 @@ jobs:
         cd /home/runner/.fhir/work
         tar xzf $JPR430tgz
         cd /home/runner/.fhir
-        mkdir -p packages/hl7.fhir.r4.core#4.3.0
-        mv /home/runner/.fhir/work/package /home/runner/.fhir/packages/hl7.fhir.r4.core#4.3.0
+        mkdir -p packages/hl7.fhir.r4b.core#4.3.0
+        mv /home/runner/.fhir/work/package /home/runner/.fhir/packages/hl7.fhir.r4b.core#4.3.0
 
     - name: apply the version of sushi-config.yaml
       run: |
