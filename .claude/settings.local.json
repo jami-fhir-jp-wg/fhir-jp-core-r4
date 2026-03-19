@@ -33,7 +33,12 @@
       "Bash(powershell -ExecutionPolicy Bypass -File .specify/scripts/powershell/setup-plan.ps1 -Json)",
       "Bash(powershell -ExecutionPolicy Bypass -File .specify/scripts/powershell/update-agent-context.ps1 -AgentType claude)",
       "Bash(pwsh -NoProfile -Command \".specify/scripts/powershell/check-prerequisites.ps1 -Json\")",
-      "Bash(pwsh -NoProfile -Command \".specify/scripts/powershell/check-prerequisites.ps1 -Json -RequireTasks -IncludeTasks\":*)"
+      "Bash(pwsh -NoProfile -Command \".specify/scripts/powershell/check-prerequisites.ps1 -Json -RequireTasks -IncludeTasks\":*)",
+      "Bash(pwsh -File .specify/scripts/powershell/create-new-feature.ps1 -Json -Number 1 -ShortName \"add-r430-package\" \"GitHub Actionを編集します。FHIR R430を翻訳したPackageをダウンロード、.fhirフォルダに展開するスクリプトをGitHub Actionにて実行します。develop.yaml, main.yamlを編集し実現してください。取得先はhttps://github.com/jami-fhir-jp-wg/fhir430_translation/releases/tag/1.0.0になります。取得の際にはPATが必要ですが、すでにsecretのR430_TRANLATE_PATとして登録しています。https://jpfhir.jp/fhir/fhir_dotFHIR_packages.tgzにはhl7.fhir.r4.core#4.0.1が含まれていますが、hl7.fhir.r4.core#4.3.0は含まれません。上記のRepositoryより取得してください。\")",
+      "Bash(pwsh -File .specify/scripts/powershell/check-prerequisites.ps1 -Json -PathsOnly)",
+      "Bash(pwsh -File .specify/scripts/powershell/setup-plan.ps1 -Json)",
+      "Bash(pwsh -File .specify/scripts/powershell/update-agent-context.ps1 -AgentType claude)",
+      "Bash(pwsh -File .specify/scripts/powershell/check-prerequisites.ps1 -Json)"
     ]
   }
 }
